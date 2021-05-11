@@ -1,4 +1,4 @@
 package model;
 
-abstract public class Question {
+abstract public class Question{
 }

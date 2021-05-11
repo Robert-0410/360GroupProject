@@ -1,4 +1,4 @@
 package model;
 
-public class MultipleChoice {
+public class MultipleChoice extends Question {
 }
