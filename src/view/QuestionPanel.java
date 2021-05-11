@@ -1,4 +1,6 @@
 package view;
 
-public class QuestionPanel {
+import javax.swing.*;
+
+public class QuestionPanel extends JPanel {
 }
