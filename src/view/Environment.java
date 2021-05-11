@@ -1,4 +1,6 @@
 package view;
 
-public class Environment {
+import javax.swing.*;
+
+public class Environment extends JPanel {
 }
