@@ -1,1 +1,28 @@
-<mxfile host="app.diagrams.net" modified="2021-05-12T06:24:43.395Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36 Edg/90.0.818.56" etag="Tit8qtlV3QkHssphmRR0" version="14.5.3" type="github"><diagram id="Pd45zTgIiPJOIhHkDbHc" name="Page-1">7VfbbtswDP2aAN1DBl8SN31MnF62dVvXBBv2qNhKLES2PFm59etH2nJ8X9NuwfYwIHCsI4oSeUiK7tluuL+VJA4+Cp/ynmX4+5497VnW5ciCJwKHDBg4VxmwkszPILMAZuyJatDQ6Ib5NKkIKiG4YnEV9EQUUU9VMCKl2FXFloJXd43JijaAmUd4E/3GfBVk6GhoFPgdZasg39k09ExIcmENJAHxxa4E2dc925VCqOwt3LuUo+9yv2TrbjpmjweTNFKnLFAPV47zPr6z18vF9yc3MT7F7/rDTMuW8I02eBwlOyr1kdUh90OyYyEnEYwmSxGpmZ4xYUw4W0Xw7sFBYKU92VKpGLhwrCeUiAH1Asb9e3IQGzxuooi3zkeTQEj2BGoJ1zphWiodDZZTkZjhSoANQCVNQOYh94FZgz6SfUXwniRKA57gnMQJWxzNCIlcsWgilBKhFmq6WHsdLaT7EqRdfktFSJU8gIieHWn2dfgfx7simExHY0EpkEaOjmEdv6uj5oJieNEsv4Bxp8F4z5pgZjCKqTHGBDvEtBEAYK9KiZFiTV3BBTA9jUQWEYzzGpQHBadL1RkSSUw8Fq3uU5npoEAetSMQErB2ydPMCZjv0wjpFIooknGHRMWCRSr11HACP/Cna7wd9oZwcBfGZjGGH4pL5YoIbCEsZZZCYOwoBkcL579MnOcDIWfeOY1461zEX7YQX+OYs5S7jOO83JmvIjgEqjgtGJ0j4dO+2WDdbrJutzDMyYLyB5EwxQTql5lsjfm/Re7QOjGrz8TtqCOpQXsg/AtM6Df/c/ts9DsnFvU/kduDD14Yfu6vx33DMb4u1NXj9rpvtvDv8DQ/Kkw7PzbYbui7LosII97DM/WOkeH9lEGcG5TmMEj6mnqc09f9USe8rfR/ujMrASTEkODNEVkgUdC35Wh1RUUheIbVN1nIBpIDXzZAOhaLYvmiLgxYXMcCiS7LG9HcOrPb0Fe5OMudo4/ruvsYJZ7aEH40IxWeKQkp1LQ+lU87twTTBDbDZMAVeT/3jxtcrlfmxbwoWPO0YDXZLsSti0zG1dItC6tm16pfe/2qFblSpcKKmLfBmddMS49vSMg4FoU7yrcUtaJ/VZi3tR2FpaXH7GwoLXtY6SgvW2rPVUvtMQfGmYqP1Sg+c7xPOi6Zkjdeet90fmAcm41dwBSdwT2De+7ggzS9TzaRT/1KS/9bDAxt4zkGbLOt+hsvZwCGxRdiOlf6zLavfwI=</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2021-05-12T06:39:11.811Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36 Edg/90.0.818.56" etag="A2oq7DxA7sWAo-Wtpqry" version="14.6.12" type="github">
+  <diagram id="Pd45zTgIiPJOIhHkDbHc" name="Page-1">
+    <mxGraphModel dx="782" dy="469" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="tP966JpH3kfbYzCs0NpI-5" value="Answer" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="80" y="280" width="160" height="86" as="geometry" />
+        </mxCell>
+        <mxCell id="tP966JpH3kfbYzCs0NpI-6" value="+ field: type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="tP966JpH3kfbYzCs0NpI-5" vertex="1">
+          <mxGeometry y="26" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="tP966JpH3kfbYzCs0NpI-7" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="tP966JpH3kfbYzCs0NpI-5" vertex="1">
+          <mxGeometry y="52" width="160" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="tP966JpH3kfbYzCs0NpI-8" value="+ method(type): type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="tP966JpH3kfbYzCs0NpI-5" vertex="1">
+          <mxGeometry y="60" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="4KcmmO-kA-060Vbt9RvE-1" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;abstract&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;Question&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- actualQuestion: String&lt;br&gt;- answers[ ]: Answer&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ method1(Type): Type&lt;br&gt;+ method2(Type, Type): Type&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" parent="1" vertex="1">
+          <mxGeometry x="235" y="70" width="190" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="R35mUs75iqf4z4gWJVU_-1" value="&lt;h1&gt;Ideas&lt;/h1&gt;&lt;p&gt;Option 1: Use inheritance to make different objects for each question used in the game.&lt;/p&gt;&lt;p&gt;Option 2: Create 1 object that changes state depending on what question is selected from the data base.&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="490" y="60" width="250" height="210" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
