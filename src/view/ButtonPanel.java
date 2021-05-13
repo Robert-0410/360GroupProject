@@ -7,7 +7,6 @@ import javax.swing.*;
  */
 public class ButtonPanel extends JPanel {
 
-    // TODO add to UML
     /**
      * Unique instance of the panel.
      */
@@ -25,8 +24,6 @@ public class ButtonPanel extends JPanel {
         buildButtonPanel();
     }
 
-    // TODO add to UML
-
     /**
      * Gets unique instance of the button panel.
      * @return only instance of the ButtonPanel.
@@ -37,9 +34,6 @@ public class ButtonPanel extends JPanel {
         }
         return uniqueInstance;
     }
-
-
-    // TODO: update UML for all getters for each button
 
     /**
      * Gets up JButton.
