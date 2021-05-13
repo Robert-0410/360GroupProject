@@ -1,17 +1,21 @@
 package view;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
 import java.util.ArrayList;
 
 public class MenuPanel extends JPanel {
     private static MenuPanel uniqueInstance;
 
-    private MenuPanel() {}
+    private MenuPanel() {
+        buildMenuButtons();
+        setUpPanel();
+    }
 
     public static MenuPanel getInstance() {
         if (uniqueInstance == null) {
             uniqueInstance = new MenuPanel();
-            // TODO: call builder method
         }
         return uniqueInstance;
     }
@@ -53,13 +57,34 @@ public class MenuPanel extends JPanel {
         return myMenu.get(3);
     }
 
-    public void buildMenuButtons() {
-        //In here set placements for buttons
+    private void setUpPanel() {
+        // Set Up Panel
+        setSize(750, 100);
+        add(getMenuButton());
+        add(getSaveButton());
+        add(getLoadButton());
+        add(getHelpButton());
+    }
+
+    private void buildMenuButtons() {
         //Create and add "Menu" Button
         JButton myMenuButton = new JButton();
+        myMenuButton.setText("Menu");
         myMenu.add(myMenuButton);
 
+        //Create and add "Save" Button
         JButton mySaveButton = new JButton();
+        mySaveButton.setText("Save");
         myMenu.add(mySaveButton);
+
+        //Create and add "Load" Button
+        JButton myLoadButton = new JButton();
+        myLoadButton.setText("Load");
+        myMenu.add(myLoadButton);
+
+        //Create and add "Help" Button
+        JButton myHelpButton = new JButton();
+        myHelpButton.setText("Help");
+        myMenu.add(myHelpButton);
     }
 }
