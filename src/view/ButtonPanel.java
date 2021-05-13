@@ -9,7 +9,9 @@ public class ButtonPanel extends JPanel {
 
     private final JButton[] myArrows= new JButton[4];
 
-
+    /**
+     * Singleton constructor.
+     */
     private ButtonPanel() {
         buildButtonPanel();
     }
