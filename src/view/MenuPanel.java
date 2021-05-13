@@ -13,6 +13,10 @@ public class MenuPanel extends JPanel {
         setUpPanel();
     }
 
+    /**
+     * Get Instance Method
+     * @return uniqueInstance
+     */
     public static MenuPanel getInstance() {
         if (uniqueInstance == null) {
             uniqueInstance = new MenuPanel();
@@ -65,6 +69,7 @@ public class MenuPanel extends JPanel {
         add(getLoadButton());
         add(getHelpButton());
     }
+
 
     private void buildMenuButtons() {
         //Create and add "Menu" Button
