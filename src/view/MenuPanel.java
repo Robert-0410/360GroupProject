@@ -5,6 +5,12 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * Designs the Menu Panel for the game.
+ * The menu panel consists of buttons that perform
+ * actions related to the game, such as, Menu, Load
+ * Save, and Help.
+ */
 public class MenuPanel extends JPanel {
     private static MenuPanel uniqueInstance;
 
@@ -61,6 +67,9 @@ public class MenuPanel extends JPanel {
         return myMenu.get(3);
     }
 
+    /**
+     * Sets up and adds elements to the panel.
+     */
     private void setUpPanel() {
         // Set Up Panel
         setSize(750, 100);
@@ -70,7 +79,9 @@ public class MenuPanel extends JPanel {
         add(getHelpButton());
     }
 
-
+    /**
+     * Builds the Buttons for the Menu Panel
+     */
     private void buildMenuButtons() {
         //Create and add "Menu" Button
         JButton myMenuButton = new JButton();
