@@ -1,6 +1,7 @@
 package view;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -77,7 +78,6 @@ public class MenuPanel extends GUIPanel {
      */
     private void setUpPanel() {
         // Set Up Panel
-        setSize(750, 100);
         add(getMenuButton());
         add(getSaveButton());
         add(getLoadButton());
@@ -91,6 +91,7 @@ public class MenuPanel extends GUIPanel {
         //Create and add "Menu" Button
         JButton myMenuButton = new JButton();
         myMenuButton.setText("Menu");
+        myMenuButton.setBackground(Color.LIGHT_GRAY);
         myMenu.add(myMenuButton);
 
         //Create and add "Save" Button

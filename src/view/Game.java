@@ -21,7 +21,7 @@ public class Game extends JPanel {
     /**
      * Initial height of window.
      */
-    private static final int WINDOW_HEIGHT = 650;
+    private static final int WINDOW_HEIGHT = 900;
 
     /**
      * ArrayList of all the panels composing game panel.
@@ -58,7 +58,7 @@ public class Game extends JPanel {
         frame.pack();
 
         //We need to pick a frame size
-        frame.setSize(750, 750);
+        frame.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 
         //I think we should make in non resizable
         frame.setResizable(false);

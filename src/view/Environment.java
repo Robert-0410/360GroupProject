@@ -15,6 +15,16 @@ public class Environment extends GUIPanel {
     private static Environment UNIQUE_INSTANCE;
 
     /**
+     * Initial width of window.
+     */
+    private static final int PANEL_WIDTH = 900;
+
+    /**
+     * Initial height of window.
+     */
+    private static final int PANEL_HEIGHT = 650;
+
+    /**
      * Constructor for Environment Class.
      */
     private Environment() {
@@ -36,7 +46,7 @@ public class Environment extends GUIPanel {
      * Sets up the Environment panel
      */
     private void setUpEnvironmentPanel() {
-        setSize(750, 500);
+        setBounds(0,0,PANEL_WIDTH, PANEL_HEIGHT);
         ImageIcon environmentBackground = new ImageIcon("src/resources/RickAndMortyBreakingBad.png");
         JLabel background = new JLabel();
         background.setIcon(environmentBackground);
