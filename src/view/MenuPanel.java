@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class MenuPanel extends JPanel {
 
     /**
-     * Singleton Style Unique Instance
+     * Singleton Style Unique Instance.
      */
     private static MenuPanel uniqueInstance;
 
