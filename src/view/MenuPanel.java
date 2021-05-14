@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * Designs the Menu Panel for the game.
  * The menu panel consists of buttons that perform
  * actions related to the game, such as, Menu, Load
- * Save, and Help.
+ * Save, and Help
  */
 public class MenuPanel extends JPanel {
 
