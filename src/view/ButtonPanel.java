@@ -10,7 +10,7 @@ public class ButtonPanel extends GUIPanel {
     /**
      * Unique instance of the panel.
      */
-    private static ButtonPanel uniqueInstance;
+    private static ButtonPanel UNIQUE_INSTANCE;
 
     /**
      * Array for internal storage of actual arrow buttons.
@@ -29,10 +29,10 @@ public class ButtonPanel extends GUIPanel {
      * @return only instance of the ButtonPanel.
      */
     public static ButtonPanel getInstance() {
-        if(uniqueInstance == null) {
-            uniqueInstance = new ButtonPanel();
+        if(UNIQUE_INSTANCE == null) {
+            UNIQUE_INSTANCE = new ButtonPanel();
         }
-        return uniqueInstance;
+        return UNIQUE_INSTANCE;
     }
 
     /**

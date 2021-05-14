@@ -2,5 +2,5 @@ package view;
 
 import javax.swing.*;
 
-public class QuestionPanel extends JPanel {
+public class QuestionPanel extends GUIPanel {
 }

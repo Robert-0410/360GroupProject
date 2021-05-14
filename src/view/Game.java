@@ -12,7 +12,16 @@ public class Game extends JPanel {
     /**
      * Singleton style class.
      */
-    private static Game uniqueInstance;
+    private static Game UNIQUE_INSTANCE;
+    /**
+     * Initial width of window.
+     */
+    private static final int WINDOW_WIDTH = 900;
+
+    /**
+     * Initial height of window.
+     */
+    private static final int WINDOW_HEIGHT = 650;
 
     /**
      * ArrayList of all the panels composing game panel.
@@ -23,6 +32,7 @@ public class Game extends JPanel {
      * Singleton style constructor.
      */
     private Game() {
+        super();
         buildGame();
     }
 
@@ -31,10 +41,25 @@ public class Game extends JPanel {
      * @return unique instance of Game.
      */
     public static Game getInstance() {
-        if(uniqueInstance == null) {
-            uniqueInstance = new Game();
+        if(UNIQUE_INSTANCE == null) {
+            UNIQUE_INSTANCE = new Game();
         }
-        return uniqueInstance;
+        return UNIQUE_INSTANCE;
+    }
+
+    /**
+     * Triggers the GUI to display.
+     */
+    public void display() {
+        final JFrame frame = new JFrame("Whats the name!!!");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setContentPane(this); // This adds panel to the frame.
+
+        frame.pack();
+        frame.setResizable(true);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+
     }
 
     /**
@@ -50,10 +75,16 @@ public class Game extends JPanel {
      * Retrieves unique instances of panels and adds them to myPanels.
      */
     private void fetchPanels() {
+        myPanels = new ArrayList<>(4);
+
         var menuPanel = MenuPanel.getInstance();
-        myPanels.add(0, menuPanel);
+        myPanels.add(menuPanel);
+
+        var environmentPanel = Environment.getInstance();
+        myPanels.add(environmentPanel);
+
         var buttonPanel = ButtonPanel.getInstance();
-        myPanels.add(2, buttonPanel);
+        myPanels.add(buttonPanel);
     }
 
     /**
@@ -68,6 +99,7 @@ public class Game extends JPanel {
      */
     private void addPanels() {
         add(myPanels.get(0), BorderLayout.NORTH);
+        add(myPanels.get(1), BorderLayout.CENTER);
         add(myPanels.get(2), BorderLayout.SOUTH);
     }
 }

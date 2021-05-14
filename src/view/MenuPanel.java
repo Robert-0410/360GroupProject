@@ -14,7 +14,7 @@ public class MenuPanel extends GUIPanel {
     /**
      * Singleton Style Unique Instance.
      */
-    private static MenuPanel uniqueInstance;
+    private static MenuPanel UNIQUE_INSTANCE;
 
     /**
      * Constructor for Menu Panel
@@ -29,10 +29,10 @@ public class MenuPanel extends GUIPanel {
      * @return uniqueInstance
      */
     public static MenuPanel getInstance() {
-        if (uniqueInstance == null) {
-            uniqueInstance = new MenuPanel();
+        if (UNIQUE_INSTANCE == null) {
+            UNIQUE_INSTANCE = new MenuPanel();
         }
-        return uniqueInstance;
+        return UNIQUE_INSTANCE;
     }
 
     /**

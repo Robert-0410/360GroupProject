@@ -11,7 +11,7 @@ public class Environment extends GUIPanel {
     /**
      * Singleton Style Unique Instance.
      */
-    private static Environment uniqueInstance;
+    private static Environment UNIQUE_INSTANCE;
 
     /**
      * Constructor for Environment Class.
@@ -25,10 +25,10 @@ public class Environment extends GUIPanel {
      * @return uniqueInstance
      */
     public static Environment getInstance() {
-        if (uniqueInstance == null) {
-            uniqueInstance = new Environment();
+        if (UNIQUE_INSTANCE == null) {
+            UNIQUE_INSTANCE = new Environment();
         }
-        return uniqueInstance;
+        return UNIQUE_INSTANCE;
     }
 
     /**
