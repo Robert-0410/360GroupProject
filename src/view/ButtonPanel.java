@@ -5,7 +5,7 @@ import javax.swing.*;
 /**
  * Singleton style class that builds the control buttons container.
  */
-public class ButtonPanel extends JPanel {
+public class ButtonPanel extends GUIPanel {
 
     /**
      * Unique instance of the panel.
@@ -118,6 +118,5 @@ public class ButtonPanel extends JPanel {
         var left = getLeftButton();
         left.setText("Left");
     }
-
 
 }
