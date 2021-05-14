@@ -1,7 +1,14 @@
 package view;
 
+/**
+ * Game is ran from here.
+ */
 public class Main {
 
+    /**
+     * main
+     * @param args n/a
+     */
     public static void main(String[] args) {
         final Game game = Game.getInstance();
         game.display();

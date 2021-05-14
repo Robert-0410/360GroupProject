@@ -91,6 +91,7 @@ public class Game extends JPanel {
      * Prepares the main panel holding the rest of the unique panels.
      */
     private void prepGamePanel() {
+        setPreferredSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
         setLayout(new BorderLayout());
     }
 
