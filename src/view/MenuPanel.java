@@ -8,6 +8,9 @@ import java.util.ArrayList;
 public class MenuPanel extends JPanel {
     private static MenuPanel uniqueInstance;
 
+    /**
+     * Private constructor
+     */
     private MenuPanel() {
         buildMenuButtons();
         setUpPanel();
