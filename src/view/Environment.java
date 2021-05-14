@@ -37,9 +37,10 @@ public class Environment extends GUIPanel {
      */
     private void setUpEnvironmentPanel() {
         setSize(750, 500);
-        JLabel environmentBackground = new JLabel(new ImageIcon("src/resources/RickAndMortyBackground.jpg"));
-        environmentBackground.setSize(750, 500);
-        add(environmentBackground);
+        ImageIcon environmentBackground = new ImageIcon("src/resources/RickAndMortyBreakingBad.png");
+        JLabel background = new JLabel();
+        background.setIcon(environmentBackground);
+        add(background);
     }
 
 }

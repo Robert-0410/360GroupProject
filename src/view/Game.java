@@ -56,7 +56,13 @@ public class Game extends JPanel {
         frame.setContentPane(this); // This adds panel to the frame.
 
         frame.pack();
-        frame.setResizable(true);
+
+        //We need to pick a frame size
+        frame.setSize(750, 750);
+
+        //I think we should make in non resizable
+        frame.setResizable(false);
+
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
