@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * actions related to the game, such as, Menu, Load
  * Save, and Help
  */
-public class MenuPanel extends JPanel {
+public class MenuPanel extends GUIPanel {
 
     /**
      * Singleton Style Unique Instance.
