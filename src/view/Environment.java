@@ -14,7 +14,7 @@ public class Environment extends GUIPanel {
     private static Environment uniqueInstance;
 
     /**
-     * Constructor for Environment Class
+     * Constructor for Environment Class.
      */
     private Environment() {
         setUpEnvironmentPanel();
