@@ -1,8 +1,6 @@
 package view;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -12,8 +10,15 @@ import java.util.ArrayList;
  * Save, and Help.
  */
 public class MenuPanel extends JPanel {
+
+    /**
+     * Singleton Style Unique Instance
+     */
     private static MenuPanel uniqueInstance;
 
+    /**
+     * Constructor for Menu Panel
+     */
     private MenuPanel() {
         buildMenuButtons();
         setUpPanel();
