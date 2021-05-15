@@ -2,6 +2,8 @@ package view;
 
 /**
  * Game is ran from here.
+ * @author Robert
+ * @version 1
  */
 public class Main {
 
