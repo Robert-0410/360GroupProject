@@ -8,7 +8,7 @@ import java.awt.*;
  * be displayed. After a game is selected, Environment
  * will be used as the game playing field.
  */
-public class Environment extends GUIPanel {
+public class Environment extends JPanel {
     /**
      * Singleton Style Unique Instance.
      */

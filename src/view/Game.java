@@ -1,11 +1,14 @@
 package view;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import java.awt.*;
 import java.util.ArrayList;
 
 /**
  *  Holds all panels that display the trivia game.
+ * @author Robert
+ * @version 1
  */
 public class Game extends JPanel {
 
@@ -25,15 +28,25 @@ public class Game extends JPanel {
 
     /**
      * ArrayList of all the panels composing game panel.
+     * 0 - MenuPanel
+     * 1 - Environment
+     * 2 - ButtonPanel
+     * 3 - QuestionPanel
      */
-    private ArrayList<GUIPanel> myPanels;
+    private ArrayList<JPanel> myPanels;
+
+    /**
+     * Holds ButtonPanel and the QuestionPanel on the SOUTH part of the main panel.
+     * TODO UML
+     */
+    private JPanel mySouthPanel;
 
     /**
      * Singleton style constructor.
      */
     private Game() {
         super();
-        buildGame();
+        buildMainPanel();
     }
 
     /**
@@ -65,9 +78,9 @@ public class Game extends JPanel {
     /**
      * Consolidates methods that build the GUI.
      */
-    private void buildGame() {
+    private void buildMainPanel() {
         fetchPanels();
-        prepGamePanel();
+        prepMainPanel();
         addPanels();
     }
 
@@ -85,14 +98,30 @@ public class Game extends JPanel {
 
         var buttonPanel = ButtonPanel.getInstance();
         myPanels.add(buttonPanel);
+
+        var questionPanel = QuestionPanel.getInstance();
+        myPanels.add(questionPanel);
     }
 
     /**
      * Prepares the main panel holding the rest of the unique panels.
      */
-    private void prepGamePanel() {
+    private void prepMainPanel() {
         setPreferredSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
         setLayout(new BorderLayout());
+    }
+
+    /**
+     * Prepares the panel located on the SOUTH, holds ButtonPanel & QuestionPanel.
+     * TODO UML
+     */
+    private void prepSouthPanel() {
+        mySouthPanel = new JPanel();
+        mySouthPanel.setPreferredSize(new Dimension(WINDOW_WIDTH, 150));
+        mySouthPanel.setLayout(new GridLayout(1, 2));
+
+        mySouthPanel.add(myPanels.get(2));
+        mySouthPanel.add(myPanels.get(3));
     }
 
     /**
@@ -101,6 +130,8 @@ public class Game extends JPanel {
     private void addPanels() {
         add(myPanels.get(0), BorderLayout.NORTH);
         add(myPanels.get(1), BorderLayout.CENTER);
-        add(myPanels.get(2), BorderLayout.SOUTH);
+
+        prepSouthPanel();
+        add(mySouthPanel, BorderLayout.SOUTH);
     }
 }

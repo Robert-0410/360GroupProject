@@ -1,11 +1,14 @@
 package view;
 
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.JButton;
 
 /**
  * Singleton style class that builds the control buttons container.
+ * @author Robert
+ * @version 1
  */
-public class ButtonPanel extends GUIPanel {
+public class ButtonPanel extends JPanel {
 
     /**
      * Unique instance of the panel.
@@ -76,6 +79,7 @@ public class ButtonPanel extends GUIPanel {
         buildRightButton();
         buildDownButton();
         buildLeftButton();
+        addButtons();
     }
 
     /**
@@ -117,6 +121,17 @@ public class ButtonPanel extends GUIPanel {
     private void buildLeftButton() {
         var left = getLeftButton();
         left.setText("Left");
+    }
+
+    /**
+     * Adds buttons to panel.
+     * TODO UML
+     */
+    private void addButtons() {
+        add(getUpButton());
+        add(getRightButton());
+        add(getDownButton());
+        add(getLeftButton());
     }
 
 }
