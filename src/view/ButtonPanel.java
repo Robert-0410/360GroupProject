@@ -2,6 +2,7 @@ package view;
 
 import javax.swing.JPanel;
 import javax.swing.JButton;
+import java.awt.*;
 
 /**
  * Singleton style class that builds the control buttons container.
@@ -75,6 +76,7 @@ public class ButtonPanel extends JPanel {
      */
     private void buildButtonPanel() {
         instantiateButtons();
+        setPanelsState();
         buildUpButton();
         buildRightButton();
         buildDownButton();
@@ -83,7 +85,7 @@ public class ButtonPanel extends JPanel {
     }
 
     /**
-    Instantiates the arrow button with the array.
+     * Instantiates the arrow button with the array.
      */
     private void instantiateButtons() {
         for(int i = 0; i < myArrows.length; i++) {
@@ -92,11 +94,24 @@ public class ButtonPanel extends JPanel {
     }
 
     /**
+     * Customize ButtonPanel.
+     * TODO UML
+     */
+    private void setPanelsState() {
+        setLayout(null);
+        setBackground(Color.CYAN);
+    }
+
+    /**
     Builds and customizes the up arrow button.
      */
     private void buildUpButton() {
         var up = getUpButton();
+        var panelWidth = PaneConst.WINDOW_WIDTH.value() / 2;
+        var buttonSize = PaneConst.ARROW_SIZE.value();
+
         up.setText("Up");
+        up.setBounds(panelWidth / 2 - buttonSize / 2, 0, buttonSize, buttonSize);
     }
 
     /**
@@ -104,7 +119,12 @@ public class ButtonPanel extends JPanel {
     */
     private void buildRightButton() {
         var right = getRightButton();
+        var panelWidth = PaneConst.WINDOW_WIDTH.value() / 2;
+        var panelHeight = PaneConst.SOUTH_HEIGHT.value();
+        var buttonSize = PaneConst.ARROW_SIZE.value();
+
         right.setText("Right");
+        right.setBounds(panelWidth / 2 + buttonSize / 2, panelHeight / 2 - buttonSize / 2, buttonSize, buttonSize);
     }
 
     /**
@@ -112,7 +132,12 @@ public class ButtonPanel extends JPanel {
      */
     private void buildDownButton() {
         var down = getDownButton();
+        var panelWidth = PaneConst.WINDOW_WIDTH.value() / 2;
+        var panelHeight = PaneConst.SOUTH_HEIGHT.value();
+        var buttonSize = PaneConst.ARROW_SIZE.value();
+
         down.setText("Down");
+        down.setBounds(panelWidth / 2 - buttonSize / 2, 66 * panelHeight / 100, buttonSize, buttonSize);
     }
 
     /**
@@ -120,7 +145,12 @@ public class ButtonPanel extends JPanel {
      */
     private void buildLeftButton() {
         var left = getLeftButton();
+        var panelWidth = PaneConst.WINDOW_WIDTH.value() / 2;
+        var panelHeight = PaneConst.SOUTH_HEIGHT.value();
+        var buttonSize = PaneConst.ARROW_SIZE.value();
+
         left.setText("Left");
+        left.setBounds(panelWidth / 2 - buttonSize / 2 - buttonSize, panelHeight / 2 - buttonSize / 2, buttonSize, buttonSize);
     }
 
     /**

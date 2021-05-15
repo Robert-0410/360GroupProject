@@ -16,15 +16,6 @@ public class Game extends JPanel {
      * Singleton style class.
      */
     private static Game UNIQUE_INSTANCE;
-    /**
-     * Initial width of window.
-     */
-    private static final int WINDOW_WIDTH = 900;
-
-    /**
-     * Initial height of window.
-     */
-    private static final int WINDOW_HEIGHT = 650;
 
     /**
      * ArrayList of all the panels composing game panel.
@@ -107,7 +98,7 @@ public class Game extends JPanel {
      * Prepares the main panel holding the rest of the unique panels.
      */
     private void prepMainPanel() {
-        setPreferredSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
+        setPreferredSize(new Dimension(PaneConst.WINDOW_WIDTH.value(), PaneConst.WINDOW_HEIGHT.value()));
         setLayout(new BorderLayout());
     }
 
@@ -117,7 +108,7 @@ public class Game extends JPanel {
      */
     private void prepSouthPanel() {
         mySouthPanel = new JPanel();
-        mySouthPanel.setPreferredSize(new Dimension(WINDOW_WIDTH, 150));
+        mySouthPanel.setPreferredSize(new Dimension(PaneConst.WINDOW_WIDTH.value(), PaneConst.SOUTH_HEIGHT.value()));
         mySouthPanel.setLayout(new GridLayout(1, 2));
 
         mySouthPanel.add(myPanels.get(2));
