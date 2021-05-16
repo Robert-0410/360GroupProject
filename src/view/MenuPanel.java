@@ -38,7 +38,7 @@ public class MenuPanel extends JPanel {
     /**
      * Builds ArrayList of Buttons
      */
-    private ArrayList<JButton> myMenu = new ArrayList<>();
+    private final ArrayList<JButton> myMenu = new ArrayList<>();
 
     /**
      * Gets Menu Button (index zero)
@@ -77,7 +77,6 @@ public class MenuPanel extends JPanel {
      */
     private void setUpPanel() {
         // Set Up Panel
-        setSize(750, 100);
         add(getMenuButton());
         add(getSaveButton());
         add(getLoadButton());

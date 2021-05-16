@@ -60,9 +60,10 @@ public class Game extends JPanel {
         frame.setContentPane(this); // This adds panel to the frame.
 
         frame.pack();
-        frame.setResizable(true);
+        frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        System.out.println(myPanels.get(1).getHeight());
 
     }
 
