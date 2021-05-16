@@ -105,6 +105,7 @@ public class QuestionPanel extends JPanel {
     private void buildAButton() {
         var up = getAButton();
         up.setText("A");
+
     }
 
     /**
