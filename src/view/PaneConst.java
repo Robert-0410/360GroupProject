@@ -38,7 +38,7 @@ public enum PaneConst {
      * Sets value.
      * @param theValue of the constant.
      */
-    PaneConst(int theValue) {
+    PaneConst(final int theValue) {
         myValue = theValue;
     }
 
