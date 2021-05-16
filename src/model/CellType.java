@@ -7,10 +7,21 @@ package model;
  * @version 1
  */
 public enum CellType {
+
+    /**
+     * Blank CellType, serves as a place holder.
+     */
     NONE,
     PLAYER(1, "filename");
 
+    /**
+     * ID that corresponds with GameObject.myID
+     */
     private final int ID;
+
+    /**
+     * Filename for image being used to paint GameObjects composing environment.
+     */
     private final String filename;
 
     /**
@@ -20,6 +31,12 @@ public enum CellType {
         ID = -1;
         filename = null;
     }
+
+    /**
+     * For initializing state of enums.
+     * @param theID
+     * @param theFileName
+     */
     CellType(final int theID, final String theFileName) {
         ID = theID;
         filename = theFileName;

@@ -10,7 +10,14 @@ import javax.swing.ImageIcon;
  */
 public abstract class GameObject extends JLabel {
 
+    /**
+     * ID that corresponds with enum CellType.ID
+     */
     private final int myID;
+
+    /**
+     *
+     */
     private final ImageIcon myIcon;
     private CellType myCellType = CellType.NONE;
 
