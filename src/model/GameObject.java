@@ -21,6 +21,9 @@ public abstract class GameObject extends JLabel {
     private final ImageIcon myIcon;
     private CellType myCellType = CellType.NONE;
 
+    /*
+      1020321
+     */
     protected GameObject(final int theID) {
         myID = theID;
         myCellType = myCellType.assignCellType(myID);

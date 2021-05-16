@@ -3,6 +3,7 @@ package model;
 /**
  * Enumeration for cell types in the game environment.
  * TODO UML, pass file names to constructor.
+ * TODO: size of cell type 50 x 50
  * @author Robert
  * @version 1
  */
