@@ -13,6 +13,7 @@ public enum CellType {
      * Blank CellType, serves as a place holder.
      */
     NONE,
+    WALL(0, "src/resources/test.png"),
     PLAYER(1, "filename");
 
     /**
@@ -35,8 +36,8 @@ public enum CellType {
 
     /**
      * For initializing state of enums.
-     * @param theID
-     * @param theFileName
+     * @param theID int
+     * @param theFileName String
      */
     CellType(final int theID, final String theFileName) {
         ID = theID;
@@ -59,6 +60,9 @@ public enum CellType {
     public CellType assignCellType(final int theID) {
         CellType cellType;
         switch (theID) {
+            case 0:
+                cellType = CellType.WALL;
+                break;
             case 1:
                 cellType = CellType.PLAYER;
                 break;

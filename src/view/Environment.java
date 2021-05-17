@@ -7,6 +7,7 @@ import javax.swing.*;
   * will be used as the game playing field.
   */
 public class Environment extends JPanel {
+
     /** Singleton Style Unique Instance.
     */
     private static Environment UNIQUE_INSTANCE;
@@ -36,7 +37,7 @@ public class Environment extends JPanel {
         ImageIcon environmentBackground = new ImageIcon("src/resources/RickAndMortyBreakingBad.png");
         JLabel background = new JLabel();
         background.setIcon(environmentBackground);
-        add(background);
+        //add(background);
     }
 
 }
