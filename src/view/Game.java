@@ -66,13 +66,9 @@ public class Game extends JPanel {
         frame.setLocationRelativeTo(null);
 
         // For quick painting of a single cell for testing.
-        var engGen = new EnvironmentGenerator();
-        //myPanels.get(1).add(engGen.test);
+        var engGen = new EnvironmentGenerator(); // constructor adds GameObject being tested.
 
         frame.setVisible(true);
-
-        // TODO Temp: used for painting single GameObject.
-
     }
 
     /**
