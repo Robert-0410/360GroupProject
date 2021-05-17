@@ -2,8 +2,6 @@ package model;
 
 /**
  * Enumeration for cell types in the game environment.
- * TODO UML, pass file names to constructor.
- * TODO: size of cell type 50 x 50
  * @author Robert
  * @version 1
  */
@@ -14,7 +12,9 @@ public enum CellType {
      */
     NONE,
     WALL(0, "src/resources/test.png"),
-    PLAYER(1, "filename");
+    FLOOR(1, "filename"),
+    DOOR(2, "filename"),
+    PLAYER(3, "filename");
 
     /**
      * ID that corresponds with GameObject.myID
@@ -27,7 +27,7 @@ public enum CellType {
     private final String filename;
 
     /**
-     * Constructor for NONE.
+     * Constructor for NONE. Place holder
      */
     CellType() {
         ID = -1;
@@ -44,10 +44,18 @@ public enum CellType {
         filename = theFileName;
     }
 
+    /**
+     * Gets the identification for the CellType.
+     * @return int
+     */
     public int getID() {
         return ID;
     }
 
+    /**
+     * Gets the filename used to draw the image.
+     * @return String
+     */
     public String getFilename() {
         return filename;
     }
@@ -60,15 +68,14 @@ public enum CellType {
     public CellType assignCellType(final int theID) {
         CellType cellType;
         switch (theID) {
-            case 0:
-                cellType = CellType.WALL;
-                break;
-            case 1:
-                cellType = CellType.PLAYER;
-                break;
-            default:
+            case 0 -> cellType = CellType.WALL;
+            case 1 -> cellType = CellType.FLOOR;
+            case 2 -> cellType = CellType.DOOR;
+            case 3 -> cellType = CellType.PLAYER;
+            default -> {
                 System.err.println("In CellType.assignCellType() a cell type failed to be assigned.");
                 cellType = CellType.NONE;
+            }
         }
         return cellType;
     }
