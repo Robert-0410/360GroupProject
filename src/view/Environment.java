@@ -7,6 +7,7 @@ import javax.swing.*;
   * will be used as the game playing field.
   */
 public class Environment extends JPanel {
+
     /** Singleton Style Unique Instance.
     */
     private static Environment UNIQUE_INSTANCE;
