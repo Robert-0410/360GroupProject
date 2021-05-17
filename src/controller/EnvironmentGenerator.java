@@ -13,9 +13,10 @@ import java.util.ArrayList;
  */
 public class EnvironmentGenerator {
 
+
     private final Environment myEnvironment;
     private final ArrayList<GameObject> myMap;
-    public final GameObject test;
+    public final GameObject test; // temp
 
 
 
@@ -24,6 +25,6 @@ public class EnvironmentGenerator {
         myMap = null;
 
         test = new Wall(CellType.WALL.getID());
-        myEnvironment.add(test);
+        myEnvironment.add(test); // was not adding to environment
     }
 }

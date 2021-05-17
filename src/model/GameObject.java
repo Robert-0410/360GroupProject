@@ -2,6 +2,7 @@ package model;
 
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+import java.awt.*;
 
 /**
  * Abstract class for the objects that compose the game environment.
@@ -29,7 +30,6 @@ public abstract class GameObject extends JLabel {
         myCellType = myCellType.assignCellType(myID);
         myIcon = new ImageIcon(myCellType.getFilename());
         setIcon(getMyIcon());
-
         setOpaque(true);
     }
 

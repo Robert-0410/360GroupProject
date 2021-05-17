@@ -67,7 +67,7 @@ public class Game extends JPanel {
 
         // For quick painting of a single cell for testing.
         var engGen = new EnvironmentGenerator();
-        myPanels.get(1).add(engGen.test);
+        //myPanels.get(1).add(engGen.test);
 
         frame.setVisible(true);
 

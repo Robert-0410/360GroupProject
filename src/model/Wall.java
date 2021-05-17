@@ -1,7 +1,9 @@
 package model;
 
+import java.awt.*;
+
 public class Wall extends GameObject {
-    public Wall(int theID) {
+    public Wall(final int theID) {
         super(theID);
     }
 }
