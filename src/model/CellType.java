@@ -11,9 +11,9 @@ public enum CellType {
      * Blank CellType, serves as a place holder.
      */
     NONE,
-    WALL(0, "src/resources/test.png"),
-    FLOOR(1, "filename"),
-    DOOR(2, "filename"),
+    WALL(0, "src/resources/WallCell.png"),
+    FLOOR(1, "src/resources/FloorCell.png"),
+    DOOR(2, "src/resources/DoorCell.png"),
     PLAYER(3, "filename");
 
     /**
