@@ -1,7 +1,9 @@
 package view;
 
-import javax.swing.JPanel;
-import javax.swing.JButton;
+import model.Question;
+
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * Contains the area the user will interact with the questions.
@@ -31,6 +33,8 @@ public class QuestionPanel extends JPanel {
      */
     private QuestionPanel() {
         buildPanel();
+
+
     }
 
     /**
@@ -44,6 +48,8 @@ public class QuestionPanel extends JPanel {
         }
         return UNIQUE_INSTANCE;
     }
+
+
 
     /**
      * Gets the A/True answer button.
@@ -79,16 +85,28 @@ public class QuestionPanel extends JPanel {
 
     /**
      * Consolidates all private methods that build the Question area panel.
+     * This is where change the answer button orientation and add the label which
+     * will contain the question we ask the user.
+     *
      * TODO UML
      */
     private void buildPanel() {
+
+
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        JLabel question = new JLabel("This is where the question will go: ");
+        this.add(question);
+
         instantiateButtons();
         buildAButton();
         buildBButton();
         buildCButton();
         buildDButton();
         addButtons();
+
     }
+
+
 
     /**
      Instantiates the answer buttons into array.

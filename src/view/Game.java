@@ -93,6 +93,7 @@ public class Game extends JPanel {
 
         var questionPanel = QuestionPanel.getInstance();
         myPanels.add(questionPanel);
+
     }
 
     /**
