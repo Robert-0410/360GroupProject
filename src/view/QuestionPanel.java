@@ -1,6 +1,6 @@
 package view;
 
-import model.Question;
+
 
 import javax.swing.*;
 import java.awt.*;
