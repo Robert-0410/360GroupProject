@@ -1,7 +1,7 @@
 package model;
 
 /**
- * Wall barrier that does not allow player to wald through.
+ * Wall barrier that does not allow player to walk through.
  * @author Robert
  * @version 1
  */
