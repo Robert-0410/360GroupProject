@@ -14,7 +14,7 @@ public enum CellType {
     WALL(0, "src/resources/WallCell.png"),
     FLOOR(1, "src/resources/FloorCell.png"),
     DOOR(2, "src/resources/DoorCell.png"),
-    PLAYER(3, "filename");
+    PLAYER(3, "src/resources/PickleRickAvatar.png");
 
     /**
      * ID that corresponds with GameObject.myID

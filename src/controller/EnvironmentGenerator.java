@@ -37,7 +37,7 @@ public class EnvironmentGenerator {
         myEnvironment = Environment.getInstance();
         myMap = null; // TODO will need to have a method to initiate this.
 
-        test = new Wall(CellType.FLOOR.getID());
+        test = new Wall(CellType.PLAYER.getID());
         myEnvironment.add(test);
     }
 }
