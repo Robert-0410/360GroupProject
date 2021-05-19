@@ -8,9 +8,8 @@ public class Door extends GameObject {
 
     /**
      * Sets myIcon, myCellType, with the use of an ID argument.
-     * @param theID Identification of GameObject
      */
-    public Door(int theID) {
-        super(theID);
+    protected Door() {
+        super(CellType.DOOR.getID());
     }
 }

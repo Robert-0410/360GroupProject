@@ -25,10 +25,6 @@ public class EnvironmentGenerator {
      */
     private final ArrayList<GameObject> myMap;
 
-    /**
-     * Temp GameObject used for testing.
-     */
-    private final GameObject test; // temp
 
     /**
      * Constructor set initial fields.
@@ -36,8 +32,5 @@ public class EnvironmentGenerator {
     public EnvironmentGenerator() {
         myEnvironment = Environment.getInstance();
         myMap = null; // TODO will need to have a method to initiate this.
-
-        test = new Wall(CellType.PLAYER.getID());
-        myEnvironment.add(test);
     }
 }

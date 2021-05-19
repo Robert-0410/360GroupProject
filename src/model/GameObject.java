@@ -53,4 +53,19 @@ public abstract class GameObject extends JLabel {
     public ImageIcon getMyIcon() {
         return myIcon;
     }
+
+    /**
+     * Assigns the concrete version of GameObject depending on the argument.
+     * @param theID Determines the type to be returned.
+     * @return GameObject
+     */
+    public GameObject assignGameObject(final int theID) {
+        return switch (theID) {
+            case 0 -> new Floor();
+            case 1 -> new Wall();
+            case 2 -> new Door();
+            case 3 -> new PickleRickAvatar();
+            default -> throw new IllegalStateException("Unexpected value: " + theID);
+        };
+    }
 }
