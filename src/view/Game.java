@@ -1,7 +1,5 @@
 package view;
 
-import controller.EnvironmentGenerator;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.*;
@@ -64,9 +62,6 @@ public class Game extends JPanel {
         frame.pack();
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
-
-        // For quick painting of a single cell for testing.
-        var engGen = new EnvironmentGenerator(); // constructor adds GameObject being tested.
 
         frame.setVisible(true);
     }

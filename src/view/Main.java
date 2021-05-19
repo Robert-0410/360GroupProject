@@ -18,8 +18,9 @@ public class Main {
         try {
             UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
         } catch (Exception e) {
-            System.out.println("Error: " + e);
+            System.err.println("Error: " + e);
         }
+        //
         final Game game = Game.getInstance();
         game.display();
     }
