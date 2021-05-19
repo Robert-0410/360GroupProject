@@ -59,7 +59,7 @@ public abstract class GameObject extends JLabel {
      * @param theID Determines the type to be returned.
      * @return GameObject
      */
-    public GameObject assignGameObject(final int theID) {
+    public static GameObject assignGameObject(final int theID) {
         return switch (theID) {
             case 0 -> new Floor();
             case 1 -> new Wall();
