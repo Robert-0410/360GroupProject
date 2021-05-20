@@ -31,7 +31,8 @@ public class EnvironmentGenerator {
      */
     public EnvironmentGenerator() {
         myEnvironment = Environment.getInstance();
-        myMap = null; // TODO will need to have a method to initiate this.
+        myMap = new ArrayList<>();
+        generateNewEnvironment();
     }
 
     /**
@@ -39,10 +40,12 @@ public class EnvironmentGenerator {
      */
     private void generateNewEnvironment() {
         manualInputOfMap();
+        populateGameObjects();
     }
 
     /**
      * Provides an easy way to paint a partial map for testing.
+     * TODO: only a production method.
      */
     private void manualInputOfMap() {
         final List<GameObject> row1 = new ArrayList<>();
@@ -52,7 +55,7 @@ public class EnvironmentGenerator {
         row1.add(GameObject.assignGameObject(CellType.WALL.getID()));
 
         final List<GameObject> row2 = new ArrayList<>();
-        row2.add(GameObject.assignGameObject(CellType.FLOOR.getID()));
+        row2.add(GameObject.assignGameObject(CellType.WALL.getID()));
         row2.add(GameObject.assignGameObject(CellType.FLOOR.getID()));
         row2.add(GameObject.assignGameObject(CellType.PLAYER.getID()));
         row2.add(GameObject.assignGameObject(CellType.FLOOR.getID()));
@@ -60,16 +63,42 @@ public class EnvironmentGenerator {
         final List<GameObject> row3 = new ArrayList<>();
         row3.add(GameObject.assignGameObject(CellType.WALL.getID()));
         row3.add(GameObject.assignGameObject(CellType.FLOOR.getID()));
+        row3.add(GameObject.assignGameObject(CellType.FLOOR.getID()));
         row3.add(GameObject.assignGameObject(CellType.WALL.getID()));
-        row3.add(GameObject.assignGameObject(CellType.WALL.getID()));
+
+        final List<GameObject> row4 = new ArrayList<>();
+        row4.add(GameObject.assignGameObject(CellType.WALL.getID()));
+        row4.add(GameObject.assignGameObject(CellType.DOOR.getID()));
+        row4.add(GameObject.assignGameObject(CellType.WALL.getID()));
+        row4.add(GameObject.assignGameObject(CellType.WALL.getID()));
 
         myMap.add(row1);
         myMap.add(row2);
         myMap.add(row3);
+        myMap.add(row4);
     }
 
-    // TODO: need to remove background from home screen
-    // TODO: need to add the GameObjects onto the environment.
+
+    /**
+     * Populates all the GameObjects that compose the Environment.
+     */
+    private void populateGameObjects() {
+        var x = 0;
+        var y = 0;
+        GameObject current;
+
+        for(int i = 0; i < myMap.size(); i++) {
+            for(int j = 0; j < myMap.get(i).size(); j++) {
+                current = (GameObject) myMap.get(i).get(j);
+                var size = current.getMyCellType().getCellSize();
+                current.setBounds(x, y, size,size);
+                myEnvironment.add(current);
+                x = x + size;
+            }
+            x = 0;
+            y = y + 25;
+        }
+    }
 
 
 }

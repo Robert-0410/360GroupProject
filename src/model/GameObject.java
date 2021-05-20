@@ -55,6 +55,14 @@ public abstract class GameObject extends JLabel {
     }
 
     /**
+     * Gets GameObjects CellType.
+     * @return CellType
+     */
+    public CellType getMyCellType() {
+        return myCellType;
+    }
+
+    /**
      * Assigns the concrete version of GameObject depending on the argument.
      * @param theID Determines the type to be returned.
      * @return GameObject
