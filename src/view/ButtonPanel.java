@@ -111,7 +111,7 @@ public class ButtonPanel extends JPanel {
         var buttonSize = PaneConst.ARROW_SIZE.value();
 
         up.setText("Up");
-        up.setBounds(panelWidth / 2 - buttonSize / 2, 0, buttonSize, buttonSize);
+        up.setBounds(panelWidth / 2 - buttonSize / 2, 8, buttonSize, buttonSize);
     }
 
     /**
