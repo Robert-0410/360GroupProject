@@ -46,7 +46,7 @@ public class Game extends JPanel {
         super();
         buildMainPanel();
         // TODO following is temp code to work on map generation.
-        envGenerator = new EnvironmentGenerator(); // TODO might happened when game is started.
+        //envGenerator = new EnvironmentGenerator(); // TODO might happened when game is started.
     }
 
     /**
@@ -64,7 +64,7 @@ public class Game extends JPanel {
      * Triggers the GUI to display.
      */
     public void display() {
-        final JFrame frame = new JFrame("Whats the name!!!");
+        final JFrame frame = new JFrame("TGS");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setContentPane(this); // This adds panel to the frame.
 

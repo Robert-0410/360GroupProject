@@ -1,6 +1,7 @@
 package view;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -8,6 +9,8 @@ import java.util.ArrayList;
  * The menu panel consists of buttons that perform
  * actions related to the game, such as, Menu, Load
  * Save, and Help
+ * @author Sean, Robert
+ * @version 1
  */
 public class MenuPanel extends JPanel {
 
@@ -49,27 +52,35 @@ public class MenuPanel extends JPanel {
     }
 
     /**
-     * Gets Save Button (index one)
-     * @return Save Button
+     * gets New Game Button (index 1)
+     * @return New Game Button
      */
-    public JButton getSaveButton() {
+    public JButton getNewGameButton() {
         return myMenu.get(1);
     }
 
     /**
-     * Gets Load Button (index two)
-     * @return Load Button
+     * Gets Save Button (index 2)
+     * @return Save Button
      */
-    public JButton getLoadButton() {
+    public JButton getSaveButton() {
         return myMenu.get(2);
     }
 
     /**
-     * Gets Help Button (index 3)
+     * Gets Load Button (index 3)
+     * @return Load Button
+     */
+    public JButton getLoadButton() {
+        return myMenu.get(3);
+    }
+
+    /**
+     * Gets Help Button (index 4)
      * @return Help Button
      */
     public JButton getHelpButton() {
-        return myMenu.get(3);
+        return myMenu.get(4);
     }
 
     /**
@@ -77,7 +88,11 @@ public class MenuPanel extends JPanel {
      */
     private void setUpPanel() {
         // Set Up Panel
+        setLayout(new FlowLayout(FlowLayout.LEFT));
+
+        // Add components
         add(getMenuButton());
+        add(getNewGameButton());
         add(getSaveButton());
         add(getLoadButton());
         add(getHelpButton());
@@ -88,23 +103,28 @@ public class MenuPanel extends JPanel {
      */
     private void buildMenuButtons() {
         //Create and add "Menu" Button
-        JButton myMenuButton = new JButton();
-        myMenuButton.setText("Menu");
-        myMenu.add(myMenuButton);
+        JButton menuButton = new JButton();
+        menuButton.setText("Menu");
+        myMenu.add(menuButton);
+
+        // New Game Button
+        final var newGameButton = new JButton();
+        newGameButton.setText("New Game");
+        myMenu.add(newGameButton);
 
         //Create and add "Save" Button
-        JButton mySaveButton = new JButton();
-        mySaveButton.setText("Save");
-        myMenu.add(mySaveButton);
+        JButton saveButton = new JButton();
+        saveButton.setText("Save");
+        myMenu.add(saveButton);
 
         //Create and add "Load" Button
-        JButton myLoadButton = new JButton();
-        myLoadButton.setText("Load");
-        myMenu.add(myLoadButton);
+        JButton loadButton = new JButton();
+        loadButton.setText("Load");
+        myMenu.add(loadButton);
 
         //Create and add "Help" Button
-        JButton myHelpButton = new JButton();
-        myHelpButton.setText("Help");
-        myMenu.add(myHelpButton);
+        JButton helpButton = new JButton();
+        helpButton.setText("Help");
+        myMenu.add(helpButton);
     }
 }

@@ -37,9 +37,10 @@ public class Environment extends JPanel {
     private void setUpEnvironmentPanel() {
         ImageIcon environmentBackground = new ImageIcon("src/resources/RickAndMortyBreakingBad.png");
         JLabel background = new JLabel();
+        background.setBounds(0, 0, PaneConst.WINDOW_WIDTH.value(), 450);
         background.setIcon(environmentBackground);
         setLayout(null);
-        //add(background); // TODO temp: enables me to start working on environment generation.
+        add(background);
     }
 
 }
