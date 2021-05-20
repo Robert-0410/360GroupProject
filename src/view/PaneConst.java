@@ -22,7 +22,7 @@ public enum PaneConst {
     /**
      * Height of the SOUTH panel that holds ButtonPanel and QuestionPanel.
      */
-    SOUTH_HEIGHT(150),
+    SOUTH_HEIGHT(164),
 
     /**
      * Width and Height of the arrow buttons.
