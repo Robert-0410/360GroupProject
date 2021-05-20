@@ -34,15 +34,16 @@ public class EnvironmentGenerator {
     public EnvironmentGenerator() {
         myEnvironment = Environment.getInstance();
         myMap = new ArrayList<>();
-        generateNewEnvironment();
+        //generateNewEnvironment(); // was here for quick generation of map
     }
 
     /**
      * Initializes a new game within the environment, invoked when user chooses new game.
      */
-    private void generateNewEnvironment() {
+    protected void generateNewEnvironment() {
         //manualInputOfMap();
         fromFileFillMyMap();
+        emptyCurrentEnvironment();
         populateGameObjects();
     }
 
@@ -113,6 +114,14 @@ public class EnvironmentGenerator {
         }
     }
 
+    /**
+     * Clears out current Environment panel in preparation for new components.
+     */
+    private void emptyCurrentEnvironment() {
+        myEnvironment.removeAll();
+        myEnvironment.repaint();
+    }
+
 
     /**
      * Populates all the GameObjects that compose the Environment.
@@ -122,11 +131,11 @@ public class EnvironmentGenerator {
         var y = 0;
         GameObject current;
 
-        for(int i = 0; i < myMap.size(); i++) {
-            for(int j = 0; j < myMap.get(i).size(); j++) {
-                current = (GameObject) myMap.get(i).get(j);
+        for (List list : myMap) {
+            for (Object o : list) {
+                current = (GameObject) o;
                 var size = current.getMyCellType().getCellSize();
-                current.setBounds(x, y, size,size);
+                current.setBounds(x, y, size, size);
                 myEnvironment.add(current);
                 x = x + size;
             }

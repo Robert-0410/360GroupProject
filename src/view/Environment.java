@@ -41,6 +41,7 @@ public class Environment extends JPanel {
         background.setIcon(environmentBackground);
         setLayout(null);
         add(background);
+
     }
 
 }

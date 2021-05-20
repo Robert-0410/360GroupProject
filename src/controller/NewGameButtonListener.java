@@ -10,6 +10,12 @@ import java.awt.event.ActionListener;
  */
 public class NewGameButtonListener implements ActionListener {
 
+    private final EnvironmentGenerator environmentGenerator;
+
+    public NewGameButtonListener() {
+        environmentGenerator = new EnvironmentGenerator();
+    }
+
     /**
      * Invoked when an action occurs.
      *
@@ -17,6 +23,6 @@ public class NewGameButtonListener implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        environmentGenerator.generateNewEnvironment();
     }
 }

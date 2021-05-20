@@ -1,5 +1,7 @@
 package view;
 
+import controller.NewGameButtonListener;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -110,6 +112,7 @@ public class MenuPanel extends JPanel {
         // New Game Button
         final var newGameButton = new JButton();
         newGameButton.setText("New Game");
+        newGameButton.addActionListener(new NewGameButtonListener());
         myMenu.add(newGameButton);
 
         //Create and add "Save" Button
