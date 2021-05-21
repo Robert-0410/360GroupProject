@@ -48,41 +48,6 @@ public class EnvironmentGenerator {
     }
 
     /**
-     * Provides an easy way to paint a partial map for testing.
-     * TODO: only a production method.
-     */
-    private void manualInputOfMap() {
-        final List<GameObject> row1 = new ArrayList<>();
-        row1.add(GameObject.assignGameObject(CellType.WALL.getID()));
-        row1.add(GameObject.assignGameObject(CellType.WALL.getID()));
-        row1.add(GameObject.assignGameObject(CellType.WALL.getID()));
-        row1.add(GameObject.assignGameObject(CellType.WALL.getID()));
-
-        final List<GameObject> row2 = new ArrayList<>();
-        row2.add(GameObject.assignGameObject(CellType.WALL.getID()));
-        row2.add(GameObject.assignGameObject(CellType.FLOOR.getID()));
-        row2.add(GameObject.assignGameObject(CellType.PLAYER.getID()));
-        row2.add(GameObject.assignGameObject(CellType.FLOOR.getID()));
-
-        final List<GameObject> row3 = new ArrayList<>();
-        row3.add(GameObject.assignGameObject(CellType.WALL.getID()));
-        row3.add(GameObject.assignGameObject(CellType.FLOOR.getID()));
-        row3.add(GameObject.assignGameObject(CellType.FLOOR.getID()));
-        row3.add(GameObject.assignGameObject(CellType.WALL.getID()));
-
-        final List<GameObject> row4 = new ArrayList<>();
-        row4.add(GameObject.assignGameObject(CellType.WALL.getID()));
-        row4.add(GameObject.assignGameObject(CellType.DOOR.getID()));
-        row4.add(GameObject.assignGameObject(CellType.WALL.getID()));
-        row4.add(GameObject.assignGameObject(CellType.WALL.getID()));
-
-        myMap.add(row1);
-        myMap.add(row2);
-        myMap.add(row3);
-        myMap.add(row4);
-    }
-
-    /**
      * From an input file myMap is filled with GameObjects.
      */
     private void fromFileFillMyMap() {
