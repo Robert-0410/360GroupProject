@@ -1,8 +1,10 @@
 package view;
 
+import controller.RightButtonListener;
+
 import javax.swing.JPanel;
 import javax.swing.JButton;
-import java.awt.*;
+import java.awt.Color;
 
 /**
  * Singleton style class that builds the control buttons container.
@@ -123,6 +125,7 @@ public class ButtonPanel extends JPanel {
         var panelHeight = PaneConst.SOUTH_HEIGHT.value();
         var buttonSize = PaneConst.ARROW_SIZE.value();
 
+        right.addActionListener(new RightButtonListener());
         right.setText("Right");
         right.setBounds(panelWidth / 2 + buttonSize / 2, panelHeight / 2 - buttonSize / 2, buttonSize, buttonSize);
     }
