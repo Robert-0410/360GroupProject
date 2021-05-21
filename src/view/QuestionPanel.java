@@ -91,10 +91,13 @@ public class QuestionPanel extends JPanel {
      * TODO UML
      */
     private void buildPanel() {
-
+        setLayout(null);
+        setBackground(Color.DARK_GRAY);
+        setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY,2, true));
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         JLabel question = new JLabel("This is where the question will go: ");
+        question.setForeground(Color.LIGHT_GRAY);
         this.add(question);
 
         instantiateButtons();
@@ -103,7 +106,6 @@ public class QuestionPanel extends JPanel {
         buildCButton();
         buildDButton();
         addButtons();
-
     }
 
 
