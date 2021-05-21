@@ -25,7 +25,7 @@ import org.sqlite.SQLiteDataSource;
 https://shanemcd.org/2020/01/24/how-to-set-up-sqlite-with-jdbc-in-eclipse-on-windows/</a>
  *
  */
-public class SQLtest2 {
+public class QuestionManager {
 
     /**
      * Holds current question.
