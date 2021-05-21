@@ -91,6 +91,8 @@ public class MenuPanel extends JPanel {
     private void setUpPanel() {
         // Set Up Panel
         setLayout(new FlowLayout(FlowLayout.LEFT));
+        setBackground(Color.DARK_GRAY);
+        setBorder(BorderFactory.createLineBorder(Color.WHITE,2, true));
 
         // Add components
         add(getMenuButton());

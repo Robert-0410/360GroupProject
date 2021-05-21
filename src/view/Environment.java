@@ -1,6 +1,7 @@
 package view;
 
 import javax.swing.*;
+import java.awt.*;
 
 /** Environment for where the background will initially
   * be displayed. After a game is selected, Environment

@@ -2,8 +2,7 @@ package view;
 
 import controller.RightButtonListener;
 
-import javax.swing.JPanel;
-import javax.swing.JButton;
+import javax.swing.*;
 import java.awt.Color;
 
 /**
@@ -101,7 +100,8 @@ public class ButtonPanel extends JPanel {
      */
     private void setPanelsState() {
         setLayout(null);
-        setBackground(Color.CYAN);
+        setBackground(Color.DARK_GRAY);
+        setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY,2, true));
     }
 
     /**

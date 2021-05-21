@@ -1,5 +1,8 @@
 package view;
 
+import javax.swing.*;
+import java.awt.*;
+
 /**
  * All constants used for the GUI.
  * @author Robert
