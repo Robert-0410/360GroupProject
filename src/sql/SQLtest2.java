@@ -27,6 +27,35 @@ https://shanemcd.org/2020/01/24/how-to-set-up-sqlite-with-jdbc-in-eclipse-on-win
  */
 public class SQLtest2 {
 
+    /**
+     * Holds current question.
+     */
+    private String myQuestion;
+
+    private String[] myAnswers;
+
+    private int myCorrectIndex;
+
+    SQLiteDataSource ds = null;
+
+    /**
+     * Sets the proper index for the correct answer in myAnswers.
+     * @param theChar the character from the data base.
+     */
+    public void setCorrectIndex(final char theChar) {
+        switch (theChar) {
+            case 'a' -> myCorrectIndex = 0;
+            case 'b' -> myCorrectIndex = 1;
+            case 'c' -> myCorrectIndex = 2;
+            case 'd' -> myCorrectIndex = 3;
+            default -> {
+                System.err.println("The correct index for the answers was not set in setCorrectIndex()");
+            }
+        }
+    }
+
+
+
     public static void main(String[] args) {
         SQLiteDataSource ds = null;
 
