@@ -3,20 +3,18 @@ package controller;
 import java.awt.event.ActionEvent;
 
 /**
- * Handles Actions related to the New Game button.
+ * Listener for the right move button.
  * @author Robert
  * @version 1
  */
-public class NewGameButtonListener extends GameListener {
-
+public class RightButtonListener extends GameListener {
 
     /**
-     * For the NewGameButton.
+     * Used for the right move button.
      */
-    public NewGameButtonListener() {
+    public RightButtonListener() {
         super();
     }
-
     /**
      * Invoked when an action occurs.
      *
@@ -24,6 +22,6 @@ public class NewGameButtonListener extends GameListener {
      */
     @Override
     public void actionPerformed(final ActionEvent e) {
-        getEnvironmentGenerator().generateEnvironment();
+        getEnvironmentGenerator().movePlayerRight();
     }
 }

@@ -18,6 +18,11 @@ import java.util.Scanner;
 public class EnvironmentGenerator {
 
     /**
+     * Unique instance of EnvironmentGenerator.
+     */
+    private static EnvironmentGenerator UNIQUE_INSTANCE;
+
+    /**
      * Unique instance of Environment.
      */
     private final Environment myEnvironment;
@@ -25,23 +30,41 @@ public class EnvironmentGenerator {
     /**
      * 2D ArrayList representation of map.
      */
-    private final ArrayList<List> myMap;
+    private final ArrayList<List<GameObject>> myMap;
 
+    /**
+     * Row location of player.
+     */
+    private int myUserRow = 1;
+
+    /**
+     * Row location of player.
+     */
+    private int myUserCol = 0;
 
     /**
      * Constructor set initial fields.
      */
-    public EnvironmentGenerator() {
+    private EnvironmentGenerator() {
         myEnvironment = Environment.getInstance();
         myMap = new ArrayList<>();
-        //generateNewEnvironment(); // was here for quick generation of map
+    }
+
+    /**
+     * Gets unique instance of the button panel.
+     * @return only instance of the ButtonPanel.
+     */
+    public static EnvironmentGenerator getInstance() {
+        if(UNIQUE_INSTANCE == null) {
+            UNIQUE_INSTANCE = new EnvironmentGenerator();
+        }
+        return UNIQUE_INSTANCE;
     }
 
     /**
      * Initializes a new game within the environment, invoked when user chooses new game.
      */
-    protected void generateNewEnvironment() {
-        //manualInputOfMap();
+    protected void generateEnvironment() {
         fromFileFillMyMap();
         emptyCurrentEnvironment();
         populateGameObjects();
@@ -96,9 +119,9 @@ public class EnvironmentGenerator {
         var y = 0;
         GameObject current;
 
-        for (List list : myMap) {
-            for (Object o : list) {
-                current = (GameObject) o;
+        for (List<GameObject> list : myMap) {
+            for (GameObject o : list) {
+                current = o;
                 var size = current.getMyCellType().getCellSize();
                 current.setBounds(x, y, size, size);
                 myEnvironment.add(current);
@@ -109,5 +132,28 @@ public class EnvironmentGenerator {
         }
     }
 
+    /**
+     * Used to move player to the right when the right button is clicked.
+     */
+    protected void movePlayerRight() {
+        final var nextCell = myMap.get(myUserRow).get(myUserCol + 1);
+        if(nextCell.getMyID() == CellType.WALL.getID()) {
+            System.out.println("Rick is not a ghost.");
+        } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
+            System.out.println("Trigger Question.");
+        } else {
+            final List<GameObject> currentRow = myMap.get(myUserRow);
+            // Remove current player cell and replace with floor
+            currentRow.remove(myUserCol);
+            currentRow.add(myUserCol, GameObject.assignGameObject(CellType.FLOOR.getID()));
 
+            // Remove next cell and replace with player
+            currentRow.remove(myUserCol + 1);
+            currentRow.add(myUserCol + 1, GameObject.assignGameObject(CellType.PLAYER.getID()));
+
+            // update location of player.
+            myUserCol++;
+            generateEnvironment();
+        }
+    }
 }

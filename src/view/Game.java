@@ -1,7 +1,5 @@
 package view;
 
-import controller.EnvironmentGenerator;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.*;
@@ -29,13 +27,7 @@ public class Game extends JPanel {
     private ArrayList<JPanel> myPanels;
 
     /**
-     * Manages the generation of the environment.
-     */
-    private EnvironmentGenerator envGenerator;
-
-    /**
      * Holds ButtonPanel and the QuestionPanel on the SOUTH part of the main panel.
-     * TODO UML
      */
     private JPanel mySouthPanel;
 
@@ -45,8 +37,6 @@ public class Game extends JPanel {
     private Game() {
         super();
         buildMainPanel();
-        // TODO following is temp code to work on map generation.
-        //envGenerator = new EnvironmentGenerator(); // TODO might happened when game is started.
     }
 
     /**
@@ -64,7 +54,7 @@ public class Game extends JPanel {
      * Triggers the GUI to display.
      */
     public void display() {
-        final JFrame frame = new JFrame("TGS");
+        final JFrame frame = new JFrame("Name");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setContentPane(this); // This adds panel to the frame.
 
@@ -135,4 +125,5 @@ public class Game extends JPanel {
         prepSouthPanel();
         add(mySouthPanel, BorderLayout.SOUTH);
     }
+
 }
