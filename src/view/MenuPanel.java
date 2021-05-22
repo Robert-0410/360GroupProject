@@ -120,6 +120,7 @@ public class MenuPanel extends JPanel {
         //Create and add "Save" Button
         JButton saveButton = new JButton();
         saveButton.setText("Save");
+        saveButton.setEnabled(false);
         myMenu.add(saveButton);
 
         //Create and add "Load" Button

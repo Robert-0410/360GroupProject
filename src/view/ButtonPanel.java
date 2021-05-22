@@ -118,6 +118,7 @@ public class ButtonPanel extends JPanel {
         up.addActionListener(new UpButtonListener());
         up.setText("Up");
         up.setBounds(panelWidth / 2 - buttonSize / 2, 8, buttonSize, buttonSize);
+        up.setEnabled(false);
     }
 
     /**
@@ -132,6 +133,7 @@ public class ButtonPanel extends JPanel {
         right.addActionListener(new RightButtonListener());
         right.setText("Right");
         right.setBounds(panelWidth / 2 + buttonSize / 2, panelHeight / 2 - buttonSize / 2, buttonSize, buttonSize);
+        right.setEnabled(false);
     }
 
     /**
@@ -146,6 +148,7 @@ public class ButtonPanel extends JPanel {
         down.addActionListener(new DownButtonListener());
         down.setText("Down");
         down.setBounds(panelWidth / 2 - buttonSize / 2, 66 * panelHeight / 100, buttonSize, buttonSize);
+        down.setEnabled(false);
     }
 
     /**
@@ -160,11 +163,11 @@ public class ButtonPanel extends JPanel {
         left.addActionListener(new LeftButtonListener());
         left.setText("Left");
         left.setBounds(panelWidth / 2 - buttonSize / 2 - buttonSize, panelHeight / 2 - buttonSize / 2, buttonSize, buttonSize);
+        left.setEnabled(false);
     }
 
     /**
      * Adds buttons to panel.
-     * TODO UML
      */
     private void addButtons() {
         add(getUpButton());

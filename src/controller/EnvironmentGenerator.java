@@ -40,7 +40,7 @@ public class EnvironmentGenerator {
     /**
      * Row location of player.
      */
-    private int myUserCol = 0;
+    private int myUserCol = 1;
 
     /**
      * Constructor set initial fields.
