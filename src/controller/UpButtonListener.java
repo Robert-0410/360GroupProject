@@ -3,21 +3,18 @@ package controller;
 import java.awt.event.ActionEvent;
 
 /**
- * Listener for the down move button.
+ * Listener for the up move button.
  * @author Robert
  * @version 1
  */
-public class DownButtonListener extends GameListener {
+public class UpButtonListener extends GameListener {
 
     /**
-     * Used for the down move button.
+     * Used for the up move button.
      */
-    public DownButtonListener() {
+    public UpButtonListener() {
         super();
     }
-
-
-
     /**
      * Invoked when an action occurs.
      *
@@ -25,6 +22,6 @@ public class DownButtonListener extends GameListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        getEnvironmentGenerator().movePlayerDown();
+        getEnvironmentGenerator().movePlayerUp();
     }
 }

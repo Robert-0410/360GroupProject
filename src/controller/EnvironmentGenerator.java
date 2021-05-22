@@ -140,6 +140,36 @@ public class EnvironmentGenerator {
         }
     }
 
+
+    /**
+     * Used to move player up when the Up button is clicked.
+     */
+    protected void movePlayerUp() {
+        final var nextCell = myMap.get(myUserRow - 1).get(myUserCol);
+        if(nextCell.getMyID() == CellType.WALL.getID()) {
+            System.out.println("Rick is not a ghost.");
+        } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
+            System.out.println("Trigger Question.");
+        } else {
+            List<GameObject> currentRow = myMap.get(myUserRow);
+
+            // Remove current player cell and replace with floor
+            currentRow.remove(myUserCol);
+            currentRow.add(myUserCol, GameObject.assignGameObject(CellType.FLOOR.getID()));
+
+            // Switch row
+            currentRow = myMap.get(myUserRow - 1);
+
+            // Remove next cell and replace with player
+            currentRow.remove(myUserCol);
+            currentRow.add(myUserCol, GameObject.assignGameObject(CellType.PLAYER.getID()));
+
+            // update location of player.
+            myUserRow--;
+            generateAfterMove();
+        }
+    }
+
     /**
      * Used to move player to the right when the right button is clicked.
      */
