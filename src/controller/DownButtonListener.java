@@ -3,18 +3,20 @@ package controller;
 import java.awt.event.ActionEvent;
 
 /**
- * Listener for the right move button.
+ * Listener for the down move button.
  * @author Robert
  * @version 1
  */
-public class RightButtonListener extends GameListener {
+public class DownButtonListener extends GameListener {
 
     /**
      * Used for the right move button.
      */
-    public RightButtonListener() {
+    public DownButtonListener() {
         super();
     }
+
+
 
     /**
      * Invoked when an action occurs.
@@ -22,7 +24,7 @@ public class RightButtonListener extends GameListener {
      * @param e the event to be processed
      */
     @Override
-    public void actionPerformed(final ActionEvent e) {
-        getEnvironmentGenerator().movePlayerRight();
+    public void actionPerformed(ActionEvent e) {
+        getEnvironmentGenerator().movePlayerDown();
     }
 }

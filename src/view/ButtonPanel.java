@@ -1,5 +1,6 @@
 package view;
 
+import controller.DownButtonListener;
 import controller.RightButtonListener;
 
 import javax.swing.*;
@@ -139,6 +140,7 @@ public class ButtonPanel extends JPanel {
         var panelHeight = PaneConst.SOUTH_HEIGHT.value();
         var buttonSize = PaneConst.ARROW_SIZE.value();
 
+        down.addActionListener(new DownButtonListener());
         down.setText("Down");
         down.setBounds(panelWidth / 2 - buttonSize / 2, 66 * panelHeight / 100, buttonSize, buttonSize);
     }

@@ -156,4 +156,33 @@ public class EnvironmentGenerator {
             generateEnvironment();
         }
     }
+
+    /**
+     * Used to move player down when the right button is clicked.
+     */
+    protected void movePlayerDown() {
+        final var nextCell = myMap.get(myUserRow + 1).get(myUserCol);
+        if(nextCell.getMyID() == CellType.WALL.getID()) {
+            System.out.println("Rick is not a ghost.");
+        } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
+            System.out.println("Trigger Question.");
+        } else {
+            // TODO: NOT READY
+            List<GameObject> currentRow = myMap.get(myUserRow);
+            // Remove current player cell and replace with floor
+            currentRow.remove(myUserCol);
+            currentRow.add(myUserCol, GameObject.assignGameObject(CellType.FLOOR.getID()));
+
+            // Switch row
+            currentRow = myMap.get(myUserRow + 1);
+
+            // Remove next cell and replace with player
+            currentRow.remove(myUserCol);
+            currentRow.add(myUserCol, GameObject.assignGameObject(CellType.PLAYER.getID()));
+
+            // update location of player.
+            myUserRow++;
+            generateEnvironment();
+        }
+    }
 }
