@@ -47,7 +47,7 @@ public class EnvironmentGenerator {
      */
     private EnvironmentGenerator() {
         myEnvironment = Environment.getInstance();
-        myMap = new ArrayList<>();
+        myMap = new ArrayList<>(18);
     }
 
     /**
@@ -64,8 +64,16 @@ public class EnvironmentGenerator {
     /**
      * Initializes a new game within the environment, invoked when user chooses new game.
      */
-    protected void generateEnvironment() {
+    protected void generateInitialEnvironment() {
         fromFileFillMyMap();
+        emptyCurrentEnvironment();
+        populateGameObjects();
+    }
+
+    /**
+     * Generates the map after a move has been performed.
+     */
+    protected void generateAfterMove() {
         emptyCurrentEnvironment();
         populateGameObjects();
     }
@@ -153,7 +161,7 @@ public class EnvironmentGenerator {
 
             // update location of player.
             myUserCol++;
-            generateEnvironment();
+            generateAfterMove();
         }
     }
 
@@ -167,7 +175,6 @@ public class EnvironmentGenerator {
         } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
             System.out.println("Trigger Question.");
         } else {
-            // TODO: NOT READY
             List<GameObject> currentRow = myMap.get(myUserRow);
             // Remove current player cell and replace with floor
             currentRow.remove(myUserCol);
@@ -182,7 +189,7 @@ public class EnvironmentGenerator {
 
             // update location of player.
             myUserRow++;
-            generateEnvironment();
+            generateAfterMove();
         }
     }
 }
