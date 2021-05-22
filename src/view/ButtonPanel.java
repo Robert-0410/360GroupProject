@@ -1,6 +1,7 @@
 package view;
 
 import controller.DownButtonListener;
+import controller.LeftButtonListener;
 import controller.RightButtonListener;
 import controller.UpButtonListener;
 
@@ -156,6 +157,7 @@ public class ButtonPanel extends JPanel {
         var panelHeight = PaneConst.SOUTH_HEIGHT.value();
         var buttonSize = PaneConst.ARROW_SIZE.value();
 
+        left.addActionListener(new LeftButtonListener());
         left.setText("Left");
         left.setBounds(panelWidth / 2 - buttonSize / 2 - buttonSize, panelHeight / 2 - buttonSize / 2, buttonSize, buttonSize);
     }

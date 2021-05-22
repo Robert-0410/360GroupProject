@@ -222,4 +222,30 @@ public class EnvironmentGenerator {
             generateAfterMove();
         }
     }
+
+    /**
+     * Used to move player to the left when the Left arrow button is clicked.
+     */
+    protected void movePlayerLeft() {
+        final var nextCell = myMap.get(myUserRow).get(myUserCol - 1);
+        if(nextCell.getMyID() == CellType.WALL.getID()) {
+            System.out.println("Rick is not a ghost.");
+        } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
+            System.out.println("Trigger Question.");
+        } else {
+            final List<GameObject> currentRow = myMap.get(myUserRow);
+
+            // Remove current player cell and replace with floor
+            currentRow.remove(myUserCol);
+            currentRow.add(myUserCol, GameObject.assignGameObject(CellType.FLOOR.getID()));
+
+            // Remove next cell and replace with player
+            currentRow.remove(myUserCol - 1);
+            currentRow.add(myUserCol - 1, GameObject.assignGameObject(CellType.PLAYER.getID()));
+
+            // update location of player.
+            myUserCol--;
+            generateAfterMove();
+        }
+    }
 }
