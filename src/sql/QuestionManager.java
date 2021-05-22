@@ -1,9 +1,6 @@
 package sql;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 import org.sqlite.SQLiteDataSource;
 
@@ -57,75 +54,40 @@ public class QuestionManager {
 
 
     public static void main(String[] args) {
-        SQLiteDataSource ds = null;
+        Connection connection = null;
 
         //establish connection (creates db file if it does not exist :-)
         try {
-            ds = new SQLiteDataSource();
-            ds.setUrl("jdbc:sqlite:questions.db");
-        } catch ( Exception e ) {
-            e.printStackTrace();
-            System.exit(0);
-        }
+            connection  = DriverManager.getConnection("jdbc:sqlite:questions.db");
+            Statement statement = connection.createStatement();
+            statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
-        System.out.println( "Opened database successfully" );
-
-
-        //now create a table
-        String query = "CREATE TABLE IF NOT EXISTS questions ( " +
-                "QUESTION TEXT NOT NULL, " +
-                "ANSWER TEXT NOT NULL )";
-        try ( Connection conn = ds.getConnection();
-              Statement stmt = conn.createStatement(); ) {
-            int rv = stmt.executeUpdate( query );
-            System.out.println( "executeUpdate() returned " + rv );
-        } catch ( SQLException e ) {
-            e.printStackTrace();
-            System.exit( 0 );
-        }
-        System.out.println( "Created questions table successfully" );
-
-        //next insert two rows of data
-        System.out.println( "Attempting to insert two rows into questions table" );
-
-        String query1 = "INSERT INTO questions ( QUESTION, ANSWER ) VALUES ( 'Last name of Java creator?', 'Gosling' )";
-        String query2 = "INSERT INTO questions ( QUESTION, ANSWER ) VALUES ( 'This statement is false', 'paradox' )";
-
-        try ( Connection conn = ds.getConnection();
-              Statement stmt = conn.createStatement(); ) {
-            int rv = stmt.executeUpdate( query1 );
-            System.out.println( "1st executeUpdate() returned " + rv );
-
-            rv = stmt.executeUpdate( query2 );
-            System.out.println( "2nd executeUpdate() returned " + rv );
-        } catch ( SQLException e ) {
-            e.printStackTrace();
-            System.exit( 0 );
-        }
-
-
-        //now query the database table for all its contents and display the results
-        System.out.println( "Selecting all rows from test table" );
-        query = "SELECT * FROM questions";
-
-        try ( Connection conn = ds.getConnection();
-              Statement stmt = conn.createStatement(); ) {
-
-            ResultSet rs = stmt.executeQuery(query);
-
-            //walk through each 'row' of results, grab data by column/field name
-            // and print it
-            while ( rs.next() ) {
-                String question = rs.getString( "QUESTION" );
-                String answer = rs.getString( "ANSWER" );
-
-                System.out.println( "Result: Question = " + question +
-                        ", Answer = " + answer );
+            ResultSet rs = statement.executeQuery("select * from multiple_choice");
+            while(rs.next())
+            {
+                // read the result set
+                System.out.println("question : " + rs.getString("question"));
+                System.out.println("answer : " + rs.getString("answer"));
             }
-        } catch ( SQLException e ) {
-            e.printStackTrace();
-            System.exit( 0 );
+        }
+        catch(SQLException e)
+        {
+            // if the error message is "out of memory",
+            // it probably means no database file is found
+            System.err.println(e.getMessage());
+        }
+        finally
+        {
+            try
+            {
+                if(connection != null)
+                    connection.close();
+            }
+            catch(SQLException e)
+            {
+                // connection close failed.
+                System.err.println(e.getMessage());
+            }
         }
     }
-
 }
