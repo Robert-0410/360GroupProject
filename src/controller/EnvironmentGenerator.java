@@ -47,7 +47,7 @@ public class EnvironmentGenerator {
      */
     private EnvironmentGenerator() {
         myEnvironment = Environment.getInstance();
-        myMap = new ArrayList<>();
+        myMap = new ArrayList<>(18);
     }
 
     /**
@@ -64,8 +64,16 @@ public class EnvironmentGenerator {
     /**
      * Initializes a new game within the environment, invoked when user chooses new game.
      */
-    protected void generateEnvironment() {
+    protected void generateInitialEnvironment() {
         fromFileFillMyMap();
+        emptyCurrentEnvironment();
+        populateGameObjects();
+    }
+
+    /**
+     * Generates the map after a move has been performed.
+     */
+    protected void generateAfterMove() {
         emptyCurrentEnvironment();
         populateGameObjects();
     }
@@ -132,6 +140,36 @@ public class EnvironmentGenerator {
         }
     }
 
+
+    /**
+     * Used to move player up when the Up button is clicked.
+     */
+    protected void movePlayerUp() {
+        final var nextCell = myMap.get(myUserRow - 1).get(myUserCol);
+        if(nextCell.getMyID() == CellType.WALL.getID()) {
+            System.out.println("Rick is not a ghost.");
+        } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
+            System.out.println("Trigger Question.");
+        } else {
+            List<GameObject> currentRow = myMap.get(myUserRow);
+
+            // Remove current player cell and replace with floor
+            currentRow.remove(myUserCol);
+            currentRow.add(myUserCol, GameObject.assignGameObject(CellType.FLOOR.getID()));
+
+            // Switch row
+            currentRow = myMap.get(myUserRow - 1);
+
+            // Remove next cell and replace with player
+            currentRow.remove(myUserCol);
+            currentRow.add(myUserCol, GameObject.assignGameObject(CellType.PLAYER.getID()));
+
+            // update location of player.
+            myUserRow--;
+            generateAfterMove();
+        }
+    }
+
     /**
      * Used to move player to the right when the right button is clicked.
      */
@@ -153,7 +191,61 @@ public class EnvironmentGenerator {
 
             // update location of player.
             myUserCol++;
-            generateEnvironment();
+            generateAfterMove();
+        }
+    }
+
+    /**
+     * Used to move player down when the right button is clicked.
+     */
+    protected void movePlayerDown() {
+        final var nextCell = myMap.get(myUserRow + 1).get(myUserCol);
+        if(nextCell.getMyID() == CellType.WALL.getID()) {
+            System.out.println("Rick is not a ghost.");
+        } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
+            System.out.println("Trigger Question.");
+        } else {
+            List<GameObject> currentRow = myMap.get(myUserRow);
+            // Remove current player cell and replace with floor
+            currentRow.remove(myUserCol);
+            currentRow.add(myUserCol, GameObject.assignGameObject(CellType.FLOOR.getID()));
+
+            // Switch row
+            currentRow = myMap.get(myUserRow + 1);
+
+            // Remove next cell and replace with player
+            currentRow.remove(myUserCol);
+            currentRow.add(myUserCol, GameObject.assignGameObject(CellType.PLAYER.getID()));
+
+            // update location of player.
+            myUserRow++;
+            generateAfterMove();
+        }
+    }
+
+    /**
+     * Used to move player to the left when the Left arrow button is clicked.
+     */
+    protected void movePlayerLeft() {
+        final var nextCell = myMap.get(myUserRow).get(myUserCol - 1);
+        if(nextCell.getMyID() == CellType.WALL.getID()) {
+            System.out.println("Rick is not a ghost.");
+        } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
+            System.out.println("Trigger Question.");
+        } else {
+            final List<GameObject> currentRow = myMap.get(myUserRow);
+
+            // Remove current player cell and replace with floor
+            currentRow.remove(myUserCol);
+            currentRow.add(myUserCol, GameObject.assignGameObject(CellType.FLOOR.getID()));
+
+            // Remove next cell and replace with player
+            currentRow.remove(myUserCol - 1);
+            currentRow.add(myUserCol - 1, GameObject.assignGameObject(CellType.PLAYER.getID()));
+
+            // update location of player.
+            myUserCol--;
+            generateAfterMove();
         }
     }
 }

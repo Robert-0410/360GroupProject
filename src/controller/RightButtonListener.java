@@ -15,6 +15,7 @@ public class RightButtonListener extends GameListener {
     public RightButtonListener() {
         super();
     }
+
     /**
      * Invoked when an action occurs.
      *

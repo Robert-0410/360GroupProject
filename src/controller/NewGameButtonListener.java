@@ -24,6 +24,6 @@ public class NewGameButtonListener extends GameListener {
      */
     @Override
     public void actionPerformed(final ActionEvent e) {
-        getEnvironmentGenerator().generateEnvironment();
+        getEnvironmentGenerator().generateInitialEnvironment();
     }
 }

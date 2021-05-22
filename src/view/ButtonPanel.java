@@ -1,6 +1,9 @@
 package view;
 
+import controller.DownButtonListener;
+import controller.LeftButtonListener;
 import controller.RightButtonListener;
+import controller.UpButtonListener;
 
 import javax.swing.*;
 import java.awt.Color;
@@ -112,6 +115,7 @@ public class ButtonPanel extends JPanel {
         var panelWidth = PaneConst.WINDOW_WIDTH.value() / 2;
         var buttonSize = PaneConst.ARROW_SIZE.value();
 
+        up.addActionListener(new UpButtonListener());
         up.setText("Up");
         up.setBounds(panelWidth / 2 - buttonSize / 2, 8, buttonSize, buttonSize);
     }
@@ -139,6 +143,7 @@ public class ButtonPanel extends JPanel {
         var panelHeight = PaneConst.SOUTH_HEIGHT.value();
         var buttonSize = PaneConst.ARROW_SIZE.value();
 
+        down.addActionListener(new DownButtonListener());
         down.setText("Down");
         down.setBounds(panelWidth / 2 - buttonSize / 2, 66 * panelHeight / 100, buttonSize, buttonSize);
     }
@@ -152,6 +157,7 @@ public class ButtonPanel extends JPanel {
         var panelHeight = PaneConst.SOUTH_HEIGHT.value();
         var buttonSize = PaneConst.ARROW_SIZE.value();
 
+        left.addActionListener(new LeftButtonListener());
         left.setText("Left");
         left.setBounds(panelWidth / 2 - buttonSize / 2 - buttonSize, panelHeight / 2 - buttonSize / 2, buttonSize, buttonSize);
     }
