@@ -1,5 +1,8 @@
 package view;
 
+import sql.Question;
+import sql.QuestionManager;
+
 import javax.swing.*;
 
 /**
@@ -23,5 +26,9 @@ public class Main {
         //
         final Game game = Game.getInstance();
         game.display();
+
+        // this connects the database and has the database run as soon as the user starts the game
+        QuestionManager questionManager = new QuestionManager();
+        Question question = questionManager.getRandomMultipleChoiceQuestion();
     }
 }

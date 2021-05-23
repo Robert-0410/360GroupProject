@@ -24,51 +24,18 @@ https://shanemcd.org/2020/01/24/how-to-set-up-sqlite-with-jdbc-in-eclipse-on-win
  */
 public class QuestionManager {
 
-    /**
-     * Holds current question.
-     */
-    private String myQuestion;
+    Connection connection = null;
 
-    private String[] myAnswers;
-
-    private int myCorrectIndex;
-
-    SQLiteDataSource ds = null;
-
-    /**
-     * Sets the proper index for the correct answer in myAnswers.
-     * @param theChar the character from the data base.
-     */
-    public void setCorrectIndex(final char theChar) {
-        switch (theChar) {
-            case 'a' -> myCorrectIndex = 0;
-            case 'b' -> myCorrectIndex = 1;
-            case 'c' -> myCorrectIndex = 2;
-            case 'd' -> myCorrectIndex = 3;
-            default -> {
-                System.err.println("The correct index for the answers was not set in setCorrectIndex()");
-            }
-        }
+    public QuestionManager() {
+        super();
+        databaseConnectionSetup();
     }
 
-
-
-    public static void main(String[] args) {
-        Connection connection = null;
-
+    private void databaseConnectionSetup(){
         //establish connection (creates db file if it does not exist :-)
         try {
             connection  = DriverManager.getConnection("jdbc:sqlite:questions.db");
-            Statement statement = connection.createStatement();
-            statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
-            ResultSet rs = statement.executeQuery("select * from multiple_choice");
-            while(rs.next())
-            {
-                // read the result set
-                System.out.println("question : " + rs.getString("question"));
-                System.out.println("answer : " + rs.getString("answer"));
-            }
         }
         catch(SQLException e)
         {
@@ -76,18 +43,35 @@ public class QuestionManager {
             // it probably means no database file is found
             System.err.println(e.getMessage());
         }
-        finally
-        {
-            try
-            {
-                if(connection != null)
-                    connection.close();
-            }
-            catch(SQLException e)
-            {
-                // connection close failed.
-                System.err.println(e.getMessage());
-            }
+    }
+
+    public Question getRandomMultipleChoiceQuestion() {
+        Question questionBank = new Question();
+
+        try {
+            Statement statement = connection.createStatement();
+            statement.setQueryTimeout(30);  // set timeout to 30 sec.
+
+            // need to update to actually return a random question istead of just the first one
+            ResultSet rs = statement.executeQuery("SELECT * FROM multiple_choice LIMIT 1");
+            // read the result set
+            String[] answers = new String[4];
+            answers[0] = rs.getString("optionA");
+            answers[1] = rs.getString("optionB");
+            answers[2] = rs.getString("optionC");
+            answers[3] = rs.getString("optionD");
+
+            questionBank.setMyAnswers(answers);
+            questionBank.setMyQuestion(rs.getString("question"));
+            questionBank.setMyCorrectIndex( rs.getInt("answer"));
         }
+        catch(SQLException e)
+        {
+            // if the error message is "out of memory",
+            // it probably means no database file is found
+            System.err.println(e.getMessage());
+        }
+
+        return questionBank;
     }
 }
