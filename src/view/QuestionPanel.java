@@ -2,6 +2,8 @@ package view;
 
 
 
+import sql.Question;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -25,6 +27,22 @@ public class QuestionPanel extends JPanel {
      * 3 - D button
      */
     private final JButton[] myButtons = new JButton[4];
+
+    /**
+     * Current question the user is interacting with.
+     */
+    private Question myQuestion;
+
+    /**
+     * Labels used to display myQuestion information with paired button.
+     *
+     * 0 - Question,
+     * 1 - Answer A,
+     * 2 - Answer B,
+     * 3 - Answer C,
+     * 4 - Answer D
+     */
+    private JLabel[] myLabels;
 
     /**
      * Singleton style constructor.
@@ -77,21 +95,33 @@ public class QuestionPanel extends JPanel {
     }
 
     /**
+     * Setter for current question.
+     * @param theQuestion Question
+     */
+    public void setMyQuestion(final Question theQuestion) {
+        myQuestion = theQuestion;
+        // TODO also fill in the panel info to display.
+
+    }
+
+    /**
      * Consolidates all private methods that build the Question area panel.
      * This is where change the answer button orientation and add the label which
      * will contain the question we ask the user.
      *
      */
     private void buildPanel() {
+
         setLayout(null);
         setBackground(Color.DARK_GRAY);
         setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY,2, true));
 
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        JLabel question = new JLabel("This is where the question will go: ");
-        question.setForeground(Color.LIGHT_GRAY);
-        add(question);
+//        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+//        JLabel question = new JLabel("This is where the question will go: ");
+//        question.setForeground(Color.LIGHT_GRAY);
+//        add(question);
 
+        instantiateLabels();
         instantiateButtons();
         buildAButton();
         buildBButton();
@@ -100,7 +130,15 @@ public class QuestionPanel extends JPanel {
         addButtons();
     }
 
-
+    /**
+     * Instantiates the labels used to display myQuestion information.
+     */
+    private void instantiateLabels() {
+        myLabels = new JLabel[5];
+        for(int i = 0; i < myLabels.length; i++) {
+            myLabels[i] = new JLabel();
+        }
+    }
 
     /**
      Instantiates the answer buttons into array.
@@ -118,6 +156,7 @@ public class QuestionPanel extends JPanel {
         var a = getAButton();
 
         a.setText("A");
+        a.setBounds(5, 30, PaneConst.QUESTION_BUTTON_WIDTH.value(), PaneConst.QUESTION_BUTTON_HEIGHT.value());
         a.setEnabled(false);
 
     }
@@ -129,6 +168,7 @@ public class QuestionPanel extends JPanel {
         var b = getBButton();
 
         b.setText("B");
+        b.setBounds(5, 65, PaneConst.QUESTION_BUTTON_WIDTH.value(), PaneConst.QUESTION_BUTTON_HEIGHT.value());
         b.setEnabled(false);
     }
 
@@ -139,6 +179,7 @@ public class QuestionPanel extends JPanel {
         var c = getCButton();
 
         c.setText("C");
+        c.setBounds(5, 100, PaneConst.QUESTION_BUTTON_WIDTH.value(), PaneConst.QUESTION_BUTTON_HEIGHT.value());
         c.setEnabled(false);
     }
 
@@ -149,12 +190,12 @@ public class QuestionPanel extends JPanel {
         var d = getDButton();
 
         d.setText("D");
+        d.setBounds(5, 135, PaneConst.QUESTION_BUTTON_WIDTH.value(), PaneConst.QUESTION_BUTTON_HEIGHT.value());
         d.setEnabled(false);
     }
 
     /**
      * Adds buttons to panel.
-     * TODO UML
      */
     private void addButtons() {
         add(getAButton());

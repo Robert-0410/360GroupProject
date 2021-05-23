@@ -2,6 +2,7 @@ package controller;
 
 import model.CellType;
 import model.GameObject;
+import sql.QuestionManager;
 import view.Environment;
 
 import java.io.File;
@@ -21,6 +22,11 @@ public class EnvironmentGenerator {
      * Unique instance of EnvironmentGenerator.
      */
     private static EnvironmentGenerator UNIQUE_INSTANCE;
+
+    /**
+     * The connection between the database and the game.
+     */
+    private static QuestionManager QUESTION_MANAGER;
 
     /**
      * Unique instance of Environment.
@@ -48,6 +54,7 @@ public class EnvironmentGenerator {
     private EnvironmentGenerator() {
         myEnvironment = Environment.getInstance();
         myMap = new ArrayList<>(18);
+        QUESTION_MANAGER = new QuestionManager();
     }
 
     /**
@@ -59,6 +66,14 @@ public class EnvironmentGenerator {
             UNIQUE_INSTANCE = new EnvironmentGenerator();
         }
         return UNIQUE_INSTANCE;
+    }
+
+    /**
+     * Getter of the link between the game and SQLit database.
+     * @return QuestionManager
+     */
+    public static QuestionManager getQuestionManager() {
+        return QUESTION_MANAGER;
     }
 
     /**
