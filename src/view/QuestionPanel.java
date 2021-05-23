@@ -14,7 +14,6 @@ public class QuestionPanel extends JPanel {
 
     /**
      * Unique instance of the question panel that allows user to interact with questions.
-     * TODO: UML
      */
     private static QuestionPanel UNIQUE_INSTANCE;
 
@@ -24,7 +23,6 @@ public class QuestionPanel extends JPanel {
      * 1 - B button
      * 2 - C button
      * 3 - D button
-     * TODO UML
      */
     private final JButton[] myButtons = new JButton[4];
 
@@ -33,13 +31,10 @@ public class QuestionPanel extends JPanel {
      */
     private QuestionPanel() {
         buildPanel();
-
-
     }
 
     /**
      * Accessor for the unique instance of the question panel.
-     * TODO: UML
      * @return UNIQUE_INSTANCE
      */
     public static QuestionPanel getInstance() {
@@ -48,8 +43,6 @@ public class QuestionPanel extends JPanel {
         }
         return UNIQUE_INSTANCE;
     }
-
-
 
     /**
      * Gets the A/True answer button.
@@ -88,17 +81,16 @@ public class QuestionPanel extends JPanel {
      * This is where change the answer button orientation and add the label which
      * will contain the question we ask the user.
      *
-     * TODO UML
      */
     private void buildPanel() {
         setLayout(null);
         setBackground(Color.DARK_GRAY);
         setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY,2, true));
 
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         JLabel question = new JLabel("This is where the question will go: ");
         question.setForeground(Color.LIGHT_GRAY);
-        this.add(question);
+        add(question);
 
         instantiateButtons();
         buildAButton();
@@ -123,8 +115,10 @@ public class QuestionPanel extends JPanel {
      Builds and customizes the A answer button.
      */
     private void buildAButton() {
-        var up = getAButton();
-        up.setText("A");
+        var a = getAButton();
+
+        a.setText("A");
+        a.setEnabled(false);
 
     }
 
@@ -132,24 +126,30 @@ public class QuestionPanel extends JPanel {
      Builds and customizes the B answer button.
      */
     private void buildBButton() {
-        var right = getBButton();
-        right.setText("B");
+        var b = getBButton();
+
+        b.setText("B");
+        b.setEnabled(false);
     }
 
     /**
      Builds and customizes the C answer button.
      */
     private void buildCButton() {
-        var down = getCButton();
-        down.setText("C");
+        var c = getCButton();
+
+        c.setText("C");
+        c.setEnabled(false);
     }
 
     /**
      Builds and customizes D answer button.
      */
     private void buildDButton() {
-        var left = getDButton();
-        left.setText("D");
+        var d = getDButton();
+
+        d.setText("D");
+        d.setEnabled(false);
     }
 
     /**

@@ -9,7 +9,6 @@ import java.awt.event.ActionEvent;
  */
 public class NewGameButtonListener extends GameListener {
 
-
     /**
      * For the NewGameButton.
      */
@@ -24,6 +23,7 @@ public class NewGameButtonListener extends GameListener {
      */
     @Override
     public void actionPerformed(final ActionEvent e) {
+        StatusManager.enableGameButtons();
         getEnvironmentGenerator().generateInitialEnvironment();
     }
 }

@@ -103,7 +103,6 @@ public class Game extends JPanel {
 
     /**
      * Prepares the panel located on the SOUTH, holds ButtonPanel & QuestionPanel.
-     * TODO UML
      */
     private void prepSouthPanel() {
         mySouthPanel = new JPanel();
