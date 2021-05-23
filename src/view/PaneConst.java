@@ -1,14 +1,11 @@
 package view;
 
-import javax.swing.*;
-import java.awt.*;
+
 
 /**
  * All constants used for the GUI.
  * @author Robert
  * @version 1
- * TODO UML all and documentation
- * TODO Team: Please use this enum to add any constants you need for panel fields.
  */
 public enum PaneConst {
 
@@ -41,7 +38,6 @@ public enum PaneConst {
      * Height of the buttons inside of QuestionPanel.
      */
     QUESTION_BUTTON_HEIGHT(25);
-
 
     /**
      * Value of Constant.

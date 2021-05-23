@@ -4,6 +4,7 @@ import model.CellType;
 import model.GameObject;
 import sql.QuestionManager;
 import view.Environment;
+import view.QuestionPanel;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -34,6 +35,11 @@ public class EnvironmentGenerator {
     private final Environment myEnvironment;
 
     /**
+     * Unique instance of the QuestionPanel.
+     */
+    private final QuestionPanel myQuestionPanel;
+
+    /**
      * 2D ArrayList representation of map.
      */
     private final ArrayList<List<GameObject>> myMap;
@@ -49,10 +55,17 @@ public class EnvironmentGenerator {
     private int myUserCol = 1;
 
     /**
+     * Helps with the control of question interaction from the user.
+     * TODO: create getter if needed
+     */
+    private boolean isInteractingWithQuestion = false;
+
+    /**
      * Constructor set initial fields.
      */
     private EnvironmentGenerator() {
         myEnvironment = Environment.getInstance();
+        myQuestionPanel = QuestionPanel.getInstance();
         myMap = new ArrayList<>(18);
         QUESTION_MANAGER = new QuestionManager();
     }
@@ -193,7 +206,11 @@ public class EnvironmentGenerator {
         if(nextCell.getMyID() == CellType.WALL.getID()) {
             System.out.println("Rick is not a ghost.");
         } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
-            System.out.println("Trigger Question.");
+            StatusManager.enableQuestionButtons();
+            myQuestionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
+            isInteractingWithQuestion = true;
+
+            System.out.println("Triggered Question.");
         } else {
             final List<GameObject> currentRow = myMap.get(myUserRow);
             // Remove current player cell and replace with floor

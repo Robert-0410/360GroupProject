@@ -100,7 +100,27 @@ public class QuestionPanel extends JPanel {
      */
     public void setMyQuestion(final Question theQuestion) {
         myQuestion = theQuestion;
+        var answers = myQuestion.getMyAnswers();
         // TODO also fill in the panel info to display.
+        myLabels[0].setText(myQuestion.getMyQuestion());
+        myLabels[0].setForeground(Color.CYAN);
+        myLabels[0].setBounds(10, 10, 450, 12);
+
+        myLabels[1].setText(answers[0]);
+        myLabels[1].setForeground(Color.CYAN);
+        myLabels[1].setBounds(55, 35, 450, 12);
+
+        myLabels[2].setText(answers[1]);
+        myLabels[2].setForeground(Color.CYAN);
+        myLabels[2].setBounds(55, 70, 450, 12);
+
+        myLabels[3].setText(answers[2]);
+        myLabels[3].setForeground(Color.CYAN);
+        myLabels[3].setBounds(55, 105, 450, 12);
+
+        myLabels[4].setText(answers[3]);
+        myLabels[4].setForeground(Color.CYAN);
+        myLabels[4].setBounds(55, 140, 450, 12);
 
     }
 
@@ -116,18 +136,13 @@ public class QuestionPanel extends JPanel {
         setBackground(Color.DARK_GRAY);
         setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY,2, true));
 
-//        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-//        JLabel question = new JLabel("This is where the question will go: ");
-//        question.setForeground(Color.LIGHT_GRAY);
-//        add(question);
-
         instantiateLabels();
         instantiateButtons();
         buildAButton();
         buildBButton();
         buildCButton();
         buildDButton();
-        addButtons();
+        addButtonsAndLabels();
     }
 
     /**
@@ -195,13 +210,20 @@ public class QuestionPanel extends JPanel {
     }
 
     /**
-     * Adds buttons to panel.
+     * Adds buttons and labels to panel.
      */
-    private void addButtons() {
+    private void addButtonsAndLabels() {
         add(getAButton());
         add(getBButton());
         add(getCButton());
         add(getDButton());
+
+        // Labels TODO: add the rest of labels
+        add(myLabels[0]);
+        add(myLabels[1]);
+        add(myLabels[2]);
+        add(myLabels[3]);
+        add(myLabels[4]);
     }
 
 
