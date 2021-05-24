@@ -27,7 +27,6 @@ public class QuestionChoiceListener extends GameListener {
      */
     @Override
     public void actionPerformed(final ActionEvent e) {
-        System.out.println("Question Button was pressed.");
         final var question = QuestionPanel.getInstance().getMyQuestion();
         int userChoice = -1;
         final var correctIndex = question.getMyCorrectIndex();
@@ -41,7 +40,6 @@ public class QuestionChoiceListener extends GameListener {
             case "D" -> userChoice = 3;
         }
         if(userChoice == correctIndex) {
-            System.out.println("Correct");
             getEnvironmentGenerator().removeDoorAfterCorrectAnswer();
         } else {
             System.out.println("Wrong, player should loose life");

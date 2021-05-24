@@ -84,8 +84,8 @@ public class QuestionPanel extends JPanel {
         myButtons.get(2).setEnabled(false);
         myButtons.get(3).setEnabled(false);
 
-        for(int i = 0; i < myLabels.length; i++) {
-            myLabels[i].setText("");
+        for (JLabel myLabel : myLabels) {
+            myLabel.setText("");
         }
     }
 
@@ -163,7 +163,6 @@ public class QuestionPanel extends JPanel {
      */
     private void instantiateButtons() {
         for(int i = 0; i < 4; i++) {
-            System.out.println("Ran " + i + " times.");
             myButtons.add(new JButton());
         }
     }
