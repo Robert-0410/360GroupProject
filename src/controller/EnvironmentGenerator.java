@@ -2,6 +2,7 @@ package controller;
 
 import model.CellType;
 import model.GameObject;
+import sql.Question;
 import sql.QuestionManager;
 import view.Environment;
 import view.QuestionPanel;
@@ -35,11 +36,6 @@ public class EnvironmentGenerator {
     private final Environment myEnvironment;
 
     /**
-     * Unique instance of the QuestionPanel.
-     */
-    private final QuestionPanel myQuestionPanel;
-
-    /**
      * 2D ArrayList representation of map.
      */
     private final ArrayList<List<GameObject>> myMap;
@@ -65,7 +61,6 @@ public class EnvironmentGenerator {
      */
     private EnvironmentGenerator() {
         myEnvironment = Environment.getInstance();
-        myQuestionPanel = QuestionPanel.getInstance();
         myMap = new ArrayList<>(18);
         QUESTION_MANAGER = new QuestionManager();
     }
@@ -82,12 +77,13 @@ public class EnvironmentGenerator {
     }
 
     /**
-     * Getter of the link between the game and SQLit database.
-     * @return QuestionManager
+     * Getter for 2D Arraylist of environment components AKA GameObjects.
+     * @return the components that compose the environment.
      */
-    public static QuestionManager getQuestionManager() {
-        return QUESTION_MANAGER;
+    public ArrayList<List<GameObject>> getMyMap() {
+        return myMap;
     }
+
 
     /**
      * Initializes a new game within the environment, invoked when user chooses new game.
@@ -202,15 +198,14 @@ public class EnvironmentGenerator {
      * Used to move player to the right when the right button is clicked.
      */
     protected void movePlayerRight() {
+        final var questionPanel = view.QuestionPanel.getInstance();
         final var nextCell = myMap.get(myUserRow).get(myUserCol + 1);
         if(nextCell.getMyID() == CellType.WALL.getID()) {
             System.out.println("Rick is not a ghost.");
         } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
-            StatusManager.enableQuestionButtons();
-            myQuestionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
+            questionPanel.enableButtons();
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
             isInteractingWithQuestion = true;
-
-            System.out.println("Triggered Question.");
         } else {
             final List<GameObject> currentRow = myMap.get(myUserRow);
             // Remove current player cell and replace with floor
@@ -279,5 +274,19 @@ public class EnvironmentGenerator {
             myUserCol--;
             generateAfterMove();
         }
+    }
+
+    /**
+     * Removes door once the user gets the correct answer.
+     */
+    protected void removeDoorAfterCorrectAnswer() {
+        final List<GameObject> currentRow = myMap.get(myUserRow);
+        // Remove next cell and replace with player
+        currentRow.remove(myUserCol + 1);
+        currentRow.add(myUserCol + 1, GameObject.assignGameObject(CellType.FLOOR.getID()));
+        generateAfterMove();
+        QuestionPanel.getInstance().disableButtons();
+
+        isInteractingWithQuestion = false;
     }
 }

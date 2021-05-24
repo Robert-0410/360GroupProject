@@ -79,17 +79,10 @@ public class Game extends JPanel {
     private void fetchPanels() {
         myPanels = new ArrayList<>(4);
 
-        var menuPanel = MenuPanel.getInstance();
-        myPanels.add(menuPanel);
-
-        var environmentPanel = Environment.getInstance();
-        myPanels.add(environmentPanel);
-
-        var buttonPanel = ButtonPanel.getInstance();
-        myPanels.add(buttonPanel);
-
-        var questionPanel = QuestionPanel.getInstance();
-        myPanels.add(questionPanel);
+        myPanels.add(MenuPanel.getInstance());
+        myPanels.add(Environment.getInstance());
+        myPanels.add(ButtonPanel.getInstance());
+        myPanels.add(QuestionPanel.getInstance());
 
     }
 
