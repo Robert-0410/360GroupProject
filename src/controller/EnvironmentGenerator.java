@@ -2,7 +2,9 @@ package controller;
 
 import model.CellType;
 import model.GameObject;
+import sql.QuestionManager;
 import view.Environment;
+import view.QuestionPanel;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,9 +20,21 @@ import java.util.Scanner;
 public class EnvironmentGenerator {
 
     /**
+     * Direction of travel available to user at a time.
+     */
+    private enum Direction {
+        NORTH, EAST, SOUTH, WEST
+    }
+
+    /**
      * Unique instance of EnvironmentGenerator.
      */
     private static EnvironmentGenerator UNIQUE_INSTANCE;
+
+    /**
+     * The connection between the database and the game.
+     */
+    private static QuestionManager QUESTION_MANAGER;
 
     /**
      * Unique instance of Environment.
@@ -43,11 +57,23 @@ public class EnvironmentGenerator {
     private int myUserCol = 1;
 
     /**
+     * Identification for direction user was moving before interacting with an interacting GameObject.
+     */
+    private Direction userIsMoving;
+
+    /**
+     * Helps with the control of question interaction from the user.
+     * TODO: create getter if needed
+     */
+    private boolean isInteractingWithQuestion = false;
+
+    /**
      * Constructor set initial fields.
      */
     private EnvironmentGenerator() {
         myEnvironment = Environment.getInstance();
         myMap = new ArrayList<>(18);
+        QUESTION_MANAGER = new QuestionManager();
     }
 
     /**
@@ -145,11 +171,18 @@ public class EnvironmentGenerator {
      * Used to move player up when the Up button is clicked.
      */
     protected void movePlayerUp() {
+        final var questionPanel = view.QuestionPanel.getInstance();
         final var nextCell = myMap.get(myUserRow - 1).get(myUserCol);
+
         if(nextCell.getMyID() == CellType.WALL.getID()) {
-            System.out.println("Rick is not a ghost.");
+            return;
         } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
-            System.out.println("Trigger Question.");
+
+            userIsMoving = Direction.NORTH;
+            questionPanel.enableButtons();
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
+            isInteractingWithQuestion = true;
+
         } else {
             List<GameObject> currentRow = myMap.get(myUserRow);
 
@@ -174,12 +207,22 @@ public class EnvironmentGenerator {
      * Used to move player to the right when the right button is clicked.
      */
     protected void movePlayerRight() {
+        final var questionPanel = view.QuestionPanel.getInstance();
         final var nextCell = myMap.get(myUserRow).get(myUserCol + 1);
+
         if(nextCell.getMyID() == CellType.WALL.getID()) {
-            System.out.println("Rick is not a ghost.");
+
+            return;
+
         } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
-            System.out.println("Trigger Question.");
+
+            userIsMoving = Direction.EAST;
+            questionPanel.enableButtons();
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
+            isInteractingWithQuestion = true;
+
         } else {
+
             final List<GameObject> currentRow = myMap.get(myUserRow);
             // Remove current player cell and replace with floor
             currentRow.remove(myUserCol);
@@ -199,11 +242,19 @@ public class EnvironmentGenerator {
      * Used to move player down when the right button is clicked.
      */
     protected void movePlayerDown() {
+        final var questionPanel = view.QuestionPanel.getInstance();
         final var nextCell = myMap.get(myUserRow + 1).get(myUserCol);
         if(nextCell.getMyID() == CellType.WALL.getID()) {
-            System.out.println("Rick is not a ghost.");
+
+            return;
+
         } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
-            System.out.println("Trigger Question.");
+
+            userIsMoving = Direction.SOUTH;
+            questionPanel.enableButtons();
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
+            isInteractingWithQuestion = true;
+
         } else {
             List<GameObject> currentRow = myMap.get(myUserRow);
             // Remove current player cell and replace with floor
@@ -227,11 +278,19 @@ public class EnvironmentGenerator {
      * Used to move player to the left when the Left arrow button is clicked.
      */
     protected void movePlayerLeft() {
+        final var questionPanel = view.QuestionPanel.getInstance();
         final var nextCell = myMap.get(myUserRow).get(myUserCol - 1);
         if(nextCell.getMyID() == CellType.WALL.getID()) {
-            System.out.println("Rick is not a ghost.");
+
+            return;
+
         } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
-            System.out.println("Trigger Question.");
+
+            userIsMoving = Direction.WEST;
+            questionPanel.enableButtons();
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
+            isInteractingWithQuestion = true;
+
         } else {
             final List<GameObject> currentRow = myMap.get(myUserRow);
 
@@ -247,5 +306,39 @@ public class EnvironmentGenerator {
             myUserCol--;
             generateAfterMove();
         }
+    }
+
+    /**
+     * Removes door once the user gets the correct answer.
+     */
+    protected void removeDoorAfterCorrectAnswer() {
+        List<GameObject> currentRow = myMap.get(myUserRow);
+        // Remove next cell and replace with player
+        switch (userIsMoving.ordinal()) {
+            case 0 -> {
+                currentRow = myMap.get(myUserRow - 1);
+                currentRow.remove(myUserCol);
+                currentRow.add(myUserCol, GameObject.assignGameObject(CellType.FLOOR.getID()));
+            }
+            case 1 -> {
+                currentRow.remove(myUserCol + 1);
+                currentRow.add(myUserCol + 1, GameObject.assignGameObject(CellType.FLOOR.getID()));
+            }
+            case 2 -> {
+                currentRow = myMap.get(myUserRow + 1);
+                currentRow.remove(myUserCol);
+                currentRow.add(myUserCol, GameObject.assignGameObject(CellType.FLOOR.getID()));
+            }
+            case 3 -> {
+                currentRow.remove(myUserCol - 1);
+                currentRow.add(myUserCol - 1, GameObject.assignGameObject(CellType.FLOOR.getID()));
+            }
+            default -> System.err.println("Direction of user movement was not properly assigned.");
+        }
+
+
+        generateAfterMove();
+        QuestionPanel.getInstance().disableButtons();
+        isInteractingWithQuestion = false;
     }
 }

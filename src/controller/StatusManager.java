@@ -2,7 +2,6 @@ package controller;
 
 import view.ButtonPanel;
 import view.MenuPanel;
-import view.QuestionPanel;
 
 
 /**
@@ -29,17 +28,6 @@ public class StatusManager {
         enableMovementButtons();
     }
 
-    /**
-     * Enables the buttons used for question interaction.
-     */
-    protected static void enableQuestionButtons() {
-        // Question Panel
-        var currentPanel = QuestionPanel.getInstance();
-        currentPanel.getAButton().setEnabled(true);
-        currentPanel.getBButton().setEnabled(true);
-        currentPanel.getCButton().setEnabled(true);
-        currentPanel.getDButton().setEnabled(true);
-    }
 
     /**
      * Enables arrow buttons that allow users to move in the environment.
@@ -51,4 +39,5 @@ public class StatusManager {
         currentPanel.getDownButton().setEnabled(true);
         currentPanel.getLeftButton().setEnabled(true);
     }
+
 }
