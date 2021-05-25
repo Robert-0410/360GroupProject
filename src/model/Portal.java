@@ -1,5 +1,7 @@
 package model;
 
+import java.awt.*;
+
 /**
  * GameObject to win the game.
  * @author Robert
@@ -12,5 +14,6 @@ public class Portal extends GameObject {
      */
     Portal() {
         super(CellType.PORTAL.getID());
+        setBackground(Color.BLACK);
     }
 }
