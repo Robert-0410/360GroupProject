@@ -67,6 +67,11 @@ public class EnvironmentManager {
      */
     private Direction userIsMoving;
 
+    /**
+     * Helps determine if the player has won the game.
+     */
+    private CellType isWinningCell = CellType.NONE;
+
 
     /**
      * Constructor set initial fields.
@@ -86,6 +91,15 @@ public class EnvironmentManager {
             UNIQUE_INSTANCE = new EnvironmentManager();
         }
         return UNIQUE_INSTANCE;
+    }
+
+
+    /**
+     * Getter of cell to determine if game has been won.
+     * @return CellType
+     */
+    public CellType getIsWinningCell() {
+        return isWinningCell;
     }
 
 
@@ -158,6 +172,7 @@ public class EnvironmentManager {
 
         } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
 
+            isWinningCell = CellType.PORTAL;
             userIsMoving = Direction.NORTH;
             questionPanel.enableButtons();
             questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
@@ -192,6 +207,7 @@ public class EnvironmentManager {
 
         if(nextCell.getMyID() == CellType.PORTAL.getID()) {
 
+            isWinningCell = CellType.PORTAL;
             userIsMoving = Direction.EAST;
             questionPanel.enableButtons();
             questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
@@ -229,6 +245,7 @@ public class EnvironmentManager {
 
         if(nextCell.getMyID() == CellType.PORTAL.getID()) {
 
+            isWinningCell = CellType.PORTAL;
             userIsMoving = Direction.SOUTH;
             questionPanel.enableButtons();
             questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
@@ -268,6 +285,7 @@ public class EnvironmentManager {
 
         if(nextCell.getMyID() == CellType.PORTAL.getID()) {
 
+            isWinningCell = CellType.PORTAL;
             userIsMoving = Direction.WEST;
             questionPanel.enableButtons();
             questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
