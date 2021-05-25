@@ -12,7 +12,7 @@ public class PickleRickAvatar extends GameObject {
      * Sets myIcon, myCellType, with the use of an ID argument.
 
      */
-    public PickleRickAvatar() {
+    protected PickleRickAvatar() {
         super(CellType.PLAYER.getID());
         Color backgroundColor = new Color(54,117,135);
         setBackground(backgroundColor);

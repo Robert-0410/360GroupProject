@@ -4,6 +4,8 @@ import controller.DownButtonListener;
 import controller.LeftButtonListener;
 import controller.RightButtonListener;
 import controller.UpButtonListener;
+import model.CellType;
+import model.GameObject;
 
 import javax.swing.*;
 import java.awt.Color;
@@ -23,7 +25,12 @@ public class ButtonPanel extends JPanel {
     /**
      * Array for internal storage of actual arrow buttons.
      */
-    private final JButton[] myArrows= new JButton[4];
+    private final JButton[] myArrows = new JButton[4];
+
+    /**
+     * Holds the graphical representation of lives for player.
+     */
+    private final GameObject[] myLives = new GameObject[3];
 
     /**
      * Singleton constructor.
@@ -75,11 +82,49 @@ public class ButtonPanel extends JPanel {
         return myArrows[3];
     }
 
+
     /**
-    Consolidation of all the sub methods that build the individual components that belong in the ButtonPanel.
+     * Adds three lives for the user to use for the game, handles graphics only not actual life count.
+     */
+    public void addUserLives() {
+        final var width = CellType.LIFE.getCellWidth();
+        myLives[0].setBounds(5, 60, width, CellType.LIFE.getCellHeight());
+        myLives[1].setBounds(width + 5, 60, width, CellType.LIFE.getCellHeight());
+        myLives[2].setBounds(width + width + 5, 60, width, CellType.LIFE.getCellHeight());
+
+        add(myLives[0]);
+        add(myLives[1]);
+        add(myLives[2]);
+
+        repaint();
+    }
+
+    /**
+     * Removes graphical representation of life.
+     * @param theLifeIndex that the user has lost.
+     */
+    public void removeLifeCell(final int theLifeIndex) {
+        remove(myLives[theLifeIndex]);
+        repaint();
+    }
+
+
+    /**
+     * Used to disable buttons when not needed.
+     */
+    public void disableArrowButtons() {
+        for (JButton myArrow : myArrows) {
+            myArrow.setEnabled(false);
+        }
+    }
+
+
+    /**
+     * Consolidation of all the sub methods that build the individual components that belong in the ButtonPanel.
      */
     private void buildButtonPanel() {
         instantiateButtons();
+        instantiateLives();
         setPanelsState();
         buildUpButton();
         buildRightButton();
@@ -87,6 +132,7 @@ public class ButtonPanel extends JPanel {
         buildLeftButton();
         addButtons();
     }
+
 
     /**
      * Instantiates the arrow button with the array.
@@ -96,6 +142,17 @@ public class ButtonPanel extends JPanel {
             myArrows[i] = new JButton();
         }
     }
+
+
+    /**
+     * Instantiates graphical representation of user lives.
+     */
+    private void instantiateLives() {
+        for(int i = 0; i < myLives.length; i++) {
+            myLives[i] = GameObject.assignGameObject(CellType.LIFE.getID());
+        }
+    }
+
 
     /**
      * Customize ButtonPanel.
@@ -117,7 +174,7 @@ public class ButtonPanel extends JPanel {
 
         up.addActionListener(new UpButtonListener());
         up.setText("Up");
-        up.setBounds(panelWidth / 2 - buttonSize / 2, 8, buttonSize, buttonSize);
+        up.setBounds(panelWidth / 2 - buttonSize / 2 + 10, 8, buttonSize, buttonSize);
         up.setEnabled(false);
     }
 
@@ -132,7 +189,7 @@ public class ButtonPanel extends JPanel {
 
         right.addActionListener(new RightButtonListener());
         right.setText("Right");
-        right.setBounds(panelWidth / 2 + buttonSize / 2, panelHeight / 2 - buttonSize / 2, buttonSize, buttonSize);
+        right.setBounds(panelWidth / 2 + buttonSize / 2 + 10, panelHeight / 2 - buttonSize / 2, buttonSize, buttonSize);
         right.setEnabled(false);
     }
 
@@ -147,7 +204,7 @@ public class ButtonPanel extends JPanel {
 
         down.addActionListener(new DownButtonListener());
         down.setText("Down");
-        down.setBounds(panelWidth / 2 - buttonSize / 2, 66 * panelHeight / 100, buttonSize, buttonSize);
+        down.setBounds(panelWidth / 2 - buttonSize / 2 + 10, 66 * panelHeight / 100, buttonSize, buttonSize);
         down.setEnabled(false);
     }
 
@@ -162,7 +219,7 @@ public class ButtonPanel extends JPanel {
 
         left.addActionListener(new LeftButtonListener());
         left.setText("Left");
-        left.setBounds(panelWidth / 2 - buttonSize / 2 - buttonSize, panelHeight / 2 - buttonSize / 2, buttonSize, buttonSize);
+        left.setBounds(panelWidth / 2 - buttonSize / 2 - buttonSize + 10, panelHeight / 2 - buttonSize / 2, buttonSize, buttonSize);
         left.setEnabled(false);
     }
 
