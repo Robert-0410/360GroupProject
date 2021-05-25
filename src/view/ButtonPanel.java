@@ -100,6 +100,15 @@ public class ButtonPanel extends JPanel {
     }
 
     /**
+     * Removes graphical representation of life.
+     * @param theLifeIndex that the user has lost.
+     */
+    public void removeLifeCell(final int theLifeIndex) {
+        remove(myLives[theLifeIndex]);
+        repaint();
+    }
+
+    /**
     Consolidation of all the sub methods that build the individual components that belong in the ButtonPanel.
      */
     private void buildButtonPanel() {

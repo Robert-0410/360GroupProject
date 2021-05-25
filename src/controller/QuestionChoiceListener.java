@@ -1,5 +1,6 @@
 package controller;
 
+import view.ButtonPanel;
 import view.QuestionPanel;
 
 import javax.swing.*;
@@ -42,7 +43,12 @@ public class QuestionChoiceListener extends GameListener {
         if(userChoice == correctIndex) {
             getEnvironmentGenerator().removeDoorAfterCorrectAnswer();
         } else {
-            System.out.println("Wrong, player should loose life");
+            final var currentLives = getEnvironmentGenerator().removeUserLife();
+            if(currentLives >= 0) {
+                ButtonPanel.getInstance().removeLifeCell(currentLives);
+            } else {
+                System.out.println("Get Wrecked, game is over.");
+            }
         }
 
     }

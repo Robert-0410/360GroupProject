@@ -1,7 +1,6 @@
 package controller;
 
 import view.ButtonPanel;
-import view.QuestionPanel;
 
 import java.awt.event.ActionEvent;
 
@@ -19,6 +18,7 @@ public class NewGameButtonListener extends GameListener {
         super();
     }
 
+
     /**
      * Invoked when an action occurs.
      *
@@ -29,5 +29,6 @@ public class NewGameButtonListener extends GameListener {
         StatusManager.enableGameButtons();
         getEnvironmentGenerator().generateInitialEnvironment();
         ButtonPanel.getInstance().addUserLives();
+        getEnvironmentGenerator().resetPlayerLives();
     }
 }

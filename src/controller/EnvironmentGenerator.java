@@ -56,6 +56,12 @@ public class EnvironmentGenerator {
      */
     private int myUserCol = 1;
 
+
+    /**
+     * Actual representation of user lives.
+     */
+    private int myUserLives = 3;
+
     /**
      * Identification for direction user was moving before interacting with an interacting GameObject.
      */
@@ -102,6 +108,24 @@ public class EnvironmentGenerator {
     protected void generateAfterMove() {
         emptyCurrentEnvironment();
         populateGameObjects();
+    }
+
+
+    /**
+     * Removes a user life when a question is answered wrong.
+     * @return the new amount of lives.
+     */
+    protected int removeUserLife() {
+        myUserLives--;
+        return myUserLives;
+    }
+
+
+    /**
+     * Resets player lives to three.
+     */
+    protected void resetPlayerLives() {
+        myUserLives = 3;
     }
 
     /**
