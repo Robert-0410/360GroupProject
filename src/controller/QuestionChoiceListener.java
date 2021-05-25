@@ -49,7 +49,9 @@ public class QuestionChoiceListener extends GameListener {
             final var currentLives = getEnvironmentGenerator().removeUserLife();
             if(currentLives >= 0) {
                 ButtonPanel.getInstance().removeLifeCell(currentLives);
+                GameAudio.wrongAnswer();
             } else {
+                GameAudio.gameLost();
                 ButtonPanel.getInstance().disableArrowButtons();
                 QuestionPanel.getInstance().disableButtons();
                 System.out.println("Get Wrecked, game is over.");

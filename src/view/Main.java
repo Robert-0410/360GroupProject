@@ -1,11 +1,8 @@
 package view;
 
 import controller.GameAudio;
-
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
-import java.io.IOException;
+
 
 /**
  * Game is ran from here.
