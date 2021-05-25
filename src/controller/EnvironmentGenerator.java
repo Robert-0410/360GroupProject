@@ -156,7 +156,7 @@ public class EnvironmentGenerator {
         for (List<GameObject> list : myMap) {
             for (GameObject o : list) {
                 current = o;
-                var size = current.getMyCellType().getCellSize();
+                var size = current.getMyCellType().getCellWidth();
                 current.setBounds(x, y, size, size);
                 myEnvironment.add(current);
                 x = x + size;
