@@ -227,7 +227,13 @@ public class EnvironmentManager {
         final var questionPanel = view.QuestionPanel.getInstance();
         final var nextCell = myMap.get(myUserRow + 1).get(myUserCol);
 
-        if(nextCell.getMyID() == CellType.DOOR.getID()) {
+        if(nextCell.getMyID() == CellType.PORTAL.getID()) {
+
+            userIsMoving = Direction.SOUTH;
+            questionPanel.enableButtons();
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
+
+        } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
 
             userIsMoving = Direction.SOUTH;
             questionPanel.enableButtons();
@@ -260,7 +266,13 @@ public class EnvironmentManager {
         final var questionPanel = view.QuestionPanel.getInstance();
         final var nextCell = myMap.get(myUserRow).get(myUserCol - 1);
 
-        if(nextCell.getMyID() == CellType.DOOR.getID()) {
+        if(nextCell.getMyID() == CellType.PORTAL.getID()) {
+
+            userIsMoving = Direction.WEST;
+            questionPanel.enableButtons();
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
+
+        } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
 
             userIsMoving = Direction.WEST;
             questionPanel.enableButtons();
