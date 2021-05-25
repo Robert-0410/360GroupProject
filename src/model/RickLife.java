@@ -1,5 +1,7 @@
 package model;
 
+import java.awt.*;
+
 public class RickLife extends GameObject{
 
     /**
@@ -8,5 +10,6 @@ public class RickLife extends GameObject{
      */
     protected RickLife() {
         super(CellType.LIFE.getID());
+        this.setBackground(Color.DARK_GRAY);
     }
 }
