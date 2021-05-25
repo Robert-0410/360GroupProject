@@ -28,7 +28,7 @@ public class GameAudio {
             clip.open(audioStream);
             clip.start();
         } catch (Exception e) {
-            System.err.println("No Theme Song Found.");
+            System.err.println("No Theme Song Found in GameAudio.themeSong()");
         }
     }
 

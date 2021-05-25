@@ -27,7 +27,7 @@ public enum PaneConst {
     /**
      * Width and Height of the arrow buttons.
      */
-    ARROW_SIZE(50),
+    ARROW_SIZE(55),
 
     /**
      * Width of the buttons inside of QuestionPanel.

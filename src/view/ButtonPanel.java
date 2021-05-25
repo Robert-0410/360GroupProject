@@ -171,10 +171,13 @@ public class ButtonPanel extends JPanel {
         var up = getUpButton();
         var panelWidth = PaneConst.WINDOW_WIDTH.value() / 2;
         var buttonSize = PaneConst.ARROW_SIZE.value();
+        var upArrowIcon = new ImageIcon("src/resources/Up Arrow.png");
+        var upArrowLabel = new JLabel(upArrowIcon);
 
+        up.setBackground(Color.LIGHT_GRAY);
         up.addActionListener(new UpButtonListener());
-        up.setText("Up");
-        up.setBounds(panelWidth / 2 - buttonSize / 2 + 10, 8, buttonSize, buttonSize);
+        up.add(upArrowLabel);
+        up.setBounds(panelWidth / 2 - buttonSize / 2 + 10, 2, buttonSize, buttonSize);
         up.setEnabled(false);
     }
 
@@ -186,9 +189,12 @@ public class ButtonPanel extends JPanel {
         var panelWidth = PaneConst.WINDOW_WIDTH.value() / 2;
         var panelHeight = PaneConst.SOUTH_HEIGHT.value();
         var buttonSize = PaneConst.ARROW_SIZE.value();
+        var rightArrowIcon = new ImageIcon("src/resources/Right Arrow.png");
+        var rightArrowLabel = new JLabel(rightArrowIcon);
 
+        right.setBackground(Color.LIGHT_GRAY);
         right.addActionListener(new RightButtonListener());
-        right.setText("Right");
+        right.add(rightArrowLabel);
         right.setBounds(panelWidth / 2 + buttonSize / 2 + 10, panelHeight / 2 - buttonSize / 2, buttonSize, buttonSize);
         right.setEnabled(false);
     }
@@ -201,9 +207,12 @@ public class ButtonPanel extends JPanel {
         var panelWidth = PaneConst.WINDOW_WIDTH.value() / 2;
         var panelHeight = PaneConst.SOUTH_HEIGHT.value();
         var buttonSize = PaneConst.ARROW_SIZE.value();
+        var downArrowIcon = new ImageIcon("src/resources/Down Arrow.png");
+        var downArrowLabel = new JLabel(downArrowIcon);
 
+        down.setBackground(Color.LIGHT_GRAY);
         down.addActionListener(new DownButtonListener());
-        down.setText("Down");
+        down.add(downArrowLabel);
         down.setBounds(panelWidth / 2 - buttonSize / 2 + 10, 66 * panelHeight / 100, buttonSize, buttonSize);
         down.setEnabled(false);
     }
@@ -216,9 +225,12 @@ public class ButtonPanel extends JPanel {
         var panelWidth = PaneConst.WINDOW_WIDTH.value() / 2;
         var panelHeight = PaneConst.SOUTH_HEIGHT.value();
         var buttonSize = PaneConst.ARROW_SIZE.value();
+        var leftArrowIcon = new ImageIcon("src/resources/Left Arrow.png");
+        var leftArrowLabel = new JLabel(leftArrowIcon);
 
+        left.setBackground(Color.LIGHT_GRAY);
         left.addActionListener(new LeftButtonListener());
-        left.setText("Left");
+        left.add(leftArrowLabel);
         left.setBounds(panelWidth / 2 - buttonSize / 2 - buttonSize + 10, panelHeight / 2 - buttonSize / 2, buttonSize, buttonSize);
         left.setEnabled(false);
     }
