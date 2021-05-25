@@ -150,7 +150,13 @@ public class EnvironmentManager {
         final var questionPanel = view.QuestionPanel.getInstance();
         final var nextCell = myMap.get(myUserRow - 1).get(myUserCol);
 
-        if(nextCell.getMyID() == CellType.DOOR.getID()) {
+        if(nextCell.getMyID() == CellType.PORTAL.getID()) {
+
+            userIsMoving = Direction.NORTH;
+            questionPanel.enableButtons();
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
+
+        } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
 
             userIsMoving = Direction.NORTH;
             questionPanel.enableButtons();
