@@ -18,7 +18,7 @@ public class Main {
      * main
      * @param args n/a
      */
-    public static void main(String[] args) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+    public static void main(String[] args) {
         //Force switch to universal UI theming.
         try {
             UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
@@ -28,7 +28,8 @@ public class Main {
         //
         final Game game = Game.getInstance();
         game.display();
-        GameAudio gameAudio = new GameAudio();
+        GameAudio.themeSong();
+
 
     }
 }
