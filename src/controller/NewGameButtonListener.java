@@ -28,6 +28,6 @@ public class NewGameButtonListener extends GameListener {
     public void actionPerformed(final ActionEvent e) {
         StatusManager.enableGameButtons();
         getEnvironmentGenerator().generateInitialEnvironment();
-        ButtonPanel.getInstance().addUserLives(); // TODO debugging
+        ButtonPanel.getInstance().addUserLives();
     }
 }

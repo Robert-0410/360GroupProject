@@ -25,7 +25,12 @@ public class ButtonPanel extends JPanel {
     /**
      * Array for internal storage of actual arrow buttons.
      */
-    private final JButton[] myArrows= new JButton[4];
+    private final JButton[] myArrows = new JButton[4];
+
+    /**
+     * Holds the graphical representation of lives for player.
+     */
+    private final GameObject[] myLives = new GameObject[3];
 
     /**
      * Singleton constructor.
@@ -82,12 +87,16 @@ public class ButtonPanel extends JPanel {
      * Adds three lives for the user to use for the game, handles graphics only not actual life count.
      */
     public void addUserLives() {
-        final var one = GameObject.assignGameObject(CellType.LIFE.getID());
-        one.setBounds(0, 25, CellType.LIFE.getCellWidth(), CellType.LIFE.getCellHeight());
+        final var width = CellType.LIFE.getCellWidth();
+        myLives[0].setBounds(0, 0, width, CellType.LIFE.getCellHeight());
+        myLives[1].setBounds(width, 0, width, CellType.LIFE.getCellHeight());
+        myLives[2].setBounds(width + width, 0, width, CellType.LIFE.getCellHeight());
 
-        add(one);
+        add(myLives[0]);
+        add(myLives[1]);
+        add(myLives[2]);
+
         repaint();
-
     }
 
     /**
@@ -95,12 +104,12 @@ public class ButtonPanel extends JPanel {
      */
     private void buildButtonPanel() {
         instantiateButtons();
+        instantiateLives();
         setPanelsState();
         buildUpButton();
         buildRightButton();
         buildDownButton();
         buildLeftButton();
-        //addUserLives(); // TODO debugging
         addButtons();
     }
 
@@ -112,6 +121,17 @@ public class ButtonPanel extends JPanel {
             myArrows[i] = new JButton();
         }
     }
+
+
+    /**
+     * Instantiates graphical representation of user lives.
+     */
+    private void instantiateLives() {
+        for(int i = 0; i < myLives.length; i++) {
+            myLives[i] = GameObject.assignGameObject(CellType.LIFE.getID());
+        }
+    }
+
 
     /**
      * Customize ButtonPanel.
