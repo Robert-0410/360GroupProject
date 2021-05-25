@@ -27,6 +27,8 @@ public class NewGameButtonListener extends GameListener {
     @Override
     public void actionPerformed(final ActionEvent e) {
         StatusManager.enableGameButtons();
+        getEnvironmentGenerator().getMyMap().clear();
+        getEnvironmentGenerator().resetPlayerLocation();
         getEnvironmentGenerator().generateInitialEnvironment();
         ButtonPanel.getInstance().addUserLives();
         getEnvironmentGenerator().resetPlayerLives();

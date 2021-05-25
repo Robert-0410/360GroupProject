@@ -3,8 +3,6 @@ package view;
 
 
 import controller.QuestionChoiceListener;
-import model.CellType;
-import model.GameObject;
 import sql.Question;
 
 import javax.swing.*;

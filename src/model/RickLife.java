@@ -10,6 +10,6 @@ public class RickLife extends GameObject{
      */
     protected RickLife() {
         super(CellType.LIFE.getID());
-        this.setBackground(Color.DARK_GRAY);
+        setBackground(Color.DARK_GRAY);
     }
 }

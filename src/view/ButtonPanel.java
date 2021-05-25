@@ -113,13 +113,14 @@ public class ButtonPanel extends JPanel {
      * Used to disable buttons when not needed.
      */
     public void disableArrowButtons() {
-        for(int i = 0; i < myArrows.length; i++) {
-            myArrows[i].setEnabled(false);
+        for (JButton myArrow : myArrows) {
+            myArrow.setEnabled(false);
         }
     }
 
+
     /**
-    Consolidation of all the sub methods that build the individual components that belong in the ButtonPanel.
+     * Consolidation of all the sub methods that build the individual components that belong in the ButtonPanel.
      */
     private void buildButtonPanel() {
         instantiateButtons();
@@ -131,6 +132,7 @@ public class ButtonPanel extends JPanel {
         buildLeftButton();
         addButtons();
     }
+
 
     /**
      * Instantiates the arrow button with the array.
