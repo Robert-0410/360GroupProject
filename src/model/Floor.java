@@ -9,7 +9,7 @@ public class Floor extends GameObject {
     /**
      * Sets myIcon, myCellType, with the use of an ID argument.
      */
-    protected Floor() {
+    Floor() {
         super(CellType.FLOOR.getID());
     }
 }

@@ -17,7 +17,7 @@ import java.util.Scanner;
  * @author Robert
  * @version 1
  */
-public class EnvironmentGenerator {
+public class EnvironmentManager {
 
     /**
      * Direction of travel available to user at a time.
@@ -29,7 +29,7 @@ public class EnvironmentGenerator {
     /**
      * Unique instance of EnvironmentGenerator.
      */
-    private static EnvironmentGenerator UNIQUE_INSTANCE;
+    private static EnvironmentManager UNIQUE_INSTANCE;
 
     /**
      * The connection between the database and the game.
@@ -67,11 +67,16 @@ public class EnvironmentGenerator {
      */
     private Direction userIsMoving;
 
+    /**
+     * Helps determine if the player has won the game.
+     */
+    private CellType isWinningCell = CellType.NONE;
+
 
     /**
      * Constructor set initial fields.
      */
-    private EnvironmentGenerator() {
+    private EnvironmentManager() {
         myEnvironment = Environment.getInstance();
         myMap = new ArrayList<>(18);
         QUESTION_MANAGER = new QuestionManager();
@@ -81,11 +86,20 @@ public class EnvironmentGenerator {
      * Gets unique instance of the button panel.
      * @return only instance of the ButtonPanel.
      */
-    public static EnvironmentGenerator getInstance() {
+    public static EnvironmentManager getInstance() {
         if(UNIQUE_INSTANCE == null) {
-            UNIQUE_INSTANCE = new EnvironmentGenerator();
+            UNIQUE_INSTANCE = new EnvironmentManager();
         }
         return UNIQUE_INSTANCE;
+    }
+
+
+    /**
+     * Getter of cell to determine if game has been won.
+     * @return CellType
+     */
+    public CellType getIsWinningCell() {
+        return isWinningCell;
     }
 
 
@@ -150,8 +164,15 @@ public class EnvironmentGenerator {
         final var questionPanel = view.QuestionPanel.getInstance();
         final var nextCell = myMap.get(myUserRow - 1).get(myUserCol);
 
-        if(nextCell.getMyID() == CellType.DOOR.getID()) {
+        if(nextCell.getMyID() == CellType.PORTAL.getID()) {
 
+            userIsMoving = Direction.NORTH;
+            questionPanel.enableButtons();
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
+
+        } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
+
+            isWinningCell = CellType.PORTAL;
             userIsMoving = Direction.NORTH;
             questionPanel.enableButtons();
             questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
@@ -184,7 +205,14 @@ public class EnvironmentGenerator {
         final var questionPanel = view.QuestionPanel.getInstance();
         final var nextCell = myMap.get(myUserRow).get(myUserCol + 1);
 
-        if(nextCell.getMyID() == CellType.DOOR.getID()) {
+        if(nextCell.getMyID() == CellType.PORTAL.getID()) {
+
+            isWinningCell = CellType.PORTAL;
+            userIsMoving = Direction.EAST;
+            questionPanel.enableButtons();
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
+
+        } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
 
             userIsMoving = Direction.EAST;
             questionPanel.enableButtons();
@@ -215,7 +243,14 @@ public class EnvironmentGenerator {
         final var questionPanel = view.QuestionPanel.getInstance();
         final var nextCell = myMap.get(myUserRow + 1).get(myUserCol);
 
-        if(nextCell.getMyID() == CellType.DOOR.getID()) {
+        if(nextCell.getMyID() == CellType.PORTAL.getID()) {
+
+            isWinningCell = CellType.PORTAL;
+            userIsMoving = Direction.SOUTH;
+            questionPanel.enableButtons();
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
+
+        } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
 
             userIsMoving = Direction.SOUTH;
             questionPanel.enableButtons();
@@ -248,7 +283,14 @@ public class EnvironmentGenerator {
         final var questionPanel = view.QuestionPanel.getInstance();
         final var nextCell = myMap.get(myUserRow).get(myUserCol - 1);
 
-        if(nextCell.getMyID() == CellType.DOOR.getID()) {
+        if(nextCell.getMyID() == CellType.PORTAL.getID()) {
+
+            isWinningCell = CellType.PORTAL;
+            userIsMoving = Direction.WEST;
+            questionPanel.enableButtons();
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
+
+        } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
 
             userIsMoving = Direction.WEST;
             questionPanel.enableButtons();

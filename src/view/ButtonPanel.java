@@ -171,7 +171,7 @@ public class ButtonPanel extends JPanel {
         var up = getUpButton();
         var panelWidth = PaneConst.WINDOW_WIDTH.value() / 2;
         var buttonSize = PaneConst.ARROW_SIZE.value();
-        var upArrowIcon = new ImageIcon("src/resources/Up Arrow.png");
+        var upArrowIcon = new ImageIcon("src/resources/Images/Up Arrow.png");
         var upArrowLabel = new JLabel(upArrowIcon);
 
         up.setBackground(Color.LIGHT_GRAY);
@@ -189,7 +189,7 @@ public class ButtonPanel extends JPanel {
         var panelWidth = PaneConst.WINDOW_WIDTH.value() / 2;
         var panelHeight = PaneConst.SOUTH_HEIGHT.value();
         var buttonSize = PaneConst.ARROW_SIZE.value();
-        var rightArrowIcon = new ImageIcon("src/resources/Right Arrow.png");
+        var rightArrowIcon = new ImageIcon("src/resources/Images/Right Arrow.png");
         var rightArrowLabel = new JLabel(rightArrowIcon);
 
         right.setBackground(Color.LIGHT_GRAY);
@@ -207,7 +207,7 @@ public class ButtonPanel extends JPanel {
         var panelWidth = PaneConst.WINDOW_WIDTH.value() / 2;
         var panelHeight = PaneConst.SOUTH_HEIGHT.value();
         var buttonSize = PaneConst.ARROW_SIZE.value();
-        var downArrowIcon = new ImageIcon("src/resources/Down Arrow.png");
+        var downArrowIcon = new ImageIcon("src/resources/Images/Down Arrow.png");
         var downArrowLabel = new JLabel(downArrowIcon);
 
         down.setBackground(Color.LIGHT_GRAY);
@@ -225,7 +225,7 @@ public class ButtonPanel extends JPanel {
         var panelWidth = PaneConst.WINDOW_WIDTH.value() / 2;
         var panelHeight = PaneConst.SOUTH_HEIGHT.value();
         var buttonSize = PaneConst.ARROW_SIZE.value();
-        var leftArrowIcon = new ImageIcon("src/resources/Left Arrow.png");
+        var leftArrowIcon = new ImageIcon("src/resources/Images/Left Arrow.png");
         var leftArrowLabel = new JLabel(leftArrowIcon);
 
         left.setBackground(Color.LIGHT_GRAY);

@@ -1,5 +1,6 @@
 package controller;
 
+import model.CellType;
 import view.ButtonPanel;
 import view.QuestionPanel;
 import javax.swing.*;
@@ -42,7 +43,12 @@ public class QuestionChoiceListener extends GameListener {
             case "C" -> userChoice = 2;
             case "D" -> userChoice = 3;
         }
-        if(userChoice == correctIndex) {
+        if(userChoice == correctIndex && getEnvironmentGenerator().getIsWinningCell() == CellType.PORTAL) {
+            ButtonPanel.getInstance().disableArrowButtons();
+            QuestionPanel.getInstance().disableButtons();
+            // TODO: winning audio & the rest of victory code!
+            System.out.println("Game is won");
+        } else if(userChoice == correctIndex) {
             getEnvironmentGenerator().removeDoorAfterCorrectAnswer();
             GameAudio.wubbaLubba();
         } else {
@@ -54,9 +60,7 @@ public class QuestionChoiceListener extends GameListener {
                 GameAudio.gameLost();
                 ButtonPanel.getInstance().disableArrowButtons();
                 QuestionPanel.getInstance().disableButtons();
-                System.out.println("Get Wrecked, game is over.");
             }
         }
-
     }
 }

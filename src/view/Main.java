@@ -25,7 +25,7 @@ public class Main {
         //
         final Game game = Game.getInstance();
         game.display();
-        GameAudio.themeSong();
+//        GameAudio.themeSong(); // TODO: this statement is needed for actual product.
 
     }
 }

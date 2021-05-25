@@ -10,7 +10,7 @@ public class Wall extends GameObject {
     /**
      * Constructor that uses super to fill abstracted fields.
      */
-    protected Wall() {
+    Wall() {
         super(CellType.WALL.getID());
     }
 }
