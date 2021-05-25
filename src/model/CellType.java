@@ -15,7 +15,7 @@ public enum CellType {
     WALL(1, "src/resources/WallCell.png", 25, 25),
     DOOR(2, "src/resources/DoorCell.png", 25, 25),
     PLAYER(3, "src/resources/PickleRickAvatar.png", 25, 25),
-    PORTAL(4,"filenameYaB.file", 25, 25),
+    PORTAL(4,"src/resources/RickPortal.png", 25, 25),
     LIFE(10, "src/resources/RickLifeCount.png", 50, 100);
 
 
@@ -108,6 +108,7 @@ public enum CellType {
             case 2 -> cellType = CellType.DOOR;
             case 3 -> cellType = CellType.PLAYER;
             case 10 -> cellType = CellType.LIFE;
+            case 11 -> cellType = CellType.PORTAL;
             default -> {
                 System.err.println("In CellType.assignCellType() a cell type failed to be assigned.");
                 cellType = CellType.NONE;
