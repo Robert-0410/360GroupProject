@@ -2,9 +2,11 @@ package controller;
 
 import view.ButtonPanel;
 import view.QuestionPanel;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+
+
+
 
 /**
  * Listens for answer choices done by the user and verifies if correct.
@@ -42,11 +44,14 @@ public class QuestionChoiceListener extends GameListener {
         }
         if(userChoice == correctIndex) {
             getEnvironmentGenerator().removeDoorAfterCorrectAnswer();
+            GameAudio.wubbaLubba();
         } else {
             final var currentLives = getEnvironmentGenerator().removeUserLife();
             if(currentLives >= 0) {
                 ButtonPanel.getInstance().removeLifeCell(currentLives);
+                GameAudio.wrongAnswer();
             } else {
+                GameAudio.gameLost();
                 ButtonPanel.getInstance().disableArrowButtons();
                 QuestionPanel.getInstance().disableButtons();
                 System.out.println("Get Wrecked, game is over.");

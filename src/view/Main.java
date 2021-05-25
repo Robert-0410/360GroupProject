@@ -1,6 +1,8 @@
 package view;
 
+import controller.GameAudio;
 import javax.swing.*;
+
 
 /**
  * Game is ran from here.
@@ -23,6 +25,8 @@ public class Main {
         //
         final Game game = Game.getInstance();
         game.display();
+        GameAudio.themeSong();
+
 
     }
 }
