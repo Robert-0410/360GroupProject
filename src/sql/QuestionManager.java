@@ -53,7 +53,7 @@ public class QuestionManager {
             statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
             // need to update to actually return a random question istead of just the first one
-            ResultSet rs = statement.executeQuery("SELECT * FROM multiple_choice LIMIT 1");
+            ResultSet rs = statement.executeQuery("SELECT * FROM multiple_choice ORDER BY RANDOM() LIMIT 1");
             // read the result set
             String[] answers = new String[4];
             answers[0] = rs.getString("optionA");
