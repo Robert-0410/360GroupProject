@@ -107,8 +107,8 @@ public enum CellType {
             case 1 -> cellType = CellType.WALL;
             case 2 -> cellType = CellType.DOOR;
             case 3 -> cellType = CellType.PLAYER;
+            case 4 -> cellType = CellType.PORTAL;
             case 10 -> cellType = CellType.LIFE;
-            case 11 -> cellType = CellType.PORTAL;
             default -> {
                 System.err.println("In CellType.assignCellType() a cell type failed to be assigned.");
                 cellType = CellType.NONE;
