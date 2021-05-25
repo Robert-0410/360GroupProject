@@ -3,6 +3,8 @@ package view;
 
 
 import controller.QuestionChoiceListener;
+import model.CellType;
+import model.GameObject;
 import sql.Question;
 
 import javax.swing.*;
@@ -65,29 +67,6 @@ public class QuestionPanel extends JPanel {
         return UNIQUE_INSTANCE;
     }
 
-    /**
-     * Enables question buttons to be used by the user.
-     */
-    public void enableButtons() {
-        myButtons.get(0).setEnabled(true);
-        myButtons.get(1).setEnabled(true);
-        myButtons.get(2).setEnabled(true);
-        myButtons.get(3).setEnabled(true);
-    }
-
-    /**
-     * Disables question buttons after question is answered correctly and clear labels.
-     */
-    public void disableButtons() {
-        myButtons.get(0).setEnabled(false);
-        myButtons.get(1).setEnabled(false);
-        myButtons.get(2).setEnabled(false);
-        myButtons.get(3).setEnabled(false);
-
-        for (JLabel myLabel : myLabels) {
-            myLabel.setText("");
-        }
-    }
 
     /**
      * Setter for current question.
@@ -119,6 +98,7 @@ public class QuestionPanel extends JPanel {
 
     }
 
+
     /**
      * Returns current question the user is interacting with.
      * @return Question
@@ -126,6 +106,34 @@ public class QuestionPanel extends JPanel {
     public Question getMyQuestion() {
         return myQuestion;
     }
+
+
+    /**
+     * Enables question buttons to be used by the user.
+     */
+    public void enableButtons() {
+        myButtons.get(0).setEnabled(true);
+        myButtons.get(1).setEnabled(true);
+        myButtons.get(2).setEnabled(true);
+        myButtons.get(3).setEnabled(true);
+    }
+
+    /**
+     * Disables question buttons after question is answered correctly and clear labels.
+     */
+    public void disableButtons() {
+        myButtons.get(0).setEnabled(false);
+        myButtons.get(1).setEnabled(false);
+        myButtons.get(2).setEnabled(false);
+        myButtons.get(3).setEnabled(false);
+
+        for (JLabel myLabel : myLabels) {
+            myLabel.setText("");
+        }
+    }
+
+
+
 
     /**
      * Consolidates all private methods that build the Question area panel.

@@ -4,6 +4,8 @@ import controller.DownButtonListener;
 import controller.LeftButtonListener;
 import controller.RightButtonListener;
 import controller.UpButtonListener;
+import model.CellType;
+import model.GameObject;
 
 import javax.swing.*;
 import java.awt.Color;
@@ -75,6 +77,19 @@ public class ButtonPanel extends JPanel {
         return myArrows[3];
     }
 
+
+    /**
+     * Adds three lives for the user to use for the game, handles graphics only not actual life count.
+     */
+    public void addUserLives() {
+        final var one = GameObject.assignGameObject(CellType.LIFE.getID());
+        one.setBounds(0, 25, CellType.LIFE.getCellWidth(), CellType.LIFE.getCellHeight());
+
+        add(one);
+        repaint();
+
+    }
+
     /**
     Consolidation of all the sub methods that build the individual components that belong in the ButtonPanel.
      */
@@ -85,6 +100,7 @@ public class ButtonPanel extends JPanel {
         buildRightButton();
         buildDownButton();
         buildLeftButton();
+        //addUserLives(); // TODO debugging
         addButtons();
     }
 
