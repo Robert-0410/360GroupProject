@@ -14,6 +14,7 @@ public class Portal extends GameObject {
      */
     Portal() {
         super(CellType.PORTAL.getID());
-        setBackground(Color.BLACK);
+        Color backgroundColor = new Color(54,117,135);
+        setBackground(backgroundColor);
     }
 }
