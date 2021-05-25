@@ -17,7 +17,7 @@ import java.util.Scanner;
  * @author Robert
  * @version 1
  */
-public class EnvironmentGenerator {
+public class EnvironmentManager {
 
     /**
      * Direction of travel available to user at a time.
@@ -29,7 +29,7 @@ public class EnvironmentGenerator {
     /**
      * Unique instance of EnvironmentGenerator.
      */
-    private static EnvironmentGenerator UNIQUE_INSTANCE;
+    private static EnvironmentManager UNIQUE_INSTANCE;
 
     /**
      * The connection between the database and the game.
@@ -71,7 +71,7 @@ public class EnvironmentGenerator {
     /**
      * Constructor set initial fields.
      */
-    private EnvironmentGenerator() {
+    private EnvironmentManager() {
         myEnvironment = Environment.getInstance();
         myMap = new ArrayList<>(18);
         QUESTION_MANAGER = new QuestionManager();
@@ -81,9 +81,9 @@ public class EnvironmentGenerator {
      * Gets unique instance of the button panel.
      * @return only instance of the ButtonPanel.
      */
-    public static EnvironmentGenerator getInstance() {
+    public static EnvironmentManager getInstance() {
         if(UNIQUE_INSTANCE == null) {
-            UNIQUE_INSTANCE = new EnvironmentGenerator();
+            UNIQUE_INSTANCE = new EnvironmentManager();
         }
         return UNIQUE_INSTANCE;
     }
