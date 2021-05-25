@@ -11,12 +11,12 @@ public enum CellType {
      * Blank CellType, serves as a place holder.
      */
     NONE,
-    FLOOR(0, "src/resources/FloorCell.png", 25, 25),
-    WALL(1, "src/resources/WallCell.png", 25, 25),
-    DOOR(2, "src/resources/DoorCell.png", 25, 25),
-    PLAYER(3, "src/resources/PickleRickAvatar.png", 25, 25),
-    PORTAL(4,"src/resources/RickPortal.png", 25, 25),
-    LIFE(10, "src/resources/RickLifeCount.png", 50, 100);
+    FLOOR(0, "src/resources/Images/FloorCell.png", 25, 25),
+    WALL(1, "src/resources/Images/WallCell.png", 25, 25),
+    DOOR(2, "src/resources/Images/DoorCell.png", 25, 25),
+    PLAYER(3, "src/resources/Images/PickleRickAvatar.png", 25, 25),
+    PORTAL(4,"src/resources/Images/RickPortal.png", 25, 25),
+    LIFE(10, "src/resources/Images/RickLifeCount.png", 50, 100);
 
 
     /**
