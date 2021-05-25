@@ -88,9 +88,9 @@ public class ButtonPanel extends JPanel {
      */
     public void addUserLives() {
         final var width = CellType.LIFE.getCellWidth();
-        myLives[0].setBounds(0, 0, width, CellType.LIFE.getCellHeight());
-        myLives[1].setBounds(width, 0, width, CellType.LIFE.getCellHeight());
-        myLives[2].setBounds(width + width, 0, width, CellType.LIFE.getCellHeight());
+        myLives[0].setBounds(5, 60, width, CellType.LIFE.getCellHeight());
+        myLives[1].setBounds(width + 5, 60, width, CellType.LIFE.getCellHeight());
+        myLives[2].setBounds(width + width + 5, 60, width, CellType.LIFE.getCellHeight());
 
         add(myLives[0]);
         add(myLives[1]);
@@ -172,7 +172,7 @@ public class ButtonPanel extends JPanel {
 
         up.addActionListener(new UpButtonListener());
         up.setText("Up");
-        up.setBounds(panelWidth / 2 - buttonSize / 2, 8, buttonSize, buttonSize);
+        up.setBounds(panelWidth / 2 - buttonSize / 2 + 10, 8, buttonSize, buttonSize);
         up.setEnabled(false);
     }
 
@@ -187,7 +187,7 @@ public class ButtonPanel extends JPanel {
 
         right.addActionListener(new RightButtonListener());
         right.setText("Right");
-        right.setBounds(panelWidth / 2 + buttonSize / 2, panelHeight / 2 - buttonSize / 2, buttonSize, buttonSize);
+        right.setBounds(panelWidth / 2 + buttonSize / 2 + 10, panelHeight / 2 - buttonSize / 2, buttonSize, buttonSize);
         right.setEnabled(false);
     }
 
@@ -202,7 +202,7 @@ public class ButtonPanel extends JPanel {
 
         down.addActionListener(new DownButtonListener());
         down.setText("Down");
-        down.setBounds(panelWidth / 2 - buttonSize / 2, 66 * panelHeight / 100, buttonSize, buttonSize);
+        down.setBounds(panelWidth / 2 - buttonSize / 2 + 10, 66 * panelHeight / 100, buttonSize, buttonSize);
         down.setEnabled(false);
     }
 
@@ -217,7 +217,7 @@ public class ButtonPanel extends JPanel {
 
         left.addActionListener(new LeftButtonListener());
         left.setText("Left");
-        left.setBounds(panelWidth / 2 - buttonSize / 2 - buttonSize, panelHeight / 2 - buttonSize / 2, buttonSize, buttonSize);
+        left.setBounds(panelWidth / 2 - buttonSize / 2 - buttonSize + 10, panelHeight / 2 - buttonSize / 2, buttonSize, buttonSize);
         left.setEnabled(false);
     }
 
