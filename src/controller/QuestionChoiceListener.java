@@ -57,6 +57,5 @@ public class QuestionChoiceListener extends GameListener {
                 System.out.println("Get Wrecked, game is over.");
             }
         }
-
     }
 }

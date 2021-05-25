@@ -1,5 +1,6 @@
 package view;
 
+import controller.MenuButtonListener;
 import controller.NewGameButtonListener;
 
 import javax.swing.*;
@@ -109,6 +110,7 @@ public class MenuPanel extends JPanel {
         //Create and add "Menu" Button
         JButton menuButton = new JButton();
         menuButton.setText("Menu");
+        menuButton.addActionListener(new MenuButtonListener());
         myMenu.add(menuButton);
 
         // New Game Button
@@ -132,5 +134,41 @@ public class MenuPanel extends JPanel {
         JButton helpButton = new JButton();
         helpButton.setText("Help");
         myMenu.add(helpButton);
+    }
+
+    /**
+     * Displays the option to select which content version of the game will be played.
+     * Child Content is defaulted.
+     */
+    public void displayMenuButtonOptions() {
+        JFrame contentFrame = new JFrame("Content Selector");
+        contentFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        contentFrame.setLayout(new FlowLayout());
+        contentFrame.setSize(200,200);
+        contentFrame.setLocationRelativeTo(Environment.getInstance());
+        contentFrame.setResizable(false);
+
+        //Change to class level
+        JRadioButton adultContent = new JRadioButton("Adult Content");
+        JRadioButton childContent = new JRadioButton("Child Content");
+        childContent.setSelected(true);
+
+        ButtonGroup group = new ButtonGroup();
+        group.add(adultContent);
+        group.add(childContent);
+
+        JButton okayButton = new JButton("Ok");
+
+        contentFrame.add(adultContent);
+        contentFrame.add(childContent);
+        contentFrame.add(okayButton);
+
+        contentFrame.setVisible(true);
+        contentFrame.pack();
+
+        /*
+         * Action Listener for Ok button will determine which content we will use and the state of the content selected.
+         */
+
     }
 }
