@@ -108,6 +108,16 @@ public class ButtonPanel extends JPanel {
         repaint();
     }
 
+
+    /**
+     * Used to disable buttons when not needed.
+     */
+    public void disableArrowButtons() {
+        for(int i = 0; i < myArrows.length; i++) {
+            myArrows[i].setEnabled(false);
+        }
+    }
+
     /**
     Consolidation of all the sub methods that build the individual components that belong in the ButtonPanel.
      */

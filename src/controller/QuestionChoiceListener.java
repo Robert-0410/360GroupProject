@@ -47,6 +47,8 @@ public class QuestionChoiceListener extends GameListener {
             if(currentLives >= 0) {
                 ButtonPanel.getInstance().removeLifeCell(currentLives);
             } else {
+                ButtonPanel.getInstance().disableArrowButtons();
+                QuestionPanel.getInstance().disableButtons();
                 System.out.println("Get Wrecked, game is over.");
             }
         }
