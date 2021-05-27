@@ -71,6 +71,11 @@ public final class EnvironmentManager {
      */
     private CellType isWinningCell = CellType.NONE;
 
+    /**
+     * Flag for the mode of content used to decide what questions are asked in the game.
+     */
+    private boolean isInChildMode = true;
+
 
     /**
      * Constructor set initial fields.
@@ -108,6 +113,14 @@ public final class EnvironmentManager {
      */
     public ArrayList<List<GameObject>> getMyMap() {
         return myMap;
+    }
+
+
+    /**
+     * Sets the type of content to be displayed for questions in the game.
+     */
+    public void setInChildMode(final boolean theFlag) {
+        isInChildMode = theFlag;
     }
 
 
