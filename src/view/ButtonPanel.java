@@ -1,9 +1,9 @@
 package view;
 
-import controller.DownButtonListener;
-import controller.LeftButtonListener;
-import controller.RightButtonListener;
-import controller.UpButtonListener;
+import controller.listener.DownButtonListener;
+import controller.listener.LeftButtonListener;
+import controller.listener.RightButtonListener;
+import controller.listener.UpButtonListener;
 import model.CellType;
 import model.GameObject;
 

@@ -5,7 +5,6 @@ import model.GameObject;
 import sql.QuestionManager;
 import view.Environment;
 import view.QuestionPanel;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -17,7 +16,7 @@ import java.util.Scanner;
  * @author Robert
  * @version 1
  */
-public class EnvironmentManager {
+public final class EnvironmentManager {
 
     /**
      * Direction of travel available to user at a time.
@@ -107,7 +106,7 @@ public class EnvironmentManager {
      * Getter for the ArrayList representation of environment.
      * @return ArrayList<List<GameObject>>
      */
-    protected ArrayList<List<GameObject>> getMyMap() {
+    public ArrayList<List<GameObject>> getMyMap() {
         return myMap;
     }
 
@@ -115,7 +114,7 @@ public class EnvironmentManager {
     /**
      * Resets the player location when new Game is clicked.
      */
-    protected void resetPlayerLocation() {
+    public void resetPlayerLocation() {
         myUserRow = 1;
         myUserCol = 1;
     }
@@ -124,7 +123,7 @@ public class EnvironmentManager {
     /**
      * Initializes a new game within the environment, invoked when user chooses new game.
      */
-    protected void generateInitialEnvironment() {
+    public void generateInitialEnvironment() {
         fromFileFillMyMap();
         emptyCurrentEnvironment();
         populateGameObjects();
@@ -133,7 +132,7 @@ public class EnvironmentManager {
     /**
      * Generates the map after a move has been performed.
      */
-    protected void generateAfterMove() {
+    void generateAfterMove() {
         emptyCurrentEnvironment();
         populateGameObjects();
     }
@@ -143,7 +142,7 @@ public class EnvironmentManager {
      * Removes a user life when a question is answered wrong.
      * @return the new amount of lives.
      */
-    protected int removeUserLife() {
+    public int removeUserLife() {
         myUserLives--;
         return myUserLives;
     }
@@ -152,7 +151,7 @@ public class EnvironmentManager {
     /**
      * Resets player lives to three.
      */
-    protected void resetPlayerLives() {
+    public void resetPlayerLives() {
         myUserLives = 3;
     }
 
@@ -160,7 +159,7 @@ public class EnvironmentManager {
     /**
      * Used to move player up when the Up button is clicked.
      */
-    protected void movePlayerUp() {
+    public void movePlayerUp() {
         final var questionPanel = view.QuestionPanel.getInstance();
         final var nextCell = myMap.get(myUserRow - 1).get(myUserCol);
 
@@ -201,7 +200,7 @@ public class EnvironmentManager {
     /**
      * Used to move player to the right when the right button is clicked.
      */
-    protected void movePlayerRight() {
+    public void movePlayerRight() {
         final var questionPanel = view.QuestionPanel.getInstance();
         final var nextCell = myMap.get(myUserRow).get(myUserCol + 1);
 
@@ -239,7 +238,7 @@ public class EnvironmentManager {
     /**
      * Used to move player down when the right button is clicked.
      */
-    protected void movePlayerDown() {
+    public void movePlayerDown() {
         final var questionPanel = view.QuestionPanel.getInstance();
         final var nextCell = myMap.get(myUserRow + 1).get(myUserCol);
 
@@ -279,7 +278,7 @@ public class EnvironmentManager {
     /**
      * Used to move player to the left when the Left arrow button is clicked.
      */
-    protected void movePlayerLeft() {
+    public void movePlayerLeft() {
         final var questionPanel = view.QuestionPanel.getInstance();
         final var nextCell = myMap.get(myUserRow).get(myUserCol - 1);
 
@@ -317,7 +316,7 @@ public class EnvironmentManager {
     /**
      * Removes door once the user gets the correct answer.
      */
-    protected void removeDoorAfterCorrectAnswer() {
+    public void removeDoorAfterCorrectAnswer() {
         List<GameObject> currentRow = myMap.get(myUserRow);
         // Remove next cell and replace with player
         switch (userIsMoving.ordinal()) {

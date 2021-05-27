@@ -1,7 +1,7 @@
 package view;
 
-import controller.MenuButtonListener;
-import controller.NewGameButtonListener;
+import controller.listener.MenuButtonListener;
+import controller.listener.NewGameButtonListener;
 
 import javax.swing.*;
 import java.awt.*;

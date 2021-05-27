@@ -2,7 +2,7 @@ package view;
 
 
 
-import controller.QuestionChoiceListener;
+import controller.listener.QuestionChoiceListener;
 import sql.Question;
 
 import javax.swing.*;
