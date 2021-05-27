@@ -5,7 +5,6 @@ import model.GameObject;
 import sql.QuestionManager;
 import view.Environment;
 import view.QuestionPanel;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -17,7 +16,7 @@ import java.util.Scanner;
  * @author Robert
  * @version 1
  */
-public class EnvironmentGenerator {
+public final class EnvironmentManager {
 
     /**
      * Direction of travel available to user at a time.
@@ -29,7 +28,7 @@ public class EnvironmentGenerator {
     /**
      * Unique instance of EnvironmentGenerator.
      */
-    private static EnvironmentGenerator UNIQUE_INSTANCE;
+    private static EnvironmentManager UNIQUE_INSTANCE;
 
     /**
      * The connection between the database and the game.
@@ -67,11 +66,16 @@ public class EnvironmentGenerator {
      */
     private Direction userIsMoving;
 
+    /**
+     * Helps determine if the player has won the game.
+     */
+    private CellType isWinningCell = CellType.NONE;
+
 
     /**
      * Constructor set initial fields.
      */
-    private EnvironmentGenerator() {
+    private EnvironmentManager() {
         myEnvironment = Environment.getInstance();
         myMap = new ArrayList<>(18);
         QUESTION_MANAGER = new QuestionManager();
@@ -81,11 +85,20 @@ public class EnvironmentGenerator {
      * Gets unique instance of the button panel.
      * @return only instance of the ButtonPanel.
      */
-    public static EnvironmentGenerator getInstance() {
+    public static EnvironmentManager getInstance() {
         if(UNIQUE_INSTANCE == null) {
-            UNIQUE_INSTANCE = new EnvironmentGenerator();
+            UNIQUE_INSTANCE = new EnvironmentManager();
         }
         return UNIQUE_INSTANCE;
+    }
+
+
+    /**
+     * Getter of cell to determine if game has been won.
+     * @return CellType
+     */
+    public CellType getIsWinningCell() {
+        return isWinningCell;
     }
 
 
@@ -93,7 +106,7 @@ public class EnvironmentGenerator {
      * Getter for the ArrayList representation of environment.
      * @return ArrayList<List<GameObject>>
      */
-    protected ArrayList<List<GameObject>> getMyMap() {
+    public ArrayList<List<GameObject>> getMyMap() {
         return myMap;
     }
 
@@ -101,7 +114,7 @@ public class EnvironmentGenerator {
     /**
      * Resets the player location when new Game is clicked.
      */
-    protected void resetPlayerLocation() {
+    public void resetPlayerLocation() {
         myUserRow = 1;
         myUserCol = 1;
     }
@@ -110,7 +123,7 @@ public class EnvironmentGenerator {
     /**
      * Initializes a new game within the environment, invoked when user chooses new game.
      */
-    protected void generateInitialEnvironment() {
+    public void generateInitialEnvironment() {
         fromFileFillMyMap();
         emptyCurrentEnvironment();
         populateGameObjects();
@@ -119,7 +132,7 @@ public class EnvironmentGenerator {
     /**
      * Generates the map after a move has been performed.
      */
-    protected void generateAfterMove() {
+    void generateAfterMove() {
         emptyCurrentEnvironment();
         populateGameObjects();
     }
@@ -129,7 +142,7 @@ public class EnvironmentGenerator {
      * Removes a user life when a question is answered wrong.
      * @return the new amount of lives.
      */
-    protected int removeUserLife() {
+    public int removeUserLife() {
         myUserLives--;
         return myUserLives;
     }
@@ -138,7 +151,7 @@ public class EnvironmentGenerator {
     /**
      * Resets player lives to three.
      */
-    protected void resetPlayerLives() {
+    public void resetPlayerLives() {
         myUserLives = 3;
     }
 
@@ -146,12 +159,19 @@ public class EnvironmentGenerator {
     /**
      * Used to move player up when the Up button is clicked.
      */
-    protected void movePlayerUp() {
+    public void movePlayerUp() {
         final var questionPanel = view.QuestionPanel.getInstance();
         final var nextCell = myMap.get(myUserRow - 1).get(myUserCol);
 
-        if(nextCell.getMyID() == CellType.DOOR.getID()) {
+        if(nextCell.getMyID() == CellType.PORTAL.getID()) {
 
+            userIsMoving = Direction.NORTH;
+            questionPanel.enableButtons();
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
+
+        } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
+
+            isWinningCell = CellType.PORTAL;
             userIsMoving = Direction.NORTH;
             questionPanel.enableButtons();
             questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
@@ -180,11 +200,18 @@ public class EnvironmentGenerator {
     /**
      * Used to move player to the right when the right button is clicked.
      */
-    protected void movePlayerRight() {
+    public void movePlayerRight() {
         final var questionPanel = view.QuestionPanel.getInstance();
         final var nextCell = myMap.get(myUserRow).get(myUserCol + 1);
 
-        if(nextCell.getMyID() == CellType.DOOR.getID()) {
+        if(nextCell.getMyID() == CellType.PORTAL.getID()) {
+
+            isWinningCell = CellType.PORTAL;
+            userIsMoving = Direction.EAST;
+            questionPanel.enableButtons();
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
+
+        } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
 
             userIsMoving = Direction.EAST;
             questionPanel.enableButtons();
@@ -211,11 +238,18 @@ public class EnvironmentGenerator {
     /**
      * Used to move player down when the right button is clicked.
      */
-    protected void movePlayerDown() {
+    public void movePlayerDown() {
         final var questionPanel = view.QuestionPanel.getInstance();
         final var nextCell = myMap.get(myUserRow + 1).get(myUserCol);
 
-        if(nextCell.getMyID() == CellType.DOOR.getID()) {
+        if(nextCell.getMyID() == CellType.PORTAL.getID()) {
+
+            isWinningCell = CellType.PORTAL;
+            userIsMoving = Direction.SOUTH;
+            questionPanel.enableButtons();
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
+
+        } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
 
             userIsMoving = Direction.SOUTH;
             questionPanel.enableButtons();
@@ -244,11 +278,18 @@ public class EnvironmentGenerator {
     /**
      * Used to move player to the left when the Left arrow button is clicked.
      */
-    protected void movePlayerLeft() {
+    public void movePlayerLeft() {
         final var questionPanel = view.QuestionPanel.getInstance();
         final var nextCell = myMap.get(myUserRow).get(myUserCol - 1);
 
-        if(nextCell.getMyID() == CellType.DOOR.getID()) {
+        if(nextCell.getMyID() == CellType.PORTAL.getID()) {
+
+            isWinningCell = CellType.PORTAL;
+            userIsMoving = Direction.WEST;
+            questionPanel.enableButtons();
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
+
+        } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
 
             userIsMoving = Direction.WEST;
             questionPanel.enableButtons();
@@ -275,7 +316,7 @@ public class EnvironmentGenerator {
     /**
      * Removes door once the user gets the correct answer.
      */
-    protected void removeDoorAfterCorrectAnswer() {
+    public void removeDoorAfterCorrectAnswer() {
         List<GameObject> currentRow = myMap.get(myUserRow);
         // Remove next cell and replace with player
         switch (userIsMoving.ordinal()) {

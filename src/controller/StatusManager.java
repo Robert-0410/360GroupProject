@@ -3,23 +3,22 @@ package controller;
 import view.ButtonPanel;
 import view.MenuPanel;
 
-
 /**
  * Utility for status control of all game components.
  * @author Robert
  * @version 1
  */
-public class StatusManager {
+public final class StatusManager {
 
     /**
-     * Not to be invoked.
+     * Not to be invoked, utility class.
      */
     private StatusManager() {}
 
     /**
      * Enables buttons to start playing as Rick.
      */
-    protected static void enableGameButtons() {
+    public static void enableGameButtons() {
         var currentPanel = MenuPanel.getInstance();
         // Menu Panel
         currentPanel.getSaveButton().setEnabled(true);

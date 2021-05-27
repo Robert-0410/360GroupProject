@@ -1,4 +1,6 @@
-package controller;
+package controller.listener;
+
+import controller.EnvironmentManager;
 
 import java.awt.event.ActionListener;
 
@@ -12,20 +14,20 @@ public abstract class GameListener implements ActionListener {
     /**
      * Unique instance of of the EnvironmentGenerator.
      */
-    private final EnvironmentGenerator environmentGenerator;
+    private final EnvironmentManager environmentManager;
 
     /**
      * Connects unique instance of the environmentGenerator.
      */
     protected GameListener() {
-        environmentGenerator = EnvironmentGenerator.getInstance();
+        environmentManager = EnvironmentManager.getInstance();
     }
 
     /**
      * Gets the unique instance of the EnvironmentGenerator.
      * @return EnvironmentGenerator
      */
-    protected EnvironmentGenerator getEnvironmentGenerator() {
-        return environmentGenerator;
+    protected EnvironmentManager getEnvironmentGenerator() {
+        return environmentManager;
     }
 }

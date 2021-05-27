@@ -1,7 +1,7 @@
-package controller;
+package controller.listener;
 
+import controller.StatusManager;
 import view.ButtonPanel;
-
 import java.awt.event.ActionEvent;
 
 /**
