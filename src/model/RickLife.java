@@ -2,11 +2,15 @@ package model;
 
 import java.awt.*;
 
+/**
+ * Representation of user on the environment.
+ * @author Robert
+ * @version 1
+ */
 public class RickLife extends GameObject{
 
     /**
-     * Sets myIcon, myCellType, with the use of an ID argument.
-     *
+     * Calls super contractor with proper ID.
      */
     RickLife() {
         super(CellType.LIFE.getID());

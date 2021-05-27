@@ -15,7 +15,6 @@ public abstract class GameObject extends JLabel {
      */
     private final int myID;
 
-
     /**
      * ImageIcon used to draw the cell.
      */
@@ -30,7 +29,7 @@ public abstract class GameObject extends JLabel {
      * Sets myIcon, myCellType, with the use of an ID argument.
      * @param theID Identification of GameObject
      */
-    public GameObject(final int theID) {
+    protected GameObject(final int theID) {
         myID = theID;
         myCellType = myCellType.assignCellType(myID);
         myIcon = new ImageIcon(myCellType.getFilename());

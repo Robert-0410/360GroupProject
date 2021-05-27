@@ -1,13 +1,11 @@
-package controller;
+package controller.listener;
 
+import controller.GameAudio;
 import model.CellType;
 import view.ButtonPanel;
 import view.QuestionPanel;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-
-
-
 
 /**
  * Listens for answer choices done by the user and verifies if correct.
@@ -23,6 +21,7 @@ public class QuestionChoiceListener extends GameListener {
     public QuestionChoiceListener() {
         super();
     }
+
 
     /**
      * Invoked when an action occurs.

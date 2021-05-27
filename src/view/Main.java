@@ -1,15 +1,14 @@
 package view;
 
 import controller.GameAudio;
-import javax.swing.*;
-
+import javax.swing.UIManager;
 
 /**
  * Game is ran from here.
  * @author Robert
  * @version 1
  */
-public class Main {
+public final class Main {
 
     /**
      * main
@@ -22,9 +21,12 @@ public class Main {
         } catch (Exception e) {
             System.err.println("Error: " + e);
         }
-        //
+
+        // Display GUI.
         final Game game = Game.getInstance();
         game.display();
+
+        // Play theme song.
 //        GameAudio.themeSong(); // TODO: this statement is needed for actual product.
 
     }

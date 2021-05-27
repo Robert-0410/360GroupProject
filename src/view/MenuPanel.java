@@ -1,10 +1,15 @@
 package view;
 
-import controller.MenuButtonListener;
-import controller.NewGameButtonListener;
-
-import javax.swing.*;
-import java.awt.*;
+import controller.listener.MenuButtonListener;
+import controller.listener.NewGameButtonListener;
+import java.awt.FlowLayout;
+import java.awt.Color;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JRadioButton;
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
 import java.util.ArrayList;
 
 /**
@@ -15,7 +20,7 @@ import java.util.ArrayList;
  * @author Sean, Robert
  * @version 1
  */
-public class MenuPanel extends JPanel {
+public final class MenuPanel extends JPanel {
 
     /**
      * Singleton Style Unique Instance.
@@ -108,7 +113,7 @@ public class MenuPanel extends JPanel {
      */
     private void buildMenuButtons() {
         //Create and add "Menu" Button
-        JButton menuButton = new JButton();
+        final JButton menuButton = new JButton();
         menuButton.setText("Menu");
         menuButton.addActionListener(new MenuButtonListener());
         myMenu.add(menuButton);
@@ -120,18 +125,18 @@ public class MenuPanel extends JPanel {
         myMenu.add(newGameButton);
 
         //Create and add "Save" Button
-        JButton saveButton = new JButton();
+        final JButton saveButton = new JButton();
         saveButton.setText("Save");
         saveButton.setEnabled(false);
         myMenu.add(saveButton);
 
         //Create and add "Load" Button
-        JButton loadButton = new JButton();
+        final JButton loadButton = new JButton();
         loadButton.setText("Load");
         myMenu.add(loadButton);
 
         //Create and add "Help" Button
-        JButton helpButton = new JButton();
+        final JButton helpButton = new JButton();
         helpButton.setText("Help");
         myMenu.add(helpButton);
     }
@@ -141,23 +146,23 @@ public class MenuPanel extends JPanel {
      * Child Content is defaulted.
      */
     public void displayMenuButtonOptions() {
-        JFrame contentFrame = new JFrame("Content Selector");
-        contentFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        final JFrame contentFrame = new JFrame("Content Selector");
+        contentFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         contentFrame.setLayout(new FlowLayout());
-        contentFrame.setSize(200,200);
+        contentFrame.setSize(PaneConst.CONTENT_SELECTOR_SIZE.value(), PaneConst.CONTENT_SELECTOR_SIZE.value());
         contentFrame.setLocationRelativeTo(Environment.getInstance());
         contentFrame.setResizable(false);
 
         //Change to class level
-        JRadioButton adultContent = new JRadioButton("Adult Content");
-        JRadioButton childContent = new JRadioButton("Child Content");
+        final JRadioButton adultContent = new JRadioButton("Adult Content");
+        final JRadioButton childContent = new JRadioButton("Child Content");
         childContent.setSelected(true);
 
-        ButtonGroup group = new ButtonGroup();
+        final ButtonGroup group = new ButtonGroup();
         group.add(adultContent);
         group.add(childContent);
 
-        JButton okayButton = new JButton("Ok");
+        final JButton okayButton = new JButton("Ok");
 
         contentFrame.add(adultContent);
         contentFrame.add(childContent);
