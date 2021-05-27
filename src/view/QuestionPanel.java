@@ -1,12 +1,12 @@
 package view;
 
-
-
 import controller.listener.QuestionChoiceListener;
 import sql.Question;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.BorderFactory;
 import java.util.ArrayList;
 
 /**
@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * @author Robert
  * @version 1
  */
-public class QuestionPanel extends JPanel {
+public final class QuestionPanel extends JPanel {
 
     /**
      * Unique instance of the question panel that allows user to interact with questions.
@@ -72,7 +72,7 @@ public class QuestionPanel extends JPanel {
      */
     public void setMyQuestion(final Question theQuestion) {
         myQuestion = theQuestion;
-        var answers = myQuestion.getMyAnswers();
+        final var answers = myQuestion.getMyAnswers();
 
         myLabels[0].setText(myQuestion.getMyQuestion());
         myLabels[0].setForeground(Color.CYAN);
@@ -116,6 +116,7 @@ public class QuestionPanel extends JPanel {
         myButtons.get(3).setEnabled(true);
     }
 
+
     /**
      * Disables question buttons after question is answered correctly and clear labels.
      */
@@ -129,8 +130,6 @@ public class QuestionPanel extends JPanel {
             myLabel.setText("");
         }
     }
-
-
 
 
     /**
@@ -154,6 +153,7 @@ public class QuestionPanel extends JPanel {
         addButtonsAndLabels();
     }
 
+
     /**
      * Instantiates the labels used to display myQuestion information.
      */
@@ -164,6 +164,7 @@ public class QuestionPanel extends JPanel {
         }
     }
 
+
     /**
      Instantiates the answer buttons into array.
      */
@@ -172,6 +173,7 @@ public class QuestionPanel extends JPanel {
             myButtons.add(new JButton());
         }
     }
+
 
     /**
      Builds and customizes the A answer button.
@@ -183,6 +185,7 @@ public class QuestionPanel extends JPanel {
         myButtons.get(0).setEnabled(false);
 
     }
+
 
     /**
      Builds and customizes the B answer button.
@@ -204,6 +207,7 @@ public class QuestionPanel extends JPanel {
         myButtons.get(2).setEnabled(false);
     }
 
+
     /**
      Builds and customizes D answer button.
      */
@@ -213,6 +217,7 @@ public class QuestionPanel extends JPanel {
         myButtons.get(3).setBounds(5, 135, PaneConst.QUESTION_BUTTON_WIDTH.value(), PaneConst.QUESTION_BUTTON_HEIGHT.value());
         myButtons.get(3).setEnabled(false);
     }
+
 
     /**
      * Adds buttons and labels to panel.
@@ -230,6 +235,5 @@ public class QuestionPanel extends JPanel {
         add(myLabels[3]);
         add(myLabels[4]);
     }
-
 
 }

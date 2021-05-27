@@ -6,16 +6,19 @@ import controller.listener.RightButtonListener;
 import controller.listener.UpButtonListener;
 import model.CellType;
 import model.GameObject;
-
-import javax.swing.*;
 import java.awt.Color;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import javax.swing.BorderFactory;
 
 /**
  * Singleton style class that builds the control buttons container.
  * @author Robert
  * @version 1
  */
-public class ButtonPanel extends JPanel {
+public final class ButtonPanel extends JPanel {
 
     /**
      * Unique instance of the panel.
@@ -156,7 +159,6 @@ public class ButtonPanel extends JPanel {
 
     /**
      * Customize ButtonPanel.
-     * TODO UML
      */
     private void setPanelsState() {
         setLayout(null);
@@ -165,14 +167,14 @@ public class ButtonPanel extends JPanel {
     }
 
     /**
-    Builds and customizes the up arrow button.
+     * Builds and customizes the up arrow button.
      */
     private void buildUpButton() {
-        var up = getUpButton();
-        var panelWidth = PaneConst.WINDOW_WIDTH.value() / 2;
-        var buttonSize = PaneConst.ARROW_SIZE.value();
-        var upArrowIcon = new ImageIcon("src/resources/Images/Up Arrow.png");
-        var upArrowLabel = new JLabel(upArrowIcon);
+        final var up = getUpButton();
+        final var panelWidth = PaneConst.WINDOW_WIDTH.value() / 2;
+        final var buttonSize = PaneConst.ARROW_SIZE.value();
+        final var upArrowIcon = new ImageIcon("src/resources/Images/Up Arrow.png");
+        final var upArrowLabel = new JLabel(upArrowIcon);
 
         up.setBackground(Color.LIGHT_GRAY);
         up.addActionListener(new UpButtonListener());
@@ -185,12 +187,12 @@ public class ButtonPanel extends JPanel {
     Builds and customizes the right arrow button.
     */
     private void buildRightButton() {
-        var right = getRightButton();
-        var panelWidth = PaneConst.WINDOW_WIDTH.value() / 2;
-        var panelHeight = PaneConst.SOUTH_HEIGHT.value();
-        var buttonSize = PaneConst.ARROW_SIZE.value();
-        var rightArrowIcon = new ImageIcon("src/resources/Images/Right Arrow.png");
-        var rightArrowLabel = new JLabel(rightArrowIcon);
+        final var right = getRightButton();
+        final var panelWidth = PaneConst.WINDOW_WIDTH.value() / 2;
+        final var panelHeight = PaneConst.SOUTH_HEIGHT.value();
+        final var buttonSize = PaneConst.ARROW_SIZE.value();
+        final var rightArrowIcon = new ImageIcon("src/resources/Images/Right Arrow.png");
+        final var rightArrowLabel = new JLabel(rightArrowIcon);
 
         right.setBackground(Color.LIGHT_GRAY);
         right.addActionListener(new RightButtonListener());
@@ -203,12 +205,12 @@ public class ButtonPanel extends JPanel {
     Builds and customizes the down arrow button.
      */
     private void buildDownButton() {
-        var down = getDownButton();
-        var panelWidth = PaneConst.WINDOW_WIDTH.value() / 2;
-        var panelHeight = PaneConst.SOUTH_HEIGHT.value();
-        var buttonSize = PaneConst.ARROW_SIZE.value();
-        var downArrowIcon = new ImageIcon("src/resources/Images/Down Arrow.png");
-        var downArrowLabel = new JLabel(downArrowIcon);
+        final var down = getDownButton();
+        final var panelWidth = PaneConst.WINDOW_WIDTH.value() / 2;
+        final var panelHeight = PaneConst.SOUTH_HEIGHT.value();
+        final var buttonSize = PaneConst.ARROW_SIZE.value();
+        final var downArrowIcon = new ImageIcon("src/resources/Images/Down Arrow.png");
+        final var downArrowLabel = new JLabel(downArrowIcon);
 
         down.setBackground(Color.LIGHT_GRAY);
         down.addActionListener(new DownButtonListener());
@@ -221,12 +223,12 @@ public class ButtonPanel extends JPanel {
     Builds and customizes left arrow button.
      */
     private void buildLeftButton() {
-        var left = getLeftButton();
-        var panelWidth = PaneConst.WINDOW_WIDTH.value() / 2;
-        var panelHeight = PaneConst.SOUTH_HEIGHT.value();
-        var buttonSize = PaneConst.ARROW_SIZE.value();
-        var leftArrowIcon = new ImageIcon("src/resources/Images/Left Arrow.png");
-        var leftArrowLabel = new JLabel(leftArrowIcon);
+        final var left = getLeftButton();
+        final var panelWidth = PaneConst.WINDOW_WIDTH.value() / 2;
+        final var panelHeight = PaneConst.SOUTH_HEIGHT.value();
+        final var buttonSize = PaneConst.ARROW_SIZE.value();
+        final var leftArrowIcon = new ImageIcon("src/resources/Images/Left Arrow.png");
+        final var leftArrowLabel = new JLabel(leftArrowIcon);
 
         left.setBackground(Color.LIGHT_GRAY);
         left.addActionListener(new LeftButtonListener());

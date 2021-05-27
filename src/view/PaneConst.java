@@ -1,7 +1,5 @@
 package view;
 
-
-
 /**
  * All constants used for the GUI.
  * @author Robert
@@ -37,7 +35,18 @@ public enum PaneConst {
     /**
      * Height of the buttons inside of QuestionPanel.
      */
-    QUESTION_BUTTON_HEIGHT(25);
+    QUESTION_BUTTON_HEIGHT(25),
+
+    /**
+     * Size of the content selector size.
+     */
+    CONTENT_SELECTOR_SIZE(200),
+
+
+    /**
+     * Height of environment.
+     */
+    ENVIRONMENT_HEIGHT(450);
 
     /**
      * Value of Constant.
