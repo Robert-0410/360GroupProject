@@ -117,6 +117,4 @@ public enum CellType {
         return cellType;
     }
 
-
-
 }

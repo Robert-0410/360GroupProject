@@ -1,6 +1,6 @@
 package model;
 
-import java.awt.*;
+import java.awt.Color;
 
 /**
  * GameObject to win the game.
@@ -10,11 +10,11 @@ import java.awt.*;
 public class Portal extends GameObject {
 
     /**
-     * Call super for proper instantiation.
+     * Call super for proper instantiation ID.
      */
     Portal() {
         super(CellType.PORTAL.getID());
-        Color backgroundColor = new Color(54,117,135);
+        final Color backgroundColor = new Color(54,117,135);
         setBackground(backgroundColor);
     }
 }
