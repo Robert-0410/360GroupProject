@@ -43,7 +43,7 @@ public final class EnvironmentManager {
     /**
      * 2D ArrayList representation of map.
      */
-    private final ArrayList<List<GameObject>> myMap;
+    private ArrayList<List<GameObject>> myMap;
 
     /**
      * Row location of player.
@@ -117,10 +117,26 @@ public final class EnvironmentManager {
 
 
     /**
+     * Setter for the ArrayList representation of environment.
+     */
+    public void setMyMap(final ArrayList<List<GameObject>> theMap) {
+        myMap = theMap;
+    }
+
+
+    /**
      * Sets the type of content to be displayed for questions in the game.
      */
     public void setInChildMode(final boolean theFlag) {
         isInChildMode = theFlag;
+    }
+
+    /**
+     * Gets the boolean value of isInChildMode.
+     * @return isInChildMode.
+     */
+    public boolean getInChildMode() {
+        return isInChildMode;
     }
 
 
@@ -166,6 +182,14 @@ public final class EnvironmentManager {
      */
     public void resetPlayerLives() {
         myUserLives = 3;
+    }
+
+    /**
+     * Getter for myUserLives.
+     * @return myUserLives.
+     */
+    public int getPlayerLives() {
+        return myUserLives;
     }
 
 
