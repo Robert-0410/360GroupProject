@@ -180,16 +180,14 @@ public final class EnvironmentManager {
 
             userIsMoving = Direction.NORTH;
             questionPanel.enableButtons();
-            // change 'true' to pull from is adult ui setting
-            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion(true));
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
 
         } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
 
             isWinningCell = CellType.PORTAL;
             userIsMoving = Direction.NORTH;
             questionPanel.enableButtons();
-            // change 'true' to pull from is adult ui setting
-            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion(true));
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
 
         } else if(nextCell.getMyID() == CellType.FLOOR.getID()) {
             List<GameObject> currentRow = myMap.get(myUserRow);
@@ -224,15 +222,13 @@ public final class EnvironmentManager {
             isWinningCell = CellType.PORTAL;
             userIsMoving = Direction.EAST;
             questionPanel.enableButtons();
-            // change 'true' to pull from is adult ui setting
-            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion(true));
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
 
         } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
 
             userIsMoving = Direction.EAST;
             questionPanel.enableButtons();
-            // change 'true' to pull from is adult ui setting
-            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion(true));
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
 
         } else if(nextCell.getMyID() == CellType.FLOOR.getID()) {
 
@@ -264,15 +260,13 @@ public final class EnvironmentManager {
             isWinningCell = CellType.PORTAL;
             userIsMoving = Direction.SOUTH;
             questionPanel.enableButtons();
-            // change 'true' to pull from is adult ui setting
-            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion(true));
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
 
         } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
 
             userIsMoving = Direction.SOUTH;
             questionPanel.enableButtons();
-            // change 'true' to pull from is adult ui setting
-            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion(true));
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
 
         } else if (nextCell.getMyID() == CellType.FLOOR.getID()) {
             List<GameObject> currentRow = myMap.get(myUserRow);
@@ -306,15 +300,13 @@ public final class EnvironmentManager {
             isWinningCell = CellType.PORTAL;
             userIsMoving = Direction.WEST;
             questionPanel.enableButtons();
-            // change 'true' to pull from is adult ui setting
-            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion(true));
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
 
         } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
 
             userIsMoving = Direction.WEST;
             questionPanel.enableButtons();
-            // change 'true' to pull from is adult ui setting
-            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion(true));
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
 
         } else if(nextCell.getMyID() == CellType.FLOOR.getID()) {
             final List<GameObject> currentRow = myMap.get(myUserRow);
