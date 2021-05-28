@@ -1,5 +1,6 @@
 package view;
 
+import controller.listener.ContentSelectListener;
 import controller.listener.MenuButtonListener;
 import controller.listener.NewGameButtonListener;
 import java.awt.FlowLayout;
@@ -151,6 +152,7 @@ public final class MenuPanel extends JPanel {
         contentFrame.setLayout(new FlowLayout());
         contentFrame.setSize(PaneConst.CONTENT_SELECTOR_SIZE.value(), PaneConst.CONTENT_SELECTOR_SIZE.value());
         contentFrame.setLocationRelativeTo(Environment.getInstance());
+
         contentFrame.setResizable(false);
 
         //Change to class level
@@ -162,7 +164,8 @@ public final class MenuPanel extends JPanel {
         group.add(adultContent);
         group.add(childContent);
 
-        final JButton okayButton = new JButton("Ok");
+        final JButton okayButton = new JButton("Select");
+        okayButton.addActionListener(new ContentSelectListener(childContent, contentFrame));
 
         contentFrame.add(adultContent);
         contentFrame.add(childContent);
