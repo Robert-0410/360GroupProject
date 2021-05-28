@@ -49,7 +49,7 @@ public abstract class GameObject extends JLabel {
      * gets the icon used to draw the GameObject.
      * @return ImageIcon
      */
-    public ImageIcon getMyIcon() {
+    ImageIcon getMyIcon() {
         return myIcon;
     }
 
