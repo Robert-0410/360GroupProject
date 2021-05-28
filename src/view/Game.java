@@ -1,15 +1,18 @@
 package view;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import java.util.ArrayList;
 
 /**
- *  Holds all panels that display the trivia game.
+ * Holds all panels that display the trivia game.
  * @author Robert
  * @version 1
  */
-public class Game extends JPanel {
+public final class Game extends JPanel {
 
     /**
      * Singleton style class.
@@ -53,7 +56,7 @@ public class Game extends JPanel {
      * Triggers the GUI to display.
      */
     public void display() {
-        final JFrame frame = new JFrame("Name");
+        final JFrame frame = new JFrame("Rick Escapes Pickle Island");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setContentPane(this); // This adds panel to the frame.
 
@@ -64,6 +67,7 @@ public class Game extends JPanel {
         frame.setVisible(true);
     }
 
+
     /**
      * Consolidates methods that build the GUI.
      */
@@ -72,6 +76,7 @@ public class Game extends JPanel {
         prepMainPanel();
         addPanels();
     }
+
 
     /**
      * Retrieves unique instances of panels and adds them to myPanels.
@@ -86,6 +91,7 @@ public class Game extends JPanel {
 
     }
 
+
     /**
      * Prepares the main panel holding all the unique panels.
      */
@@ -93,6 +99,7 @@ public class Game extends JPanel {
         setPreferredSize(new Dimension(PaneConst.WINDOW_WIDTH.value(), PaneConst.WINDOW_HEIGHT.value()));
         setLayout(new BorderLayout());
     }
+
 
     /**
      * Prepares the panel located on the SOUTH, holds ButtonPanel & QuestionPanel.
@@ -105,6 +112,7 @@ public class Game extends JPanel {
         mySouthPanel.add(myPanels.get(2));
         mySouthPanel.add(myPanels.get(3));
     }
+
 
     /**
      * Adds unique panels to the main panel.

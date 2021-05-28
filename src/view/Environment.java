@@ -1,13 +1,16 @@
 package view;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 /** Environment for where the background will initially
-  * be displayed. After a game is selected, Environment
-  * will be used as the game playing field.
-  */
-public class Environment extends JPanel {
+ * be displayed. After a game is selected, Environment
+ * will be used as the game playing field.
+ * @author Robert
+ * @version 1
+ */
+public final class Environment extends JPanel {
 
     /**
      * Singleton Style Unique Instance.
@@ -21,6 +24,7 @@ public class Environment extends JPanel {
         setUpEnvironmentPanel();
     }
 
+
     /**
      * Get Instance Method
      * @return uniqueInstance
@@ -32,13 +36,14 @@ public class Environment extends JPanel {
         return UNIQUE_INSTANCE;
     }
 
+
     /**
      * Sets up the Environment panel
      */
     private void setUpEnvironmentPanel() {
-        ImageIcon environmentBackground = new ImageIcon("src/resources/RickAndMortyBreakingBad.png");
-        JLabel background = new JLabel();
-        background.setBounds(0, 0, PaneConst.WINDOW_WIDTH.value(), 450);
+        final ImageIcon environmentBackground = new ImageIcon("src/resources/Images/RickAndMortyBreakingBad.png");
+        final JLabel background = new JLabel();
+        background.setBounds(0, 0, PaneConst.WINDOW_WIDTH.value(), PaneConst.ENVIRONMENT_HEIGHT.value());
         background.setIcon(environmentBackground);
         setLayout(null);
         add(background);
