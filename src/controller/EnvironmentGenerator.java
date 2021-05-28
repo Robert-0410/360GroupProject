@@ -154,7 +154,8 @@ public class EnvironmentGenerator {
 
             userIsMoving = Direction.NORTH;
             questionPanel.enableButtons();
-            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
+            // change 'true' to pull from is adult ui setting
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion(true));
 
         } else if(nextCell.getMyID() == CellType.FLOOR.getID()) {
             List<GameObject> currentRow = myMap.get(myUserRow);
@@ -188,7 +189,8 @@ public class EnvironmentGenerator {
 
             userIsMoving = Direction.EAST;
             questionPanel.enableButtons();
-            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
+            // change 'true' to pull from is adult ui setting
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion(true));
 
         } else if(nextCell.getMyID() == CellType.FLOOR.getID()) {
 
@@ -219,7 +221,8 @@ public class EnvironmentGenerator {
 
             userIsMoving = Direction.SOUTH;
             questionPanel.enableButtons();
-            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
+            // change 'true' to pull from is adult ui setting
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion(true));
 
         } else if (nextCell.getMyID() == CellType.FLOOR.getID()) {
             List<GameObject> currentRow = myMap.get(myUserRow);
@@ -252,7 +255,8 @@ public class EnvironmentGenerator {
 
             userIsMoving = Direction.WEST;
             questionPanel.enableButtons();
-            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
+            // change 'true' to pull from is adult ui setting
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion(true));
 
         } else if(nextCell.getMyID() == CellType.FLOOR.getID()) {
             final List<GameObject> currentRow = myMap.get(myUserRow);
