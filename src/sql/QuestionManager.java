@@ -6,22 +6,28 @@ import org.sqlite.SQLiteDataSource;
 
 /**
  *
- * @author sasha amador
- * @version 1.1.03
+ * @author tom capaul
  *
- * The QuestionManager class connects our database, and is where our getMultipleChoice method is located.
+ * Simple class to demonstrate SQLite connectivity
+ * 1) create connection
+ * 2) add a table
+ * 3) add entries to the table
+ * 4) query the table for its contents
+ * 5) display the results
  *
+ * NOTE: any interactions with a database should utilize a try/catch
+ * since things can go wrong
  *
- * the getMultipleChoice method first does a parameter test to see if the user is playing in adult mode or
- * child mode. From there the maze will be populated with random questions from the database which reflects
- * the mode they are playing in
+ * @see <a href="https://shanemcd.org/2020/01/24/how-to-set-up-sqlite-with-jdbc-in-eclipse-on-windows/">
+https://shanemcd.org/2020/01/24/how-to-set-up-sqlite-with-jdbc-in-eclipse-on-windows/</a>
+ *
  */
 public class QuestionManager {
 
     Connection connection = null;
 
     public QuestionManager() {
-        //super();
+        super();
         databaseConnectionSetup();
     }
 
@@ -39,17 +45,15 @@ public class QuestionManager {
         }
     }
 
-    public Question getRandomMultipleChoiceQuestion(boolean isAdult) {
+    public Question getRandomMultipleChoiceQuestion() {
         Question questionBank = new Question();
 
         try {
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
-            String isAdultString = (isAdult) ? "1" : "0";
-
-            // need to update to actually return a random question instead of just the first one
-            ResultSet rs = statement.executeQuery(String.format("SELECT * FROM multiple_choice WHERE isAdult=%s ORDER BY RANDOM() LIMIT 1", isAdultString));
+            // need to update to actually return a random question istead of just the first one
+            ResultSet rs = statement.executeQuery("SELECT * FROM multiple_choice ORDER BY RANDOM() LIMIT 1");
             // read the result set
             String[] answers = new String[4];
             answers[0] = rs.getString("optionA");
