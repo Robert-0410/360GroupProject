@@ -26,6 +26,11 @@ public final class ButtonPanel extends JPanel {
     private static ButtonPanel UNIQUE_INSTANCE;
 
     /**
+     * Horizontal adjustment for Arrow button placement
+     */
+    private final int ARROW_HORIZONTAL_ADJ = 95;
+
+    /**
      * Array for internal storage of actual arrow buttons.
      */
     private final JButton[] myArrows = new JButton[4];
@@ -91,9 +96,9 @@ public final class ButtonPanel extends JPanel {
      */
     public void addUserLives() {
         final var width = CellType.LIFE.getCellWidth();
-        myLives[0].setBounds(5, 60, width, CellType.LIFE.getCellHeight());
-        myLives[1].setBounds(width + 5, 60, width, CellType.LIFE.getCellHeight());
-        myLives[2].setBounds(width + width + 5, 60, width, CellType.LIFE.getCellHeight());
+        myLives[0].setBounds(5, 20, width, CellType.LIFE.getCellHeight());
+        myLives[1].setBounds(width + 5, 20, width, CellType.LIFE.getCellHeight());
+        myLives[2].setBounds(width + width + 5, 20, width, CellType.LIFE.getCellHeight());
 
         add(myLives[0]);
         add(myLives[1]);
@@ -179,7 +184,7 @@ public final class ButtonPanel extends JPanel {
         up.setBackground(Color.LIGHT_GRAY);
         up.addActionListener(new UpButtonListener());
         up.add(upArrowLabel);
-        up.setBounds(panelWidth / 2 - buttonSize / 2 + 10, 2, buttonSize, buttonSize);
+        up.setBounds(panelWidth / 2 - buttonSize / 2 + ARROW_HORIZONTAL_ADJ, 2, buttonSize, buttonSize);
         up.setEnabled(false);
     }
 
@@ -197,7 +202,7 @@ public final class ButtonPanel extends JPanel {
         right.setBackground(Color.LIGHT_GRAY);
         right.addActionListener(new RightButtonListener());
         right.add(rightArrowLabel);
-        right.setBounds(panelWidth / 2 + buttonSize / 2 + 10, panelHeight / 2 - buttonSize / 2, buttonSize, buttonSize);
+        right.setBounds(panelWidth / 2 + buttonSize / 2 + ARROW_HORIZONTAL_ADJ, panelHeight / 2 - buttonSize / 2, buttonSize, buttonSize);
         right.setEnabled(false);
     }
 
@@ -215,7 +220,7 @@ public final class ButtonPanel extends JPanel {
         down.setBackground(Color.LIGHT_GRAY);
         down.addActionListener(new DownButtonListener());
         down.add(downArrowLabel);
-        down.setBounds(panelWidth / 2 - buttonSize / 2 + 10, 66 * panelHeight / 100, buttonSize, buttonSize);
+        down.setBounds(panelWidth / 2 - buttonSize / 2 + ARROW_HORIZONTAL_ADJ, 66 * panelHeight / 100, buttonSize, buttonSize);
         down.setEnabled(false);
     }
 
@@ -233,7 +238,7 @@ public final class ButtonPanel extends JPanel {
         left.setBackground(Color.LIGHT_GRAY);
         left.addActionListener(new LeftButtonListener());
         left.add(leftArrowLabel);
-        left.setBounds(panelWidth / 2 - buttonSize / 2 - buttonSize + 10, panelHeight / 2 - buttonSize / 2, buttonSize, buttonSize);
+        left.setBounds(panelWidth / 2 - buttonSize / 2 - buttonSize + ARROW_HORIZONTAL_ADJ, panelHeight / 2 - buttonSize / 2, buttonSize, buttonSize);
         left.setEnabled(false);
     }
 

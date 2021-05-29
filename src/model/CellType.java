@@ -16,7 +16,7 @@ public enum CellType {
     DOOR(2, "src/resources/Images/DoorCell.png", 25, 25),
     PLAYER(3, "src/resources/Images/PickleRickAvatar.png", 25, 25),
     PORTAL(4,"src/resources/Images/RickPortal.png", 25, 25),
-    LIFE(10, "src/resources/Images/RickLifeCount.png", 50, 100);
+    LIFE(10, "src/resources/Images/RickLifeCount.png", 70, 140);
 
 
     /**
