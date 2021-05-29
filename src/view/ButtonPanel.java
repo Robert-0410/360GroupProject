@@ -26,7 +26,7 @@ public final class ButtonPanel extends JPanel {
     private static ButtonPanel UNIQUE_INSTANCE;
 
     /**
-     * Horizontal adjustment for Arrow button placement
+     * Horizontal adjustment for Arrow button placement.
      */
     private final int ARROW_HORIZONTAL_ADJ = 95;
 
@@ -96,9 +96,11 @@ public final class ButtonPanel extends JPanel {
      */
     public void addUserLives() {
         final var width = CellType.LIFE.getCellWidth();
-        myLives[0].setBounds(5, 20, width, CellType.LIFE.getCellHeight());
-        myLives[1].setBounds(width + 5, 20, width, CellType.LIFE.getCellHeight());
-        myLives[2].setBounds(width + width + 5, 20, width, CellType.LIFE.getCellHeight());
+        final var RICK_LIFE_HORIZONTAL_ADJ = 5;
+        final var RICK_LIFE_VERTICAL_ADJ = 20;
+        myLives[0].setBounds(RICK_LIFE_HORIZONTAL_ADJ, RICK_LIFE_VERTICAL_ADJ, width, CellType.LIFE.getCellHeight());
+        myLives[1].setBounds(width + RICK_LIFE_HORIZONTAL_ADJ, RICK_LIFE_VERTICAL_ADJ, width, CellType.LIFE.getCellHeight());
+        myLives[2].setBounds(width + width + RICK_LIFE_HORIZONTAL_ADJ, RICK_LIFE_VERTICAL_ADJ, width, CellType.LIFE.getCellHeight());
 
         add(myLives[0]);
         add(myLives[1]);
