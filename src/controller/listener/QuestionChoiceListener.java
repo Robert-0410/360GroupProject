@@ -43,6 +43,7 @@ public class QuestionChoiceListener extends GameListener {
             case "D" -> userChoice = 3;
         }
         if(userChoice == correctIndex && getEnvironmentGenerator().getIsWinningCell() == CellType.PORTAL) {
+            GameAudio.winnerSong();
             ButtonPanel.getInstance().disableArrowButtons();
             QuestionPanel.getInstance().disableButtons();
             // TODO: winning audio & the rest of victory code!
