@@ -49,6 +49,7 @@ public class QuestionChoiceListener extends GameListener {
             QuestionPanel.getInstance().disableButtons();
             Environment.getInstance().gameWonEnvironmentPanel();
             Environment.getInstance().repaint();
+            // reset isWinningCell
         } else if(userChoice == correctIndex) {
             getEnvironmentGenerator().removeDoorAfterCorrectAnswer();
             GameAudio.wubbaLubba();

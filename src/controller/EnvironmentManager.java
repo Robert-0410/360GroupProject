@@ -106,6 +106,13 @@ public final class EnvironmentManager {
         return isWinningCell;
     }
 
+    /**
+     * Resets the isWinningCell enum back to NONE.
+     */
+    public void resetIsWinningCell() {
+        isWinningCell = CellType.NONE;
+    }
+
 
     /**
      * Getter for the ArrayList representation of environment.
