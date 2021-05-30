@@ -78,6 +78,9 @@ public class EnvironmentTests {
         myMap.clear();
     }
 
+    /**
+     * Fill ArrayMap for use.
+     */
     @Before
     public void setUp() {
         fillArrayMap();

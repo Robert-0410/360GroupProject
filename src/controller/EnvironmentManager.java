@@ -106,6 +106,13 @@ public final class EnvironmentManager {
         return isWinningCell;
     }
 
+    /**
+     * Resets the isWinningCell enum back to NONE.
+     */
+    public void resetIsWinningCell() {
+        isWinningCell = CellType.NONE;
+    }
+
 
     /**
      * Getter for the ArrayList representation of environment.
@@ -419,7 +426,7 @@ public final class EnvironmentManager {
     /**
      * Clears out current Environment panel in preparation for new components.
      */
-    private void emptyCurrentEnvironment() {
+    public void emptyCurrentEnvironment() {
         myEnvironment.removeAll();
         myEnvironment.repaint();
     }

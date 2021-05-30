@@ -41,9 +41,7 @@ public class ContentSelectListener extends GameListener {
      */
     @Override
     public void actionPerformed(final ActionEvent e) {
-        System.out.println("Is child selected? " + childContent.isSelected());
         getEnvironmentGenerator().setInChildMode(childContent.isSelected());
         myFrame.dispose();
-
     }
 }

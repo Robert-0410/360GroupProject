@@ -69,16 +69,15 @@ public final class GameAudio {
      * Audio that plays when the user wins the game.
      */
     public static void winnerSong() {
-        //Call this when the user wins the game.
         try {
-            final File themeSong = new File("file path to winning song");
-            final AudioInputStream audioStream = AudioSystem.getAudioInputStream(themeSong);
-            final Clip clip = AudioSystem.getClip();
-            clip.open(audioStream);
-            clip.start();
-        } catch (final Exception e) {
-            System.err.println("No winner song found from GameAudio.winnerSong().");
-        }
+        final File themeSong = new File("src/resources/GameWon.wav");
+        final AudioInputStream audioStream = AudioSystem.getAudioInputStream(themeSong);
+        final Clip clip = AudioSystem.getClip();
+        clip.open(audioStream);
+        clip.start();
+    } catch (final Exception e) {
+        System.err.println("No Game Lost wound found from GameAudio.winnerSong().");
+    }
     }
 
 

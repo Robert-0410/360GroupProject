@@ -3,6 +3,7 @@ package controller.listener;
 import controller.GameAudio;
 import model.CellType;
 import view.ButtonPanel;
+import view.Environment;
 import view.QuestionPanel;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -43,10 +44,12 @@ public class QuestionChoiceListener extends GameListener {
             case "D" -> userChoice = 3;
         }
         if(userChoice == correctIndex && getEnvironmentGenerator().getIsWinningCell() == CellType.PORTAL) {
+            GameAudio.winnerSong();
             ButtonPanel.getInstance().disableArrowButtons();
             QuestionPanel.getInstance().disableButtons();
-            // TODO: winning audio & the rest of victory code!
-            System.out.println("Game is won");
+            Environment.getInstance().gameWonEnvironmentPanel();
+            Environment.getInstance().repaint();
+            // reset isWinningCell
         } else if(userChoice == correctIndex) {
             getEnvironmentGenerator().removeDoorAfterCorrectAnswer();
             GameAudio.wubbaLubba();
@@ -59,6 +62,7 @@ public class QuestionChoiceListener extends GameListener {
                 GameAudio.gameLost();
                 ButtonPanel.getInstance().disableArrowButtons();
                 QuestionPanel.getInstance().disableButtons();
+                Environment.getInstance().gameLostEnvironmentPanel();
             }
         }
     }

@@ -27,6 +27,7 @@ public class NewGameButtonListener extends GameListener {
     @Override
     public void actionPerformed(final ActionEvent e) {
         StatusManager.enableGameButtons();
+        getEnvironmentGenerator().resetIsWinningCell();
         getEnvironmentGenerator().getMyMap().clear();
         getEnvironmentGenerator().resetPlayerLocation();
         getEnvironmentGenerator().generateInitialEnvironment();
