@@ -1,10 +1,14 @@
 package controller.listener;
 
+import controller.EnvironmentManager;
 import controller.GameAudio;
 import model.CellType;
 import view.ButtonPanel;
+import view.Environment;
+import view.PaneConst;
 import view.QuestionPanel;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 
 /**
@@ -46,7 +50,9 @@ public class QuestionChoiceListener extends GameListener {
             GameAudio.winnerSong();
             ButtonPanel.getInstance().disableArrowButtons();
             QuestionPanel.getInstance().disableButtons();
-            // TODO: winning audio & the rest of victory code!
+            Environment.getInstance().gameWonEnvironmentPanel();
+            Environment.getInstance().repaint();
+            // TODO: the rest of victory code!
             System.out.println("Game is won");
         } else if(userChoice == correctIndex) {
             getEnvironmentGenerator().removeDoorAfterCorrectAnswer();

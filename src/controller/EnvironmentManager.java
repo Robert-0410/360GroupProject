@@ -419,7 +419,7 @@ public final class EnvironmentManager {
     /**
      * Clears out current Environment panel in preparation for new components.
      */
-    private void emptyCurrentEnvironment() {
+    public void emptyCurrentEnvironment() {
         myEnvironment.removeAll();
         myEnvironment.repaint();
     }
