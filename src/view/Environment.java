@@ -58,9 +58,9 @@ public final class Environment extends JPanel {
     public void gameWonEnvironmentPanel() {
         EnvironmentManager.getInstance().emptyCurrentEnvironment();
         Environment.getInstance().setBackground(Color.BLACK);
-        final ImageIcon winningEnvironmentBackground = new ImageIcon("src/resources/Images/RickAndMortyDancing.gif");
+        final ImageIcon winningEnvironmentBackground = new ImageIcon("src/resources/Images/Dancing.gif");
         final JLabel winningBackground = new JLabel();
-        winningBackground.setBounds(205, 0, PaneConst.WINDOW_WIDTH.value(), PaneConst.ENVIRONMENT_HEIGHT.value());
+        winningBackground.setBounds(0, 0, PaneConst.WINDOW_WIDTH.value(), PaneConst.ENVIRONMENT_HEIGHT.value());
         winningBackground.setBackground(Color.BLACK);
         winningBackground.setIcon(winningEnvironmentBackground);
         Environment.getInstance().add(winningBackground);
