@@ -43,6 +43,5 @@ public class ContentSelectListener extends GameListener {
     public void actionPerformed(final ActionEvent e) {
         getEnvironmentGenerator().setInChildMode(childContent.isSelected());
         myFrame.dispose();
-
     }
 }
