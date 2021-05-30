@@ -57,13 +57,25 @@ public final class Environment extends JPanel {
      */
     public void gameWonEnvironmentPanel() {
         EnvironmentManager.getInstance().emptyCurrentEnvironment();
-        Environment.getInstance().setBackground(Color.BLACK);
         final ImageIcon winningEnvironmentBackground = new ImageIcon("src/resources/Images/Dancing.gif");
         final JLabel winningBackground = new JLabel();
         winningBackground.setBounds(0, 0, PaneConst.WINDOW_WIDTH.value(), PaneConst.ENVIRONMENT_HEIGHT.value());
-        winningBackground.setBackground(Color.BLACK);
         winningBackground.setIcon(winningEnvironmentBackground);
         Environment.getInstance().add(winningBackground);
     }
+
+    /**
+     * Changes Environment panel when the game is one.
+     */
+    public void gameLostEnvironmentPanel() {
+        EnvironmentManager.getInstance().emptyCurrentEnvironment();
+        Environment.getInstance().setBackground(Color.BLACK);
+        final ImageIcon lostEnvironmentBackground = new ImageIcon("src/resources/Images/LostGame.gif");
+        final JLabel lostBackground = new JLabel();
+        lostBackground.setBounds(0, 0, PaneConst.WINDOW_WIDTH.value(), PaneConst.ENVIRONMENT_HEIGHT.value());
+        lostBackground.setIcon(lostEnvironmentBackground);
+        Environment.getInstance().add(lostBackground);
+    }
+
 
 }

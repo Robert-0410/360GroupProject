@@ -61,6 +61,7 @@ public class QuestionChoiceListener extends GameListener {
                 GameAudio.gameLost();
                 ButtonPanel.getInstance().disableArrowButtons();
                 QuestionPanel.getInstance().disableButtons();
+                Environment.getInstance().gameLostEnvironmentPanel();
             }
         }
     }
