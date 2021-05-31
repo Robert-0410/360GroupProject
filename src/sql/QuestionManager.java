@@ -47,7 +47,7 @@ public class QuestionManager {
 
             String isAdultString = (isAdult) ? "1" : "0";
 
-            // need to update to actually return a random question instead of just the first one
+            // added more questions to database to help ensure we don't get repeated questions
             ResultSet rs = statement.executeQuery(String.format("SELECT * FROM multiple_choice WHERE isAdult=%s ORDER BY RANDOM() LIMIT 1", isAdultString));
             // read the result set
             String[] answers = new String[4];
