@@ -20,14 +20,14 @@ public class QuestionManager {
 
     Connection connection = null;
 
-    public QuestionManager() {
-        databaseConnectionSetup();
+    public QuestionManager(String databaseName) {
+        databaseConnectionSetup(databaseName);
     }
 
-    private void databaseConnectionSetup(){
+    private void databaseConnectionSetup(String databaseName){
         //establish connection (creates db file if it does not exist :-)
         try {
-            connection  = DriverManager.getConnection("jdbc:sqlite:questions.db");
+            connection  = DriverManager.getConnection(databaseName);
 
         }
         catch(SQLException e)
