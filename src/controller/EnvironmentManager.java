@@ -83,7 +83,7 @@ public final class EnvironmentManager {
     private EnvironmentManager() {
         myEnvironment = Environment.getInstance();
         myMap = new ArrayList<>(18);
-        QUESTION_MANAGER = new QuestionManager();
+        QUESTION_MANAGER = new QuestionManager("jdbc:sqlite:questions.db");
     }
 
     /**
