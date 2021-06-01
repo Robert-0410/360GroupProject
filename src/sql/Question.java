@@ -1,5 +1,12 @@
 package sql;
 
+/** @author sasha
+ *
+
+ * This class is contains all the getters and setters for our questions, answers, and the correct index
+ * for the question.
+ *
+ */
 
 
 public class Question {
