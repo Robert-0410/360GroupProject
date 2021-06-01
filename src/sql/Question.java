@@ -16,7 +16,7 @@ public class Question {
 
 
     /**
-     * This is the getter for myQuestion objects
+     * This is the getter for myQuestion objects.
      **/
     public String getMyQuestion(){
         return myQuestion;
