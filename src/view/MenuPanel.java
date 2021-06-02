@@ -4,14 +4,9 @@ import controller.listener.ContentSelectListener;
 import controller.listener.HelpButtonListener;
 import controller.listener.MenuButtonListener;
 import controller.listener.NewGameButtonListener;
-import java.awt.FlowLayout;
-import java.awt.Color;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JButton;
-import javax.swing.JRadioButton;
-import javax.swing.BorderFactory;
-import javax.swing.ButtonGroup;
+
+import java.awt.*;
+import javax.swing.*;
 import java.util.ArrayList;
 
 /**
@@ -180,6 +175,37 @@ public final class MenuPanel extends JPanel {
      * Displays the help portion of the program.
      */
     public void displayHelp() {
+        final var helpFrame = new JFrame("Help");
+        helpFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        helpFrame.setLayout(new FlowLayout());
+        helpFrame.setSize(PaneConst.HELP_WIDTH.value(), PaneConst.HELP_HEIGHT.value());
+        helpFrame.setLocationRelativeTo(Environment.getInstance());
+        helpFrame.setResizable(false);
 
+        final var textArea = new JTextArea();
+        textArea.setSize(PaneConst.HELP_WIDTH.value(), PaneConst.HELP_HEIGHT.value());
+        textArea.setBackground(Color.DARK_GRAY);
+        textArea.setForeground(Color.WHITE);
+        textArea.setEditable(false);
+        textArea.setWrapStyleWord(true);
+        textArea.setLineWrap(true);
+        textArea.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 12));
+        textArea.setText("****Menu Bar Options****\n- Selecting \"Menu\" will allow you to choose to play the game in either " +
+                "Adult Content Mode or Child Mode.\n- Selecting \"New Game\" will allow you to start the game over, erasing" +
+                "the content of the current game.\n- Selecting \"Save\" once you are playing a game will save the current" +
+                "state of your game.\n- Selecting \"Load\" will allow you to load a previously saved game to play.\n" +
+                "- Selecting \"Help\"....well you've discovered that already.\n****Playing the Game****\n- The Game objective " +
+                "is to make it to the portal and escape!- To move pickle rick around you can use the arrow buttons on the bottom " +
+                "left panel, he will move the direction you wish as long as you are on the path.\n- The black walls on the maze are " +
+                "barriers you cannot pass.\n- The move-able path is teal-ish.\n- As you enter a door you will be prompted a question, " +
+                "if you get this question wrong the door will be locked for good.\nIf you get the question right the door will " +
+                "disappear and you can continue.\nYou have a total of 4 lives. Pickle Rick currently has one life displayed " +
+                "(him on the map), if you get a question wrong he will take a life from the lives displayed in the bottom left. " +
+                "Once you have lost all 4 lives you lose the game.\n- Questions will be displayed in the bottom right corner of the game.\n" +
+                "Simply choose option \"A,B,C,D\" for the correct answer.\n\n");
+
+
+        helpFrame.add(textArea);
+        helpFrame.setVisible(true);
     }
 }
