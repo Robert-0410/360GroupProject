@@ -46,7 +46,17 @@ public enum PaneConst {
     /**
      * Height of environment.
      */
-    ENVIRONMENT_HEIGHT(450);
+    ENVIRONMENT_HEIGHT(450),
+
+    /**
+     * Height of Help Frame
+     */
+    HELP_HEIGHT(475),
+
+    /**
+     * Width of Help Frame
+     */
+    HELP_WIDTH(450);
 
     /**
      * Value of Constant.
