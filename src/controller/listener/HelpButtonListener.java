@@ -1,10 +1,12 @@
 package controller.listener;
 
+import view.MenuPanel;
+
 import java.awt.event.ActionEvent;
 
 /**
  * Listener for HelpButton.
- * @author Sean Lofan
+ * @author Sean Logan
  * @version 1
  */
 public class HelpButtonListener extends GameListener {
@@ -18,11 +20,10 @@ public class HelpButtonListener extends GameListener {
 
     /**
      * Invoked when an action occurs.
-     *
      * @param e the event to be processed
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        MenuPanel.getInstance().displayHelp();
     }
 }

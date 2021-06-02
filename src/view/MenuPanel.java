@@ -1,6 +1,7 @@
 package view;
 
 import controller.listener.ContentSelectListener;
+import controller.listener.HelpButtonListener;
 import controller.listener.MenuButtonListener;
 import controller.listener.NewGameButtonListener;
 import java.awt.FlowLayout;
@@ -139,6 +140,7 @@ public final class MenuPanel extends JPanel {
         //Create and add "Help" Button
         final JButton helpButton = new JButton();
         helpButton.setText("Help");
+        helpButton.addActionListener(new HelpButtonListener());
         myMenu.add(helpButton);
     }
 
@@ -177,6 +179,13 @@ public final class MenuPanel extends JPanel {
         /*
          * Action Listener for Ok button will determine which content we will use and the state of the content selected.
          */
+
+    }
+
+    /**
+     * Displays the help portion of the program.
+     */
+    public void displayHelp() {
 
     }
 }
