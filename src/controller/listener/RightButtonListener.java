@@ -24,6 +24,6 @@ public class RightButtonListener extends GameListener {
      */
     @Override
     public void actionPerformed(final ActionEvent e) {
-        getEnvironmentGenerator().movePlayerRight();
+        getEnvironmentManager().movePlayerRight();
     }
 }

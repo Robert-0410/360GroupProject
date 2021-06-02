@@ -25,6 +25,6 @@ public class LeftButtonListener extends GameListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        getEnvironmentGenerator().movePlayerLeft();
+        getEnvironmentManager().movePlayerLeft();
     }
 }

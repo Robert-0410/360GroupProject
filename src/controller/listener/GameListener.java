@@ -27,7 +27,7 @@ public abstract class GameListener implements ActionListener {
      * Gets the unique instance of the EnvironmentGenerator.
      * @return EnvironmentGenerator
      */
-    protected EnvironmentManager getEnvironmentGenerator() {
+    protected EnvironmentManager getEnvironmentManager() {
         return environmentManager;
     }
 }

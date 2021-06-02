@@ -26,6 +26,6 @@ public class DownButtonListener extends GameListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        getEnvironmentGenerator().movePlayerDown();
+        getEnvironmentManager().movePlayerDown();
     }
 }
