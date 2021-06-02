@@ -51,7 +51,7 @@ public enum PaneConst {
     /**
      * Height of Help Frame
      */
-    HELP_HEIGHT(450),
+    HELP_HEIGHT(475),
 
     /**
      * Width of Help Frame
