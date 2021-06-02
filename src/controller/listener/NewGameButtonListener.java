@@ -27,11 +27,11 @@ public class NewGameButtonListener extends GameListener {
     @Override
     public void actionPerformed(final ActionEvent e) {
         StatusManager.enableGameButtons();
-        getEnvironmentGenerator().resetIsWinningCell();
-        getEnvironmentGenerator().getMyMap().clear();
-        getEnvironmentGenerator().resetPlayerLocation();
-        getEnvironmentGenerator().generateInitialEnvironment();
+        getEnvironmentManager().resetIsWinningCell();
+        getEnvironmentManager().getMyMap().clear();
+        getEnvironmentManager().resetPlayerLocation();
+        getEnvironmentManager().generateInitialEnvironment();
         ButtonPanel.getInstance().addUserLives();
-        getEnvironmentGenerator().resetPlayerLives();
+        getEnvironmentManager().resetPlayerLives();
     }
 }

@@ -43,7 +43,7 @@ public class QuestionChoiceListener extends GameListener {
             case "C" -> userChoice = 2;
             case "D" -> userChoice = 3;
         }
-        if(userChoice == correctIndex && getEnvironmentGenerator().getIsWinningCell() == CellType.PORTAL) {
+        if(userChoice == correctIndex && getEnvironmentManager().getIsWinningCell() == CellType.PORTAL) {
             GameAudio.winnerSong();
             ButtonPanel.getInstance().disableArrowButtons();
             QuestionPanel.getInstance().disableButtons();
@@ -51,13 +51,14 @@ public class QuestionChoiceListener extends GameListener {
             Environment.getInstance().repaint();
             // reset isWinningCell
         } else if(userChoice == correctIndex) {
-            getEnvironmentGenerator().removeDoorAfterCorrectAnswer();
+            getEnvironmentManager().removeDoorAfterCorrectAnswer();
             GameAudio.wubbaLubba();
         } else {
-            final var currentLives = getEnvironmentGenerator().removeUserLife();
+            final var currentLives = getEnvironmentManager().removeUserLife();
             if(currentLives >= 0) {
                 ButtonPanel.getInstance().removeLifeCell(currentLives);
                 GameAudio.wrongAnswer();
+                getEnvironmentManager().removeDoorAfterWrongAnswer();
             } else {
                 GameAudio.gameLost();
                 ButtonPanel.getInstance().disableArrowButtons();

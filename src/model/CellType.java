@@ -16,6 +16,7 @@ public enum CellType {
     DOOR(2, "src/resources/Images/DoorCell.png", 25, 25),
     PLAYER(3, "src/resources/Images/PickleRickAvatar.png", 25, 25),
     PORTAL(4,"src/resources/Images/RickPortal.png", 25, 25),
+    LOCKED(5, "src/resources/Images/Locked.png", 25, 25),
     LIFE(10, "src/resources/Images/RickLifeCount.png", 70, 140);
 
 
@@ -108,6 +109,7 @@ public enum CellType {
             case 2 -> cellType = CellType.DOOR;
             case 3 -> cellType = CellType.PLAYER;
             case 4 -> cellType = CellType.PORTAL;
+            case 5 -> cellType = CellType.LOCKED;
             case 10 -> cellType = CellType.LIFE;
             default -> {
                 System.err.println("In CellType.assignCellType() a cell type failed to be assigned.");

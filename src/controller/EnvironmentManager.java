@@ -138,6 +138,7 @@ public final class EnvironmentManager {
         isInChildMode = theFlag;
     }
 
+
     /**
      * Gets the boolean value of isInChildMode.
      * @return isInChildMode.
@@ -381,6 +382,40 @@ public final class EnvironmentManager {
             case 3 -> {
                 currentRow.remove(myUserCol - 1);
                 currentRow.add(myUserCol - 1, GameObject.assignGameObject(CellType.FLOOR.getID()));
+            }
+            default -> System.err.println("Direction of user movement was not properly assigned.");
+        }
+
+
+        generateAfterMove();
+        QuestionPanel.getInstance().disableButtons();
+
+    }
+
+    /**
+     * Removes door once the user gets the wrong answer and replaces with a Locked door.
+     */
+    public void removeDoorAfterWrongAnswer() {
+        List<GameObject> currentRow = myMap.get(myUserRow);
+        // Remove next cell and replace with player
+        switch (userIsMoving.ordinal()) {
+            case 0 -> {
+                currentRow = myMap.get(myUserRow - 1);
+                currentRow.remove(myUserCol);
+                currentRow.add(myUserCol, GameObject.assignGameObject(CellType.LOCKED.getID()));
+            }
+            case 1 -> {
+                currentRow.remove(myUserCol + 1);
+                currentRow.add(myUserCol + 1, GameObject.assignGameObject(CellType.LOCKED.getID()));
+            }
+            case 2 -> {
+                currentRow = myMap.get(myUserRow + 1);
+                currentRow.remove(myUserCol);
+                currentRow.add(myUserCol, GameObject.assignGameObject(CellType.LOCKED.getID()));
+            }
+            case 3 -> {
+                currentRow.remove(myUserCol - 1);
+                currentRow.add(myUserCol - 1, GameObject.assignGameObject(CellType.LOCKED.getID()));
             }
             default -> System.err.println("Direction of user movement was not properly assigned.");
         }

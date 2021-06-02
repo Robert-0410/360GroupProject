@@ -23,6 +23,6 @@ public class UpButtonListener extends GameListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        getEnvironmentGenerator().movePlayerUp();
+        getEnvironmentManager().movePlayerUp();
     }
 }

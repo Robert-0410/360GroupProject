@@ -73,6 +73,7 @@ public abstract class GameObject extends JLabel {
             case 2 -> new Door();
             case 3 -> new PickleRickAvatar();
             case 4 -> new Portal();
+            case 5 -> new Locked();
             case 10 -> new RickLife();
             default -> throw new IllegalStateException("Unexpected value: " + theID);
         };
