@@ -115,7 +115,7 @@ public final class MenuPanel extends JPanel {
      */
     private void buildMenuButtons() {
         //Create and add "Menu" Button
-        final JButton menuButton = new JButton();
+        final var menuButton = new JButton();
         menuButton.setText("Menu");
         menuButton.addActionListener(new MenuButtonListener());
         myMenu.add(menuButton);
@@ -127,18 +127,18 @@ public final class MenuPanel extends JPanel {
         myMenu.add(newGameButton);
 
         //Create and add "Save" Button
-        final JButton saveButton = new JButton();
+        final var saveButton = new JButton();
         saveButton.setText("Save");
         saveButton.setEnabled(false);
         myMenu.add(saveButton);
 
         //Create and add "Load" Button
-        final JButton loadButton = new JButton();
+        final var loadButton = new JButton();
         loadButton.setText("Load");
         myMenu.add(loadButton);
 
         //Create and add "Help" Button
-        final JButton helpButton = new JButton();
+        final var helpButton = new JButton();
         helpButton.setText("Help");
         helpButton.addActionListener(new HelpButtonListener());
         myMenu.add(helpButton);
@@ -149,24 +149,22 @@ public final class MenuPanel extends JPanel {
      * Child Content is defaulted.
      */
     public void displayMenuButtonOptions() {
-        final JFrame contentFrame = new JFrame("Content Selector");
+        final var contentFrame = new JFrame("Content Selector");
         contentFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         contentFrame.setLayout(new FlowLayout());
         contentFrame.setSize(PaneConst.CONTENT_SELECTOR_SIZE.value(), PaneConst.CONTENT_SELECTOR_SIZE.value());
         contentFrame.setLocationRelativeTo(Environment.getInstance());
-
         contentFrame.setResizable(false);
 
-        //Change to class level
-        final JRadioButton adultContent = new JRadioButton("Adult Content");
-        final JRadioButton childContent = new JRadioButton("Child Content");
+        final var adultContent = new JRadioButton("Adult Content");
+        final var childContent = new JRadioButton("Child Content");
         childContent.setSelected(true);
 
-        final ButtonGroup group = new ButtonGroup();
+        final var group = new ButtonGroup();
         group.add(adultContent);
         group.add(childContent);
 
-        final JButton okayButton = new JButton("Select");
+        final var okayButton = new JButton("Select");
         okayButton.addActionListener(new ContentSelectListener(childContent, contentFrame));
 
         contentFrame.add(adultContent);
@@ -175,10 +173,6 @@ public final class MenuPanel extends JPanel {
 
         contentFrame.setVisible(true);
         contentFrame.pack();
-
-        /*
-         * Action Listener for Ok button will determine which content we will use and the state of the content selected.
-         */
 
     }
 
