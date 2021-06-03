@@ -83,7 +83,7 @@ public final class EnvironmentManager {
     private EnvironmentManager() {
         myEnvironment = Environment.getInstance();
         myMap = new ArrayList<>(18);
-        QUESTION_MANAGER = new QuestionManager("jdbc:sqlite:questions.db");
+        QUESTION_MANAGER = new QuestionManager("jdbc:sqlite:questions.db", !isInChildMode);
     }
 
     /**
@@ -212,13 +212,13 @@ public final class EnvironmentManager {
             isWinningCell = CellType.PORTAL;
             userIsMoving = Direction.NORTH;
             questionPanel.enableButtons();
-            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion(!isInChildMode));
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
 
         } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
 
             userIsMoving = Direction.NORTH;
             questionPanel.enableButtons();
-            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion(!isInChildMode));
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
 
         } else if(nextCell.getMyID() == CellType.FLOOR.getID()) {
             List<GameObject> currentRow = myMap.get(myUserRow);
@@ -253,13 +253,13 @@ public final class EnvironmentManager {
             isWinningCell = CellType.PORTAL;
             userIsMoving = Direction.EAST;
             questionPanel.enableButtons();
-            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion(!isInChildMode));
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
 
         } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
 
             userIsMoving = Direction.EAST;
             questionPanel.enableButtons();
-            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion(!isInChildMode));
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
 
         } else if(nextCell.getMyID() == CellType.FLOOR.getID()) {
 
@@ -291,13 +291,13 @@ public final class EnvironmentManager {
             isWinningCell = CellType.PORTAL;
             userIsMoving = Direction.SOUTH;
             questionPanel.enableButtons();
-            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion(!isInChildMode));
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
 
         } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
 
             userIsMoving = Direction.SOUTH;
             questionPanel.enableButtons();
-            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion(!isInChildMode));
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
 
         } else if (nextCell.getMyID() == CellType.FLOOR.getID()) {
             List<GameObject> currentRow = myMap.get(myUserRow);
@@ -331,13 +331,13 @@ public final class EnvironmentManager {
             isWinningCell = CellType.PORTAL;
             userIsMoving = Direction.WEST;
             questionPanel.enableButtons();
-            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion(!isInChildMode));
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
 
         } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
 
             userIsMoving = Direction.WEST;
             questionPanel.enableButtons();
-            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion(!isInChildMode));
+            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion());
 
         } else if(nextCell.getMyID() == CellType.FLOOR.getID()) {
             final List<GameObject> currentRow = myMap.get(myUserRow);
