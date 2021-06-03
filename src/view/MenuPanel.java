@@ -245,11 +245,11 @@ public final class MenuPanel extends JPanel {
         loadGameFrame.setResizable(false);
 
         final var loadOne = new JButton("Load 1");
-//        loadOne.addActionListener(new LoadButtonListener(loadGameFrame));
+        loadOne.addActionListener(new LoadButtonListener(loadGameFrame));
         final var loadTwo = new JButton("Load 2");
-//        loadTwo.addActionListener(new LoadButtonListener(loadGameFrame));
+        loadTwo.addActionListener(new LoadButtonListener(loadGameFrame));
         final var loadThree = new JButton("Load 3");
-//        loadThree.addActionListener(new LoadButtonListener(loadGameFrame));
+        loadThree.addActionListener(new LoadButtonListener(loadGameFrame));
 
         loadGameFrame.add(loadOne);
         loadGameFrame.add(loadTwo);
