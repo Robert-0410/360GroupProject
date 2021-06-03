@@ -128,7 +128,7 @@ public final class MenuPanel extends JPanel {
         //Create and add "Load" Button
         final var loadButton = new JButton();
         loadButton.setText("Load");
-        loadButton.addActionListener(new LoadButtonListener());
+        loadButton.addActionListener(new LoadOptionListener());
         myMenu.add(loadButton);
 
         //Create and add "Help" Button
@@ -231,6 +231,31 @@ public final class MenuPanel extends JPanel {
 
         saveGameFrame.setVisible(true);
         saveGameFrame.pack();
+    }
 
+    /**
+     * Displays the option to load the game to various slots.
+     */
+    public void displayLoadGameOptions() {
+        final var loadGameFrame = new JFrame("Load Game Options");
+        loadGameFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        loadGameFrame.setLayout(new FlowLayout());
+        loadGameFrame.setSize(PaneConst.CONTENT_SELECTOR_SIZE.value(), PaneConst.CONTENT_SELECTOR_SIZE.value());
+        loadGameFrame.setLocationRelativeTo(Environment.getInstance());
+        loadGameFrame.setResizable(false);
+
+        final var loadOne = new JButton("Load 1");
+//        loadOne.addActionListener(new LoadButtonListener(loadGameFrame));
+        final var loadTwo = new JButton("Load 2");
+//        loadTwo.addActionListener(new LoadButtonListener(loadGameFrame));
+        final var loadThree = new JButton("Load 3");
+//        loadThree.addActionListener(new LoadButtonListener(loadGameFrame));
+
+        loadGameFrame.add(loadOne);
+        loadGameFrame.add(loadTwo);
+        loadGameFrame.add(loadThree);
+
+        loadGameFrame.setVisible(true);
+        loadGameFrame.pack();
     }
 }
