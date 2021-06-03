@@ -94,17 +94,24 @@ public final class ButtonPanel extends JPanel {
     /**
      * Adds three lives for the user to use for the game, handles graphics only not actual life count.
      */
-    public void addUserLives() {
+    public void addUserLives(final int theLives) {
+        // Checks to see if any need to be removed before adding proper amount of lives.
+        if (theLives == 2 || theLives == 1) {
+            remove(myLives[0]);
+            remove(myLives[1]);
+            remove(myLives[2]);
+            repaint();
+        }
         final var width = CellType.LIFE.getCellWidth();
-        final var RICK_LIFE_HORIZONTAL_ADJ = 5;
+        var RICK_LIFE_HORIZONTAL_ADJ = 5;
         final var RICK_LIFE_VERTICAL_ADJ = 20;
-        myLives[0].setBounds(RICK_LIFE_HORIZONTAL_ADJ, RICK_LIFE_VERTICAL_ADJ, width, CellType.LIFE.getCellHeight());
-        myLives[1].setBounds(width + RICK_LIFE_HORIZONTAL_ADJ, RICK_LIFE_VERTICAL_ADJ, width, CellType.LIFE.getCellHeight());
-        myLives[2].setBounds(width + width + RICK_LIFE_HORIZONTAL_ADJ, RICK_LIFE_VERTICAL_ADJ, width, CellType.LIFE.getCellHeight());
 
-        add(myLives[0]);
-        add(myLives[1]);
-        add(myLives[2]);
+        for(int i = 0; i < theLives; i++) {
+            myLives[i].setBounds(RICK_LIFE_HORIZONTAL_ADJ, RICK_LIFE_VERTICAL_ADJ, width, CellType.LIFE.getCellHeight());
+            add(myLives[i]);
+
+            RICK_LIFE_HORIZONTAL_ADJ += width;
+        }
 
         repaint();
     }

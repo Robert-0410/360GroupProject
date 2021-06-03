@@ -86,25 +86,7 @@ public final class EnvironmentManager {
         QUESTION_MANAGER = new QuestionManager("jdbc:sqlite:questions.db");
     }
 
-    /**
-     * Gets unique instance of the button panel.
-     * @return only instance of the ButtonPanel.
-     */
-    public static EnvironmentManager getInstance() {
-        if(UNIQUE_INSTANCE == null) {
-            UNIQUE_INSTANCE = new EnvironmentManager();
-        }
-        return UNIQUE_INSTANCE;
-    }
 
-
-    /**
-     * Getter of cell to determine if game has been won.
-     * @return CellType
-     */
-    public CellType getIsWinningCell() {
-        return isWinningCell;
-    }
 
     /**
      * Resets the isWinningCell enum back to NONE.
@@ -112,41 +94,6 @@ public final class EnvironmentManager {
     public void resetIsWinningCell() {
         isWinningCell = CellType.NONE;
     }
-
-
-    /**
-     * Getter for the ArrayList representation of environment.
-     * @return ArrayList<List<GameObject>>
-     */
-    public ArrayList<List<GameObject>> getMyMap() {
-        return myMap;
-    }
-
-
-    /**
-     * Setter for the ArrayList representation of environment.
-     */
-    public void setMyMap(final ArrayList<List<GameObject>> theMap) {
-        myMap = theMap;
-    }
-
-
-    /**
-     * Sets the type of content to be displayed for questions in the game.
-     */
-    public void setInChildMode(final boolean theFlag) {
-        isInChildMode = theFlag;
-    }
-
-
-    /**
-     * Gets the boolean value of isInChildMode.
-     * @return isInChildMode.
-     */
-    public boolean getInChildMode() {
-        return isInChildMode;
-    }
-
 
     /**
      * Resets the player location when new Game is clicked.
@@ -166,10 +113,11 @@ public final class EnvironmentManager {
         populateGameObjects();
     }
 
+
     /**
      * Generates the map after a move has been performed.
      */
-    void generateAfterMove() {
+    public void generateAfterMove() {
         emptyCurrentEnvironment();
         populateGameObjects();
     }
@@ -190,14 +138,6 @@ public final class EnvironmentManager {
      */
     public void resetPlayerLives() {
         myUserLives = 3;
-    }
-
-    /**
-     * Getter for myUserLives.
-     * @return myUserLives.
-     */
-    public int getPlayerLives() {
-        return myUserLives;
     }
 
 
@@ -486,5 +426,100 @@ public final class EnvironmentManager {
             x = 0;
             y = y + 25;
         }
+    }
+
+
+    /**
+     * Sets state from a SavedGame Object.
+     * @param theMap holding GameObjects
+     * @param theUserRow row location
+     * @param theUserCol column location
+     * @param theUserLives current user lives
+     * @param isInChildMode content
+     */
+    public void setStateFromSavedGame(final ArrayList<List<GameObject>> theMap, final int theUserRow,
+                                      final int theUserCol, final int theUserLives, final boolean isInChildMode) {
+        myMap = theMap;
+        myUserRow = theUserRow;
+        myUserCol = theUserCol;
+        myUserLives = theUserLives;
+        this.isInChildMode = isInChildMode;
+
+    }
+
+
+    /**
+     * Getter for the ArrayList representation of environment.
+     * @return ArrayList<List<GameObject>>
+     */
+    public ArrayList<List<GameObject>> getMyMap() {
+        return myMap;
+    }
+
+
+    /**
+     * Setter for the ArrayList representation of environment.
+     */
+    public void setMyMap(final ArrayList<List<GameObject>> theMap) {
+        myMap = theMap;
+    }
+
+    /**
+     * @return Row user is located on.
+     */
+    public int getMyUserRow() {
+        return myUserRow;
+    }
+
+    /**
+     * @return Column user is located on.
+     */
+    public int getMyUserCol() {
+        return myUserCol;
+    }
+
+    /**
+     * Getter for myUserLives.
+     * @return myUserLives.
+     */
+    public int getPlayerLives() {
+        return myUserLives;
+    }
+
+
+    /**
+     * Sets the type of content to be displayed for questions in the game.
+     */
+    public void setInChildMode(final boolean theFlag) {
+        isInChildMode = theFlag;
+    }
+
+
+    /**
+     * Gets the boolean value of isInChildMode.
+     * @return isInChildMode.
+     */
+    public boolean getInChildMode() {
+        return isInChildMode;
+    }
+
+    /**
+     * Gets unique instance of the button panel.
+     * @return only instance of the ButtonPanel.
+     */
+    public static EnvironmentManager getInstance() {
+        if(UNIQUE_INSTANCE == null) {
+            UNIQUE_INSTANCE = new EnvironmentManager();
+        }
+        return UNIQUE_INSTANCE;
+    }
+
+
+    /**
+     * Getter of cell to determine if game has been won.
+     * @return CellType
+     */
+    public CellType getIsWinningCell() {
+        return isWinningCell;
     }
 }
