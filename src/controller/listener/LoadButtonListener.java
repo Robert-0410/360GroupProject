@@ -18,6 +18,7 @@ public class LoadButtonListener extends GameListener {
         var savedGame = new SavedGame();
         final var saved1 = "src/resources/saved_games/Save1.ser";
 
+        // TODO: switch to decide what save game to load
         try {
             final var fileIn = new FileInputStream(saved1);
             final var in = new ObjectInputStream(fileIn);
@@ -28,6 +29,10 @@ public class LoadButtonListener extends GameListener {
             ex.printStackTrace();
             return;
         }
-        savedGame.checkObject();
+        // TODO: set the environmentManager and load map.
+        getEnvironmentManager().setStateFromSavedGame(savedGame.getMyMap(), savedGame.getMyUserRow(),
+                savedGame.getMyUserCol(), savedGame.getMyUserLives(), savedGame.isInChildMode());
+        getEnvironmentManager().generateAfterMove();
+        System.out.println("finished Load");
     }
 }

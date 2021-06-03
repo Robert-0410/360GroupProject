@@ -113,10 +113,11 @@ public final class EnvironmentManager {
         populateGameObjects();
     }
 
+
     /**
      * Generates the map after a move has been performed.
      */
-    void generateAfterMove() {
+    public void generateAfterMove() {
         emptyCurrentEnvironment();
         populateGameObjects();
     }
@@ -426,6 +427,26 @@ public final class EnvironmentManager {
             y = y + 25;
         }
     }
+
+
+    /**
+     * Sets state from a SavedGame Object.
+     * @param theMap holding GameObjects
+     * @param theUserRow row location
+     * @param theUserCol column location
+     * @param theUserLives current user lives
+     * @param isInChildMode content
+     */
+    public void setStateFromSavedGame(final ArrayList<List<GameObject>> theMap, final int theUserRow,
+                                      final int theUserCol, final int theUserLives, final boolean isInChildMode) {
+        myMap = theMap;
+        myUserRow = theUserRow;
+        myUserCol = theUserCol;
+        myUserLives = theUserLives;
+        this.isInChildMode = isInChildMode;
+
+    }
+
 
     /**
      * Getter for the ArrayList representation of environment.

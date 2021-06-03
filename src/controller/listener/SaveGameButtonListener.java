@@ -21,6 +21,7 @@ public class SaveGameButtonListener extends GameListener {
         System.out.println("Save Game");
         final var save1 = "src/resources/saved_games/Save1.ser";
 
+
         SavedGame test = new SavedGame();
         test.setMyMap(getEnvironmentManager().getMyMap());
         test.setMyUserRow(getEnvironmentManager().getMyUserRow());
@@ -28,6 +29,8 @@ public class SaveGameButtonListener extends GameListener {
         test.setMyUserLives(getEnvironmentManager().getPlayerLives());
         test.setInChildMode(getEnvironmentManager().getInChildMode());
         test.checkObject();
+
+        // TODO: switch statement decide what file is used
 
         try {
 
@@ -39,7 +42,6 @@ public class SaveGameButtonListener extends GameListener {
 
             fileOut.close();
 
-            System.out.println("Object serialized.");
 
         } catch (final IOException ex) {
             ex.printStackTrace();

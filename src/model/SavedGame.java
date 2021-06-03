@@ -9,6 +9,7 @@ import java.util.List;
  */
 public class SavedGame implements Serializable {
 
+    private static final long serialversionUID = 129348938L;
 
     /**
      * Current state of the map.
@@ -39,13 +40,10 @@ public class SavedGame implements Serializable {
     // private Direction userIsMoving;
 
 
-
     /**
      * Parameterless constructor.
      */
-    public SavedGame() {
-
-    }
+    public SavedGame() {}
 
     // TODO: method to test whats going on with object.
     public void checkObject() {
@@ -90,5 +88,25 @@ public class SavedGame implements Serializable {
      */
     public void setInChildMode(boolean inChildMode) {
         isInChildMode = inChildMode;
+    }
+
+    public ArrayList<List<GameObject>> getMyMap() {
+        return myMap;
+    }
+
+    public int getMyUserRow() {
+        return myUserRow;
+    }
+
+    public int getMyUserCol() {
+        return myUserCol;
+    }
+
+    public int getMyUserLives() {
+        return myUserLives;
+    }
+
+    public boolean isInChildMode() {
+        return isInChildMode;
     }
 }
