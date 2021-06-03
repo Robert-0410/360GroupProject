@@ -121,14 +121,14 @@ public final class MenuPanel extends JPanel {
         //Create and add "Save" Button
         final var saveButton = new JButton();
         saveButton.setText("Save");
-        saveButton.addActionListener(new SaveGameButtonListener());
         saveButton.setEnabled(false);
+        saveButton.addActionListener(new SaveOptionListener());
         myMenu.add(saveButton);
 
         //Create and add "Load" Button
         final var loadButton = new JButton();
         loadButton.setText("Load");
-        loadButton.addActionListener(new LoadButtonListener());
+        loadButton.addActionListener(new LoadOptionListener());
         myMenu.add(loadButton);
 
         //Create and add "Help" Button
@@ -167,7 +167,6 @@ public final class MenuPanel extends JPanel {
 
         contentFrame.setVisible(true);
         contentFrame.pack();
-
     }
 
     /**
@@ -206,5 +205,57 @@ public final class MenuPanel extends JPanel {
 
         helpFrame.add(textArea);
         helpFrame.setVisible(true);
+    }
+
+    /**
+     * Displays the option to save the game to various slots.
+     */
+    public void displaySaveGameOptions() {
+        final var saveGameFrame = new JFrame("Save Game Options");
+        saveGameFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        saveGameFrame.setLayout(new FlowLayout());
+        saveGameFrame.setSize(PaneConst.CONTENT_SELECTOR_SIZE.value(), PaneConst.CONTENT_SELECTOR_SIZE.value());
+        saveGameFrame.setLocationRelativeTo(Environment.getInstance());
+        saveGameFrame.setResizable(false);
+
+        final var saveOne = new JButton("Save 1");
+        saveOne.addActionListener(new SaveGameButtonListener(saveGameFrame));
+        final var saveTwo = new JButton("Save 2");
+        saveTwo.addActionListener(new SaveGameButtonListener(saveGameFrame));
+        final var saveThree = new JButton("Save 3");
+        saveThree.addActionListener(new SaveGameButtonListener(saveGameFrame));
+
+        saveGameFrame.add(saveOne);
+        saveGameFrame.add(saveTwo);
+        saveGameFrame.add(saveThree);
+
+        saveGameFrame.setVisible(true);
+        saveGameFrame.pack();
+    }
+
+    /**
+     * Displays the option to load the game to various slots.
+     */
+    public void displayLoadGameOptions() {
+        final var loadGameFrame = new JFrame("Load Game Options");
+        loadGameFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        loadGameFrame.setLayout(new FlowLayout());
+        loadGameFrame.setSize(PaneConst.CONTENT_SELECTOR_SIZE.value(), PaneConst.CONTENT_SELECTOR_SIZE.value());
+        loadGameFrame.setLocationRelativeTo(Environment.getInstance());
+        loadGameFrame.setResizable(false);
+
+        final var loadOne = new JButton("Load 1");
+        loadOne.addActionListener(new LoadButtonListener(loadGameFrame));
+        final var loadTwo = new JButton("Load 2");
+        loadTwo.addActionListener(new LoadButtonListener(loadGameFrame));
+        final var loadThree = new JButton("Load 3");
+        loadThree.addActionListener(new LoadButtonListener(loadGameFrame));
+
+        loadGameFrame.add(loadOne);
+        loadGameFrame.add(loadTwo);
+        loadGameFrame.add(loadThree);
+
+        loadGameFrame.setVisible(true);
+        loadGameFrame.pack();
     }
 }
