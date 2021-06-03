@@ -54,6 +54,14 @@ public class QuestionManagerTests {
     }
 
 
+    /**
+     *  this test  establishes connection to our test database, filled it with a couple questions
+     *  and tests to ensure the question manager is working correctly.
+     *
+     *  this method is also testing to make sure our isAdult parameter is correctly working and asking adult questions.
+     */
+
+
     @Test
     public void tests_get_random_child_question() {
         QuestionManager questionManager = new QuestionManager("jdbc:sqlite:tests.db");
@@ -61,6 +69,14 @@ public class QuestionManagerTests {
         Assert.assertTrue(question.getMyQuestion().equals("What universe does Rick call home?"));
         Assert.assertEquals(question.getMyCorrectIndex(),2);
     }
+
+    /**
+     *  this test  establishes connection to our test database, filled it with a couple questions
+     *  and tests to ensure the question manager is working correctly.
+     *
+     *  this method is also testing to make sure our isAdult parameter is correctly working and asking adult questions.
+     */
+
 
     @Test
     public void tests_get_random_adult_question(){
