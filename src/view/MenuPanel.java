@@ -128,6 +128,7 @@ public final class MenuPanel extends JPanel {
         //Create and add "Load" Button
         final var loadButton = new JButton();
         loadButton.setText("Load");
+        loadButton.addActionListener(new LoadButtonListener());
         myMenu.add(loadButton);
 
         //Create and add "Help" Button
