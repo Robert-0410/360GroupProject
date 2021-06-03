@@ -18,17 +18,16 @@ public class SaveGameButtonListener extends GameListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("Save Game");
         final var save1 = "src/resources/saved_games/Save1.ser";
 
 
-        SavedGame test = new SavedGame();
-        test.setMyMap(getEnvironmentManager().getMyMap());
-        test.setMyUserRow(getEnvironmentManager().getMyUserRow());
-        test.setMyUserRow(getEnvironmentManager().getMyUserCol());
-        test.setMyUserLives(getEnvironmentManager().getPlayerLives());
-        test.setInChildMode(getEnvironmentManager().getInChildMode());
-        test.checkObject();
+        SavedGame beingSaved = new SavedGame();
+        beingSaved.setMyMap(getEnvironmentManager().getMyMap());
+        beingSaved.setMyUserRow(getEnvironmentManager().getMyUserRow());
+        beingSaved.setMyUserCol(getEnvironmentManager().getMyUserCol());
+        beingSaved.setMyUserLives(getEnvironmentManager().getPlayerLives());
+        beingSaved.setInChildMode(getEnvironmentManager().getInChildMode());
+
 
         // TODO: switch statement decide what file is used
 
@@ -37,7 +36,7 @@ public class SaveGameButtonListener extends GameListener {
             final FileOutputStream fileOut = new FileOutputStream(save1);
             final ObjectOutputStream out = new ObjectOutputStream(fileOut);
 
-            out.writeObject(test);
+            out.writeObject(beingSaved);
             out.close();
 
             fileOut.close();

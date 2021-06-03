@@ -1,5 +1,6 @@
 package controller.listener;
 
+import controller.StatusManager;
 import model.SavedGame;
 
 import java.awt.event.ActionEvent;
@@ -29,10 +30,10 @@ public class LoadButtonListener extends GameListener {
             ex.printStackTrace();
             return;
         }
-        // TODO: set the environmentManager and load map.
+
+        StatusManager.enableGameButtons();
         getEnvironmentManager().setStateFromSavedGame(savedGame.getMyMap(), savedGame.getMyUserRow(),
                 savedGame.getMyUserCol(), savedGame.getMyUserLives(), savedGame.isInChildMode());
         getEnvironmentManager().generateAfterMove();
-        System.out.println("finished Load");
     }
 }

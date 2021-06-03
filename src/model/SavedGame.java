@@ -46,8 +46,8 @@ public class SavedGame implements Serializable {
     public SavedGame() {}
 
     // TODO: method to test whats going on with object.
-    public void checkObject() {
-        System.out.println("Number of lives: " + myUserLives);
+    public void checkObject(final String checkingFrom) {
+        System.out.println("Checking Object from " + checkingFrom + " " + myUserRow + ", " + myUserCol);
     }
 
 
@@ -60,10 +60,10 @@ public class SavedGame implements Serializable {
 
 
     /**
-     * @param myUserRow user row location.
+     * @param theUserRow user row location.
      */
-    public void setMyUserRow(int myUserRow) {
-        this.myUserRow = myUserRow;
+    public void setMyUserRow(int theUserRow) {
+        myUserRow = theUserRow;
     }
 
 
