@@ -444,6 +444,20 @@ public final class EnvironmentManager {
     }
 
     /**
+     * @return Row user is located on.
+     */
+    public int getMyUserRow() {
+        return myUserRow;
+    }
+
+    /**
+     * @return Column user is located on.
+     */
+    public int getMyUserCol() {
+        return myUserCol;
+    }
+
+    /**
      * Getter for myUserLives.
      * @return myUserLives.
      */

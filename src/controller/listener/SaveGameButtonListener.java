@@ -3,6 +3,9 @@ package controller.listener;
 import model.SavedGame;
 
 import java.awt.event.ActionEvent;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 /**
  * Listener for the save game button.
@@ -16,6 +19,7 @@ public class SaveGameButtonListener extends GameListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println("Save Game");
+        final var save1 = "src/resources/saved_games/Save1.ser";
 
         SavedGame test = new SavedGame();
         test.setMyMap(getEnvironmentManager().getMyMap());
@@ -24,6 +28,22 @@ public class SaveGameButtonListener extends GameListener {
         test.setMyUserLives(getEnvironmentManager().getPlayerLives());
         test.setInChildMode(getEnvironmentManager().getInChildMode());
         test.checkObject();
+
+        try {
+
+            final FileOutputStream fileOut = new FileOutputStream(save1);
+            final ObjectOutputStream out = new ObjectOutputStream(fileOut);
+
+            out.writeObject(test);
+            out.close();
+
+            fileOut.close();
+
+            System.out.println("Object serialized.");
+
+        } catch (final IOException ex) {
+            ex.printStackTrace();
+        }
 
     }
 }
