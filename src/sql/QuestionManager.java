@@ -7,6 +7,7 @@ import java.util.Collections;
 /**
  *
  * @author sasha amador
+ * @author Robert & Sean
  * @version 1.2.08
  *
  * The QuestionManager class connects our database, and is where our getMultipleChoice method is located.
@@ -21,14 +22,114 @@ import java.util.Collections;
 public class QuestionManager {
 
     Connection connection = null;
-    ArrayList<Question> questions = null;
-    int currentIndex;
 
 
+    /**
+     * Holds questions for child content.
+     */
+    private final ArrayList<Question> myChildQuestions;
 
-    public QuestionManager(String databaseName, boolean isAdult) {
+    /**
+     * Holds questions for adult content.
+     */
+    private final ArrayList<Question> myAdultQuestions;
+
+
+    /**
+     * Constructor used in EnvironmentManager.
+     * @param databaseName path to database
+     */
+    public QuestionManager(String databaseName) {
         databaseConnectionSetup(databaseName);
-        readFromDatabase(isAdult);
+
+        myChildQuestions = new ArrayList<>();
+        myAdultQuestions = new ArrayList<>();
+
+        readFromDatabaseForChild();
+        readFromDatabaseForAdult();
+    }
+
+
+    /**
+     * Returns the proper question for the content user is in.
+     * @param isChild Flag to control what kind of question is returned.
+     * @return question selected
+     */
+    public Question getRandomMultipleChoiceQuestion(final boolean isChild) {
+        final Question question;
+        // treating like a stack, '0' points to top.
+        if (isChild) {
+            question = myChildQuestions.remove(0);
+        } else {
+            question = myAdultQuestions.remove(0);
+        }
+        return question;
+    }
+
+    public void resetDataStructure() {
+        myChildQuestions.clear();
+        myAdultQuestions.clear();
+
+        readFromDatabaseForChild();
+        readFromDatabaseForAdult();
+    }
+
+
+    /**
+     * Loads the myChildQuestion ArrayList
+     */
+    private void readFromDatabaseForChild(){
+
+        try {
+            Statement statement = connection.createStatement();
+            statement.setQueryTimeout(30);  // set timeout to 30 sec.
+
+            String isAdultString = "0";
+            duplicate(statement, isAdultString, myChildQuestions);
+        } catch (final SQLException exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    /**
+     * Loads the myAdultQuestion ArrayList
+     */
+    private void readFromDatabaseForAdult(){
+
+        try {
+            Statement statement = connection.createStatement();
+            statement.setQueryTimeout(30);  // set timeout to 30 sec.
+
+            String isAdultString = "1";
+            duplicate(statement, isAdultString, myAdultQuestions);
+        } catch (final SQLException exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    private void duplicate(Statement statement, String isAdultString, ArrayList<Question> myAdultQuestions) throws SQLException {
+        ResultSet rs = statement.executeQuery(String.format("SELECT * FROM multiple_choice WHERE isAdult=%s", isAdultString));
+
+        while(rs.next()){
+            Question question = new Question();
+            // read the result set
+            String[] answers = new String[4];
+            answers[0] = rs.getString("optionA");
+            answers[1] = rs.getString("optionB");
+            answers[2] = rs.getString("optionC");
+            answers[3] = rs.getString("optionD");
+
+            question.setMyAnswers(answers);
+            question.setMyQuestion(rs.getString("question"));
+            question.setMyCorrectIndex( rs.getInt("answer"));
+            myAdultQuestions.add(question);
+
+        }
+
+        Collections.shuffle(myAdultQuestions);
+
+
+        rs.close();
     }
 
     /**
@@ -40,58 +141,6 @@ public class QuestionManager {
 
         } catch (SQLException e) {
             System.err.println(e.getMessage());
-        }
-    }
-
-    /** The method getRandomMultipleChoiceQuestion will pull a random item, currentIndex
-     * out of our array list and return it.
-     */
-    public Question getRandomMultipleChoiceQuestion() {
-        Question question = questions.get(currentIndex);
-        currentIndex++;
-        return question;
-    }
-
-    /**
-     * the readFromDatabase method takes in the parameter isAdult and makes sure that that parameter is set to
-     *  return either child or adult questions.
-     *
-     *This function also takes the questions from our database and stores them into an arrayList and applies the
-     * shuffle function to make sure the user is asked a random question when playing the game.
-     *
-     */
-    private void readFromDatabase(boolean isAdult){
-        this.questions = new ArrayList<Question>();
-
-        try {
-            Statement statement = connection.createStatement();
-            statement.setQueryTimeout(30);  // set timeout to 30 sec.
-
-            String isAdultString = (isAdult) ? "1" : "0";
-            ResultSet rs = statement.executeQuery(String.format("SELECT * FROM multiple_choice WHERE isAdult=%s", isAdultString));
-
-            while(rs.next()){
-                Question question = new Question();
-                // read the result set
-                String[] answers = new String[4];
-                answers[0] = rs.getString("optionA");
-                answers[1] = rs.getString("optionB");
-                answers[2] = rs.getString("optionC");
-                answers[3] = rs.getString("optionD");
-
-                question.setMyAnswers(answers);
-                question.setMyQuestion(rs.getString("question"));
-                question.setMyCorrectIndex( rs.getInt("answer"));
-                questions.add(question);
-
-            }
-
-            Collections.shuffle(this.questions);
-
-
-            rs.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
         }
     }
 }
