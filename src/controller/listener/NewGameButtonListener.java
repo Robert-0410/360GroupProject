@@ -34,6 +34,7 @@ public class NewGameButtonListener extends GameListener {
         getEnvironmentManager().generateInitialEnvironment();
         getEnvironmentManager().resetPlayerLives();
 
-        ButtonPanel.getInstance().addUserLives();
+        final var initialLives = 3;
+        ButtonPanel.getInstance().addUserLives(initialLives);
     }
 }

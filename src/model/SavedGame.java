@@ -9,6 +9,9 @@ import java.util.List;
  */
 public class SavedGame implements Serializable {
 
+    /**
+     * For serializing the object.
+     */
     private static final long serialversionUID = 129348938L;
 
     /**
