@@ -1,13 +1,14 @@
 package sql;
 
 import java.sql.*;
-
-import org.sqlite.SQLiteDataSource;
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
  * @author sasha amador
- * @version 1.1.03
+ * @author Robert & Sean
+ * @version 1.2.08
  *
  * The QuestionManager class connects our database, and is where our getMultipleChoice method is located.
  *
@@ -15,40 +16,102 @@ import org.sqlite.SQLiteDataSource;
  * the getMultipleChoice method first does a parameter test to see if the user is playing in adult mode or
  * child mode. From there the maze will be populated with random questions from the database which reflects
  * the mode they are playing in
+ *
+ * This class also takes the questions that are stored into the database and places them into an array list.
  */
 public class QuestionManager {
 
     Connection connection = null;
 
+
+    /**
+     * Holds questions for child content.
+     */
+    private final ArrayList<Question> myChildQuestions;
+
+    /**
+     * Holds questions for adult content.
+     */
+    private final ArrayList<Question> myAdultQuestions;
+
+
+    /**
+     * Constructor used in EnvironmentManager.
+     * @param databaseName path to database
+     */
     public QuestionManager(String databaseName) {
         databaseConnectionSetup(databaseName);
+
+        myChildQuestions = new ArrayList<>();
+        myAdultQuestions = new ArrayList<>();
+
+        readFromDatabaseForChild();
+        readFromDatabaseForAdult();
     }
 
-    private void databaseConnectionSetup(String databaseName){
-        //establish connection (creates db file if it does not exist :-)
-        try {
-            connection  = DriverManager.getConnection(databaseName);
 
+    /**
+     * Returns the proper question for the content user is in.
+     * @param isChild Flag to control what kind of question is returned.
+     * @return question selected
+     */
+    public Question getRandomMultipleChoiceQuestion(final boolean isChild) {
+        final Question question;
+        // treating like a stack, '0' points to top.
+        if (isChild) {
+            question = myChildQuestions.remove(0);
+        } else {
+            question = myAdultQuestions.remove(0);
         }
-        catch(SQLException e)
-        {
-            // if the error message is "out of memory",
-            // it probably means no database file is found
-            System.err.println(e.getMessage());
-        }
+        return question;
     }
 
-    public Question getRandomMultipleChoiceQuestion(boolean isAdult) {
-        Question questionBank = new Question();
+    public void resetDataStructure() {
+        myChildQuestions.clear();
+        myAdultQuestions.clear();
+
+        readFromDatabaseForChild();
+        readFromDatabaseForAdult();
+    }
+
+
+    /**
+     * Loads the myChildQuestion ArrayList
+     */
+    private void readFromDatabaseForChild(){
 
         try {
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
-            String isAdultString = (isAdult) ? "1" : "0";
+            String isAdultString = "0";
+            duplicate(statement, isAdultString, myChildQuestions);
+        } catch (final SQLException exception) {
+            exception.printStackTrace();
+        }
+    }
 
-            // added more questions to database to help ensure we don't get repeated questions
-            ResultSet rs = statement.executeQuery(String.format("SELECT * FROM multiple_choice WHERE isAdult=%s ORDER BY RANDOM() LIMIT 1", isAdultString));
+    /**
+     * Loads the myAdultQuestion ArrayList
+     */
+    private void readFromDatabaseForAdult(){
+
+        try {
+            Statement statement = connection.createStatement();
+            statement.setQueryTimeout(30);  // set timeout to 30 sec.
+
+            String isAdultString = "1";
+            duplicate(statement, isAdultString, myAdultQuestions);
+        } catch (final SQLException exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    private void duplicate(Statement statement, String isAdultString, ArrayList<Question> myAdultQuestions) throws SQLException {
+        ResultSet rs = statement.executeQuery(String.format("SELECT * FROM multiple_choice WHERE isAdult=%s", isAdultString));
+
+        while(rs.next()){
+            Question question = new Question();
             // read the result set
             String[] answers = new String[4];
             answers[0] = rs.getString("optionA");
@@ -56,17 +119,28 @@ public class QuestionManager {
             answers[2] = rs.getString("optionC");
             answers[3] = rs.getString("optionD");
 
-            questionBank.setMyAnswers(answers);
-            questionBank.setMyQuestion(rs.getString("question"));
-            questionBank.setMyCorrectIndex( rs.getInt("answer"));
-        }
-        catch(SQLException e)
-        {
-            // if the error message is "out of memory",
-            // it probably means no database file is found
-            System.err.println(e.getMessage());
+            question.setMyAnswers(answers);
+            question.setMyQuestion(rs.getString("question"));
+            question.setMyCorrectIndex( rs.getInt("answer"));
+            myAdultQuestions.add(question);
+
         }
 
-        return questionBank;
+        Collections.shuffle(myAdultQuestions);
+
+
+        rs.close();
+    }
+
+    /**
+     * the databaseConnectionSetup sets up the database.
+     */
+    private void databaseConnectionSetup(String databaseName) {
+        try {
+            connection = DriverManager.getConnection(databaseName);
+
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
     }
 }

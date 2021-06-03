@@ -57,7 +57,7 @@ public class QuestionManagerTests {
     @Test
     public void tests_get_random_child_question() {
         QuestionManager questionManager = new QuestionManager("jdbc:sqlite:tests.db");
-        Question question = questionManager.getRandomMultipleChoiceQuestion(false);
+        Question question = questionManager.getRandomMultipleChoiceQuestion(true);
         Assert.assertTrue(question.getMyQuestion().equals("What universe does Rick call home?"));
         Assert.assertEquals(question.getMyCorrectIndex(),2);
     }
@@ -65,7 +65,7 @@ public class QuestionManagerTests {
     @Test
     public void tests_get_random_adult_question(){
         QuestionManager questionManager = new QuestionManager("jdbc:sqlite:tests.db");
-        Question question = questionManager.getRandomMultipleChoiceQuestion(true);
+        Question question = questionManager.getRandomMultipleChoiceQuestion(false);
         Assert.assertTrue(question.getMyQuestion().equals("What is the name of Rick's band?"));
         Assert.assertEquals(question.getMyCorrectIndex(),1);
 
