@@ -219,8 +219,11 @@ public final class MenuPanel extends JPanel {
         saveGameFrame.setResizable(false);
 
         final var saveOne = new JButton("Save 1");
+        saveOne.addActionListener(new SaveGameButtonListener(saveGameFrame));
         final var saveTwo = new JButton("Save 2");
+        saveTwo.addActionListener(new SaveGameButtonListener(saveGameFrame));
         final var saveThree = new JButton("Save 3");
+        saveThree.addActionListener(new SaveGameButtonListener(saveGameFrame));
 
         saveGameFrame.add(saveOne);
         saveGameFrame.add(saveTwo);
