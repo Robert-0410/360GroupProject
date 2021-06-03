@@ -3,6 +3,7 @@ package controller;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.FloatControl;
 import java.io.File;
 
 /**
@@ -15,7 +16,8 @@ public final class GameAudio {
     /**
      * Stub constructor to prevent instantiation.
      */
-    private GameAudio() {}
+    private GameAudio() {
+    }
 
     /**
      * Audio that plays when the game is opened.

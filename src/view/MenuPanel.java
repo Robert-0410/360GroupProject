@@ -121,8 +121,8 @@ public final class MenuPanel extends JPanel {
         //Create and add "Save" Button
         final var saveButton = new JButton();
         saveButton.setText("Save");
-        saveButton.addActionListener(new SaveGameButtonListener());
         saveButton.setEnabled(false);
+        saveButton.addActionListener(new SaveOptionListener());
         myMenu.add(saveButton);
 
         //Create and add "Load" Button
@@ -167,7 +167,6 @@ public final class MenuPanel extends JPanel {
 
         contentFrame.setVisible(true);
         contentFrame.pack();
-
     }
 
     /**
@@ -206,5 +205,29 @@ public final class MenuPanel extends JPanel {
 
         helpFrame.add(textArea);
         helpFrame.setVisible(true);
+    }
+
+    /**
+     * Displays the option to save the game to various slots.
+     */
+    public void displaySaveGameOptions() {
+        final var saveGameFrame = new JFrame("Save Game Options");
+        saveGameFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        saveGameFrame.setLayout(new FlowLayout());
+        saveGameFrame.setSize(PaneConst.CONTENT_SELECTOR_SIZE.value(), PaneConst.CONTENT_SELECTOR_SIZE.value());
+        saveGameFrame.setLocationRelativeTo(Environment.getInstance());
+        saveGameFrame.setResizable(false);
+
+        final var saveOne = new JButton("Save 1");
+        final var saveTwo = new JButton("Save 2");
+        final var saveThree = new JButton("Save 3");
+
+        saveGameFrame.add(saveOne);
+        saveGameFrame.add(saveTwo);
+        saveGameFrame.add(saveThree);
+
+        saveGameFrame.setVisible(true);
+        saveGameFrame.pack();
+
     }
 }
