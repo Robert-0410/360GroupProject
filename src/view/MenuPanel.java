@@ -1,9 +1,6 @@
 package view;
 
-import controller.listener.ContentSelectListener;
-import controller.listener.HelpButtonListener;
-import controller.listener.MenuButtonListener;
-import controller.listener.NewGameButtonListener;
+import controller.listener.*;
 
 import java.awt.*;
 import javax.swing.*;
@@ -124,6 +121,7 @@ public final class MenuPanel extends JPanel {
         //Create and add "Save" Button
         final var saveButton = new JButton();
         saveButton.setText("Save");
+        saveButton.addActionListener(new SaveGameButtonListener());
         saveButton.setEnabled(false);
         myMenu.add(saveButton);
 
