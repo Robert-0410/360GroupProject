@@ -51,7 +51,6 @@ public class QuestionChoiceListener extends GameListener {
             QuestionPanel.getInstance().disableButtons();
             Environment.getInstance().gameWonEnvironmentPanel();
             Environment.getInstance().repaint();
-            QuestionPanel.getInstance().gameWonQuestionPanel();
             // Scenario for getting questions wrong at the portal.
         } else if (userChoice != correctIndex && getEnvironmentManager().getIsWinningCell() == CellType.PORTAL) {
             final var currentLives = getEnvironmentManager().removeUserLife();
@@ -65,7 +64,6 @@ public class QuestionChoiceListener extends GameListener {
                 QuestionPanel.getInstance().disableButtons();
                 Environment.getInstance().gameLostEnvironmentPanel();
                 MenuPanel.getInstance().getSaveButton().setEnabled(false);
-                QuestionPanel.getInstance().gameLostQuestionPanel();
             }
             // Scenario for getting questions right at a door.
         } else if(userChoice == correctIndex) {
@@ -86,7 +84,6 @@ public class QuestionChoiceListener extends GameListener {
                 QuestionPanel.getInstance().disableButtons();
                 Environment.getInstance().gameLostEnvironmentPanel();
                 MenuPanel.getInstance().getSaveButton().setEnabled(false);
-                QuestionPanel.getInstance().gameLostQuestionPanel();
             }
         }
     }

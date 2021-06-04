@@ -44,8 +44,6 @@ public final class QuestionPanel extends JPanel {
      */
     private JTextArea[] myTextAreas;
 
-    private JTextArea losingTextArea = new JTextArea();
-
     /**
      * Singleton style constructor.
      */
@@ -242,9 +240,7 @@ public final class QuestionPanel extends JPanel {
      * the user won the game.
      */
     public void gameWonQuestionPanel() {
-        myTextAreas[2].setFont(new Font(Font.SANS_SERIF, Font.BOLD,24));
-        myTextAreas[2].setBounds(85, 55, 350, 100);
-        myTextAreas[2].setText("        Winner Winner\n     Pickle Rick Dinner!");
+        // TODO: figure out how to display and remove winning scenario
     }
 
     /**
@@ -252,9 +248,7 @@ public final class QuestionPanel extends JPanel {
      * the user lost the game.
      */
     public void gameLostQuestionPanel() {
-        myTextAreas[2].setFont(new Font(Font.SANS_SERIF, Font.BOLD,24));
-        myTextAreas[2].setBounds(85, 55, 350, 100);
-        myTextAreas[2].setText("          Game Over!\n  Better Luck Next Time!");
+        // TODO: figure out how to display and remove losing scenario
     }
 
 }
