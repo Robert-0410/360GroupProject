@@ -45,8 +45,6 @@ public class QuestionManager {
         myChildQuestions = new ArrayList<>();
         myAdultQuestions = new ArrayList<>();
 
-        readFromDatabaseForChild();
-        readFromDatabaseForAdult();
     }
 
 

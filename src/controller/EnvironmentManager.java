@@ -522,4 +522,11 @@ public final class EnvironmentManager {
     public CellType getIsWinningCell() {
         return isWinningCell;
     }
+
+    /**
+     * @return the instance of the QuestionManager.
+     */
+    public QuestionManager getQuestionManager() {
+        return QUESTION_MANAGER;
+    }
 }
