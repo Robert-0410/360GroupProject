@@ -1,5 +1,12 @@
 package sql;
 
+import controller.EnvironmentManager;
+import controller.GameAudio;
+import view.ButtonPanel;
+import view.Environment;
+import view.MenuPanel;
+import view.QuestionPanel;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,6 +28,9 @@ import java.util.Collections;
  */
 public class QuestionManager {
 
+    /**
+     * Connection to the data base.
+     */
     Connection connection = null;
 
 
@@ -45,8 +55,6 @@ public class QuestionManager {
         myChildQuestions = new ArrayList<>();
         myAdultQuestions = new ArrayList<>();
 
-        readFromDatabaseForChild();
-        readFromDatabaseForAdult();
     }
 
 
@@ -57,13 +65,25 @@ public class QuestionManager {
      */
     public Question getRandomMultipleChoiceQuestion(final boolean isChild) {
         final Question question;
-        // treating like a stack, '0' points to top.
-        if (isChild) {
-            question = myChildQuestions.remove(0);
+        if (myAdultQuestions.size() > 0 && myChildQuestions.size() > 0) {
+            System.out.println("Current size: " + myChildQuestions.size());
+            // treating like a stack, '0' points to top.
+            if (isChild) {
+                question = myChildQuestions.remove(0);
+            } else {
+                question = myAdultQuestions.remove(0);
+            }
         } else {
-            question = myAdultQuestions.remove(0);
+            // User out of questions, looses game.
+            question = null;
+            GameAudio.gameLost();
+            ButtonPanel.getInstance().disableArrowButtons();
+            QuestionPanel.getInstance().disableButtons();
+            Environment.getInstance().gameLostEnvironmentPanel();
+            MenuPanel.getInstance().getSaveButton().setEnabled(false);
         }
         return question;
+
     }
 
     public void resetDataStructure() {

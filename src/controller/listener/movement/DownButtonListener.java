@@ -1,5 +1,7 @@
-package controller.listener;
+package controller.listener.movement;
 
+
+import controller.listener.GameListener;
 
 import java.awt.event.ActionEvent;
 

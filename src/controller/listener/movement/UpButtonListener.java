@@ -1,23 +1,23 @@
-package controller.listener;
+package controller.listener.movement;
 
 
+import controller.listener.GameListener;
 
 import java.awt.event.ActionEvent;
 
 /**
- * Listener for the left move button.
+ * Listener for the up move button.
  * @author Robert
  * @version 1
  */
-public class LeftButtonListener extends GameListener {
+public class UpButtonListener extends GameListener {
 
     /**
-     * Used for the left move button.
+     * Used for the up move button.
      */
-    public LeftButtonListener() {
+    public UpButtonListener() {
         super();
     }
-
     /**
      * Invoked when an action occurs.
      *
@@ -25,6 +25,6 @@ public class LeftButtonListener extends GameListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        getEnvironmentManager().movePlayerLeft();
+        getEnvironmentManager().movePlayerUp();
     }
 }

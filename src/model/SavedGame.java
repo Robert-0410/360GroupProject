@@ -6,6 +6,8 @@ import java.util.List;
 
 /**
  * A saved game that a user can load.
+ * @author Robert
+ * @version 1
  */
 public class SavedGame implements Serializable {
 
@@ -39,19 +41,11 @@ public class SavedGame implements Serializable {
      */
     private boolean isInChildMode;
 
-    // TODO: remove if not needed
-    // private Direction userIsMoving;
-
 
     /**
      * Parameterless constructor.
      */
     public SavedGame() {}
-
-    // TODO: method to test whats going on with object.
-    public void checkObject(final String checkingFrom) {
-        System.out.println("Checking Object from " + checkingFrom + " " + myUserRow + ", " + myUserCol);
-    }
 
 
     /**
@@ -93,22 +87,39 @@ public class SavedGame implements Serializable {
         isInChildMode = inChildMode;
     }
 
+    /**
+     * @return ArrayList representation of the map to be painted.
+     */
     public ArrayList<List<GameObject>> getMyMap() {
         return myMap;
     }
 
+    /**
+     * @return The row the user is located on.
+     */
     public int getMyUserRow() {
         return myUserRow;
     }
 
+
+    /**
+     * @return The column the user is located on.
+     */
     public int getMyUserCol() {
         return myUserCol;
     }
 
+
+    /**
+     * @return The lives user has.
+     */
     public int getMyUserLives() {
         return myUserLives;
     }
 
+    /**
+     * @return the content mode selection.
+     */
     public boolean isInChildMode() {
         return isInChildMode;
     }

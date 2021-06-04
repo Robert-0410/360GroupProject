@@ -1,9 +1,9 @@
 package view;
 
-import controller.listener.DownButtonListener;
-import controller.listener.LeftButtonListener;
-import controller.listener.RightButtonListener;
-import controller.listener.UpButtonListener;
+import controller.listener.movement.DownButtonListener;
+import controller.listener.movement.LeftButtonListener;
+import controller.listener.movement.RightButtonListener;
+import controller.listener.movement.UpButtonListener;
 import model.CellType;
 import model.GameObject;
 import java.awt.Color;
