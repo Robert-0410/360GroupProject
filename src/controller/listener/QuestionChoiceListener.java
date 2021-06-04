@@ -4,6 +4,7 @@ import controller.GameAudio;
 import model.CellType;
 import view.ButtonPanel;
 import view.Environment;
+import view.MenuPanel;
 import view.QuestionPanel;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -55,15 +56,17 @@ public class QuestionChoiceListener extends GameListener {
             GameAudio.wubbaLubba();
         } else {
             final var currentLives = getEnvironmentManager().removeUserLife();
-            if(currentLives >= 0) {
+            if(currentLives > 0) {
                 ButtonPanel.getInstance().removeLifeCell(currentLives);
                 GameAudio.wrongAnswer();
                 getEnvironmentManager().removeDoorAfterWrongAnswer();
             } else {
                 GameAudio.gameLost();
+                ButtonPanel.getInstance().removeLifeCell(currentLives);
                 ButtonPanel.getInstance().disableArrowButtons();
                 QuestionPanel.getInstance().disableButtons();
                 Environment.getInstance().gameLostEnvironmentPanel();
+                MenuPanel.getInstance().getSaveButton().setEnabled(false);
             }
         }
     }
