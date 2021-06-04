@@ -459,12 +459,16 @@ public final class EnvironmentManager {
      * @param isInChildMode content
      */
     public void setStateFromSavedGame(final ArrayList<List<GameObject>> theMap, final int theUserRow,
-                                      final int theUserCol, final int theUserLives, final boolean isInChildMode) {
+                                      final int theUserCol, final int theUserLives, final boolean isInChildMode,
+                                      final ArrayList<Question> theChildQuestions,
+                                      final ArrayList<Question> theAdultQuestions) {
         myMap = theMap;
         myUserRow = theUserRow;
         myUserCol = theUserCol;
         myUserLives = theUserLives;
         this.isInChildMode = isInChildMode;
+        QUESTION_MANAGER.setMyChildQuestions(theChildQuestions);
+        QUESTION_MANAGER.setMyAdultQuestions(theAdultQuestions);
 
     }
 

@@ -1,6 +1,5 @@
 package sql;
 
-import controller.EnvironmentManager;
 import controller.GameAudio;
 import view.ButtonPanel;
 import view.Environment;
@@ -37,12 +36,12 @@ public class QuestionManager {
     /**
      * Holds questions for child content.
      */
-    private final ArrayList<Question> myChildQuestions;
+    private ArrayList<Question> myChildQuestions;
 
     /**
      * Holds questions for adult content.
      */
-    private final ArrayList<Question> myAdultQuestions;
+    private ArrayList<Question> myAdultQuestions;
 
 
     /**
@@ -55,6 +54,7 @@ public class QuestionManager {
         myChildQuestions = new ArrayList<>();
         myAdultQuestions = new ArrayList<>();
 
+        // TODO: remove if loading and saving don't cause the bug.
         readFromDatabaseForAdult();
         readFromDatabaseForChild();
 
@@ -69,7 +69,6 @@ public class QuestionManager {
     public Question getRandomMultipleChoiceQuestion(final boolean isChild) {
         final Question question;
         if (myAdultQuestions.size() > 0 && myChildQuestions.size() > 0) {
-            System.out.println("Current size: " + myChildQuestions.size());
             // treating like a stack, '0' points to top.
             if (isChild) {
                 question = myChildQuestions.remove(0);
@@ -165,5 +164,33 @@ public class QuestionManager {
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
+    }
+
+    /**
+     * @return ArrayList of child question.
+     */
+    public ArrayList<Question> getMyChildQuestions() {
+        return myChildQuestions;
+    }
+
+    /**
+     * @return ArrayList of adult question.
+     */
+    public ArrayList<Question> getMyAdultQuestions() {
+        return myAdultQuestions;
+    }
+
+    /**
+     * @param theQuestions to be added to data structure.
+     */
+    public void setMyChildQuestions(final ArrayList<Question> theQuestions) {
+        myChildQuestions = theQuestions;
+    }
+
+    /**
+     * @param theQuestions to be added to data structure.
+     */
+    public void setMyAdultQuestions(final ArrayList<Question> theQuestions) {
+        myAdultQuestions = theQuestions;
     }
 }

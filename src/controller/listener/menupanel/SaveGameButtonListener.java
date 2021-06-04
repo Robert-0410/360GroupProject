@@ -51,6 +51,8 @@ public class SaveGameButtonListener extends GameListener {
         beingSaved.setMyUserCol(getEnvironmentManager().getMyUserCol());
         beingSaved.setMyUserLives(getEnvironmentManager().getPlayerLives());
         beingSaved.setInChildMode(getEnvironmentManager().getInChildMode());
+        beingSaved.setMyChildQuestions(getEnvironmentManager().getQuestionManager().getMyChildQuestions());
+        beingSaved.setMyAdultQuestions(getEnvironmentManager().getQuestionManager().getMyAdultQuestions());
 
         // Serialization
         try {

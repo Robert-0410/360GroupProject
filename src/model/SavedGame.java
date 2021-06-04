@@ -1,5 +1,7 @@
 package model;
 
+import sql.Question;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +42,16 @@ public class SavedGame implements Serializable {
      * Current content selected when user saves game.
      */
     private boolean isInChildMode;
+
+    /**
+     * Data structure of child oriented questions.
+     */
+    private ArrayList<Question> myChildQuestions;
+
+    /**
+     * Data structure of adult oriented questions.
+     */
+    private ArrayList<Question> myAdultQuestions;
 
 
     /**
@@ -122,5 +134,34 @@ public class SavedGame implements Serializable {
      */
     public boolean isInChildMode() {
         return isInChildMode;
+    }
+
+
+    /**
+     * @param theQuestions to be stored in data structure.
+     */
+    public void setMyChildQuestions(final ArrayList<Question> theQuestions) {
+        myChildQuestions = theQuestions;
+    }
+
+    /**
+     * @param theQuestions to be stored in the data structure.
+     */
+    public void setMyAdultQuestions(final ArrayList<Question> theQuestions) {
+        myAdultQuestions = theQuestions;
+    }
+
+    /**
+     * @return the data structure with child questions.
+     */
+    public ArrayList<Question> getMyChildQuestions() {
+        return myChildQuestions;
+    }
+
+    /**
+     * @return the data structure with adult questions.
+     */
+    public ArrayList<Question> getMyAdultQuestions() {
+        return myAdultQuestions;
     }
 }
