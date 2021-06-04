@@ -45,6 +45,7 @@ public class QuestionChoiceListener extends GameListener {
             case "C" -> userChoice = 2;
             case "D" -> userChoice = 3;
         }
+        // Scenario for winning Game.
         if(userChoice == correctIndex && getEnvironmentManager().getIsWinningCell() == CellType.PORTAL) {
             GameAudio.winnerSong();
             ButtonPanel.getInstance().disableArrowButtons();
@@ -52,16 +53,32 @@ public class QuestionChoiceListener extends GameListener {
             Environment.getInstance().gameWonEnvironmentPanel();
             Environment.getInstance().repaint();
             QuestionPanel.getInstance().gameWonQuestionPanel();
-            // reset isWinningCell
+            // Scenario for getting questions wrong at the portal.
+        } else if (userChoice != correctIndex && getEnvironmentManager().getIsWinningCell() == CellType.PORTAL) {
+            final var currentLives = getEnvironmentManager().removeUserLife();
+            if(currentLives > 0) {
+                ButtonPanel.getInstance().removeLifeCell(currentLives);
+            } else {
+                GameAudio.gameLost();
+                ButtonPanel.getInstance().removeLifeCell(currentLives);
+                ButtonPanel.getInstance().disableArrowButtons();
+                QuestionPanel.getInstance().disableButtons();
+                Environment.getInstance().gameLostEnvironmentPanel();
+                MenuPanel.getInstance().getSaveButton().setEnabled(false);
+                QuestionPanel.getInstance().gameLostQuestionPanel();
+            }
+            // Scenario for getting questions right at a door.
         } else if(userChoice == correctIndex) {
             getEnvironmentManager().removeDoorAfterCorrectAnswer();
             GameAudio.wubbaLubba();
+            // Scenario for getting questions wrong at a door.
         } else {
             final var currentLives = getEnvironmentManager().removeUserLife();
             if(currentLives > 0) {
                 ButtonPanel.getInstance().removeLifeCell(currentLives);
                 GameAudio.wrongAnswer();
                 getEnvironmentManager().removeDoorAfterWrongAnswer();
+                // Scenario for losing all lives at an incorrect door.
             } else {
                 GameAudio.gameLost();
                 ButtonPanel.getInstance().removeLifeCell(currentLives);
