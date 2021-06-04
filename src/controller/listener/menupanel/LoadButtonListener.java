@@ -64,7 +64,8 @@ public class LoadButtonListener extends GameListener {
         ButtonPanel.getInstance().addUserLives(savedGame.getMyUserLives());
 
         getEnvironmentManager().setStateFromSavedGame(savedGame.getMyMap(), savedGame.getMyUserRow(),
-                savedGame.getMyUserCol(), savedGame.getMyUserLives(), savedGame.isInChildMode());
+                savedGame.getMyUserCol(), savedGame.getMyUserLives(), savedGame.isInChildMode(),
+                savedGame.getMyChildQuestions(), savedGame.getMyAdultQuestions());
         getEnvironmentManager().generateAfterMove();
 
         // close frame

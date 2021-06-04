@@ -1,12 +1,14 @@
 package sql;
 
 
+import java.io.Serializable;
+
 /**
  * Object representation of the questions being asked.
  * @author Robert
  * @author Sasha
  */
-public class Question {
+public class Question implements Serializable {
 
     /**
      * Actual question.
