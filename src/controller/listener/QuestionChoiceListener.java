@@ -50,6 +50,7 @@ public class QuestionChoiceListener extends GameListener {
             QuestionPanel.getInstance().disableButtons();
             Environment.getInstance().gameWonEnvironmentPanel();
             Environment.getInstance().repaint();
+            QuestionPanel.getInstance().gameWonQuestionPanel();
             // reset isWinningCell
         } else if(userChoice == correctIndex) {
             getEnvironmentManager().removeDoorAfterCorrectAnswer();
@@ -67,6 +68,7 @@ public class QuestionChoiceListener extends GameListener {
                 QuestionPanel.getInstance().disableButtons();
                 Environment.getInstance().gameLostEnvironmentPanel();
                 MenuPanel.getInstance().getSaveButton().setEnabled(false);
+                QuestionPanel.getInstance().gameLostQuestionPanel();
             }
         }
     }

@@ -236,4 +236,22 @@ public final class QuestionPanel extends JPanel {
         add(myTextAreas[4]);
     }
 
+    /**
+     * Changes question panel to reflect that
+     * the user won the game.
+     */
+    public void gameWonQuestionPanel() {
+
+    }
+
+    /**
+     * Changes question panel to reflect that
+     * the user lost the game.
+     */
+    public void gameLostQuestionPanel() {
+        myTextAreas[2].setFont(new Font(Font.SANS_SERIF, Font.BOLD,26));
+        myTextAreas[2].setBounds(55, 73, 390, 150);
+        myTextAreas[2].setText("You won Bitch");
+    }
+
 }
