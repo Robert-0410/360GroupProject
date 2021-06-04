@@ -4,6 +4,7 @@ import controller.GameAudio;
 import model.CellType;
 import view.ButtonPanel;
 import view.Environment;
+import view.MenuPanel;
 import view.QuestionPanel;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -65,6 +66,7 @@ public class QuestionChoiceListener extends GameListener {
                 ButtonPanel.getInstance().disableArrowButtons();
                 QuestionPanel.getInstance().disableButtons();
                 Environment.getInstance().gameLostEnvironmentPanel();
+                MenuPanel.getInstance().getSaveButton().setEnabled(false);
             }
         }
     }
