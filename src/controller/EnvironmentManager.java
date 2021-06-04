@@ -2,6 +2,7 @@ package controller;
 
 import model.CellType;
 import model.GameObject;
+import sql.Question;
 import sql.QuestionManager;
 import view.Environment;
 import view.QuestionPanel;
@@ -159,7 +160,12 @@ public final class EnvironmentManager {
 
             userIsMoving = Direction.NORTH;
             questionPanel.enableButtons();
-            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion(isInChildMode));
+            try {
+                final Question currentQuestion = QUESTION_MANAGER.getRandomMultipleChoiceQuestion(isInChildMode);
+                questionPanel.setMyQuestion(currentQuestion);
+            } catch (final NullPointerException exception) {
+                // TODO: fill question panel with loser text.
+            }
 
         } else if(nextCell.getMyID() == CellType.FLOOR.getID()) {
             List<GameObject> currentRow = myMap.get(myUserRow);
@@ -200,7 +206,12 @@ public final class EnvironmentManager {
 
             userIsMoving = Direction.EAST;
             questionPanel.enableButtons();
-            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion(isInChildMode));
+            try {
+                final Question currentQuestion = QUESTION_MANAGER.getRandomMultipleChoiceQuestion(isInChildMode);
+                questionPanel.setMyQuestion(currentQuestion);
+            } catch (final NullPointerException exception) {
+                // TODO: fill question panel with loser text.
+            }
 
         } else if(nextCell.getMyID() == CellType.FLOOR.getID()) {
 
@@ -238,7 +249,12 @@ public final class EnvironmentManager {
 
             userIsMoving = Direction.SOUTH;
             questionPanel.enableButtons();
-            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion(isInChildMode));
+            try {
+                final Question currentQuestion = QUESTION_MANAGER.getRandomMultipleChoiceQuestion(isInChildMode);
+                questionPanel.setMyQuestion(currentQuestion);
+            } catch (final NullPointerException exception) {
+                // TODO: fill question panel with loser text.
+            }
 
         } else if (nextCell.getMyID() == CellType.FLOOR.getID()) {
             List<GameObject> currentRow = myMap.get(myUserRow);
@@ -278,7 +294,12 @@ public final class EnvironmentManager {
 
             userIsMoving = Direction.WEST;
             questionPanel.enableButtons();
-            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion(isInChildMode));
+            try {
+                final Question currentQuestion = QUESTION_MANAGER.getRandomMultipleChoiceQuestion(isInChildMode);
+                questionPanel.setMyQuestion(currentQuestion);
+            } catch (final NullPointerException exception) {
+                // TODO: fill question panel with loser text.
+            }
 
         } else if(nextCell.getMyID() == CellType.FLOOR.getID()) {
             final List<GameObject> currentRow = myMap.get(myUserRow);
