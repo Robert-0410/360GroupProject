@@ -173,6 +173,7 @@ public final class MenuPanel extends JPanel {
      * Displays the help portion of the program.
      */
     public void displayHelp() {
+
         final var helpFrame = new JFrame("Help");
         helpFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         helpFrame.setLayout(new FlowLayout());
@@ -181,6 +182,7 @@ public final class MenuPanel extends JPanel {
         helpFrame.setResizable(false);
 
         final var textArea = new JTextArea();
+        textArea.setMargin(new Insets(5, 15, 15, 15));
         textArea.setSize(PaneConst.HELP_WIDTH.value(), PaneConst.HELP_HEIGHT.value());
         textArea.setBackground(Color.DARK_GRAY);
         textArea.setForeground(Color.WHITE);
@@ -200,7 +202,7 @@ public final class MenuPanel extends JPanel {
                 "disappear and you can continue.\nYou have a total of 4 lives. Pickle Rick currently has one life displayed " +
                 "(him on the map), if you get a question wrong he will take a life from the lives displayed in the bottom left. " +
                 "Once you have lost all 4 lives you lose the game.\n- Questions will be displayed in the bottom right corner of the game.\n" +
-                "Simply choose option \"A,B,C,D\" for the correct answer.\n");
+                "Simply choose option \"A,B,C,D\" for the correct answer.\n\n\n\n\n");
 
 
         helpFrame.add(textArea);
