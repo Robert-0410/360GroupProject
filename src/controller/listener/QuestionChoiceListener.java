@@ -58,6 +58,7 @@ public class QuestionChoiceListener extends GameListener {
             final var currentLives = getEnvironmentManager().removeUserLife();
             if(currentLives > 0) {
                 ButtonPanel.getInstance().removeLifeCell(currentLives);
+                QuestionPanel.getInstance().disableButtons();
             } else {
                 GameAudio.gameLost();
                 ButtonPanel.getInstance().removeLifeCell(currentLives);
