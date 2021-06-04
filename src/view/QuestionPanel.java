@@ -76,7 +76,7 @@ public final class QuestionPanel extends JPanel {
         for (int i = 0; i < 5; i++){
             myTextAreas[i].setBackground(Color.DARK_GRAY);
             myTextAreas[i].setForeground(Color.WHITE);
-            myTextAreas[i].setFont(new Font(Font.SANS_SERIF, Font.ITALIC, 13));
+            myTextAreas[i].setFont(new Font(Font.SANS_SERIF, Font.ITALIC, 12));
             myTextAreas[i].setLineWrap(true);
             myTextAreas[i].setWrapStyleWord(true);
             myTextAreas[i].setEditable(false);
