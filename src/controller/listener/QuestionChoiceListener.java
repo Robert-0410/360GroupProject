@@ -1,7 +1,6 @@
 package controller.listener;
 
 import controller.GameAudio;
-import controller.listener.menupanel.NewGameButtonListener;
 import model.CellType;
 import view.ButtonPanel;
 import view.Environment;
