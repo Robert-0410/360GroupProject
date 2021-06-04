@@ -55,12 +55,13 @@ public class QuestionChoiceListener extends GameListener {
             GameAudio.wubbaLubba();
         } else {
             final var currentLives = getEnvironmentManager().removeUserLife();
-            if(currentLives >= 0) {
+            if(currentLives > 0) {
                 ButtonPanel.getInstance().removeLifeCell(currentLives);
                 GameAudio.wrongAnswer();
                 getEnvironmentManager().removeDoorAfterWrongAnswer();
             } else {
                 GameAudio.gameLost();
+                ButtonPanel.getInstance().removeLifeCell(currentLives);
                 ButtonPanel.getInstance().disableArrowButtons();
                 QuestionPanel.getInstance().disableButtons();
                 Environment.getInstance().gameLostEnvironmentPanel();
