@@ -2,11 +2,9 @@ package view;
 
 import controller.listener.QuestionChoiceListener;
 import sql.Question;
-import java.awt.Color;
-import javax.swing.JPanel;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.BorderFactory;
+
+import java.awt.*;
+import javax.swing.*;
 import java.util.ArrayList;
 
 /**
@@ -36,7 +34,7 @@ public final class QuestionPanel extends JPanel {
     private Question myQuestion;
 
     /**
-     * Labels used to display myQuestion information with paired button.
+     * TextAreas used to display myQuestion information with paired button.
      *
      * 0 - Question,
      * 1 - Answer A,
@@ -44,7 +42,7 @@ public final class QuestionPanel extends JPanel {
      * 3 - Answer C,
      * 4 - Answer D
      */
-    private JLabel[] myLabels;
+    private JTextArea[] myTextAreas;
 
     /**
      * Singleton style constructor.
@@ -74,25 +72,29 @@ public final class QuestionPanel extends JPanel {
         myQuestion = theQuestion;
         final var answers = myQuestion.getMyAnswers();
 
-        myLabels[0].setText(myQuestion.getMyQuestion());
-        myLabels[0].setForeground(Color.CYAN);
-        myLabels[0].setBounds(10, 10, 450, 15);
+        // Set up similar properties for all text areas
+        for (int i = 0; i < 5; i++){
+            myTextAreas[i].setBackground(Color.DARK_GRAY);
+            myTextAreas[i].setForeground(Color.WHITE);
+            myTextAreas[i].setFont(new Font(Font.SANS_SERIF, Font.ITALIC, 13));
+            myTextAreas[i].setLineWrap(true);
+            myTextAreas[i].setWrapStyleWord(true);
+            myTextAreas[i].setEditable(false);
+            myTextAreas[i].setText(myQuestion.getMyQuestion());
+        }
 
-        myLabels[1].setText(answers[0]);
-        myLabels[1].setForeground(Color.CYAN);
-        myLabels[1].setBounds(55, 35, 450, 15);
+        myTextAreas[0].setText(myQuestion.getMyQuestion());
+        myTextAreas[0].setBounds(10, 2, 375, 30);
 
-        myLabels[2].setText(answers[1]);
-        myLabels[2].setForeground(Color.CYAN);
-        myLabels[2].setBounds(55, 70, 450, 15);
+        // Set up text for all possible answers
+        for (int i = 1; i < 5; i++) {
+            myTextAreas[i].setText(answers[i-1]);
+        }
 
-        myLabels[3].setText(answers[2]);
-        myLabels[3].setForeground(Color.CYAN);
-        myLabels[3].setBounds(55, 105, 450, 15);
-
-        myLabels[4].setText(answers[3]);
-        myLabels[4].setForeground(Color.CYAN);
-        myLabels[4].setBounds(55, 140, 450, 15);
+        myTextAreas[1].setBounds(55, 40, 390, 20);
+        myTextAreas[2].setBounds(55, 73, 390, 20);
+        myTextAreas[3].setBounds(55, 106, 390, 20);
+        myTextAreas[4].setBounds(55, 139, 390, 20);
 
     }
 
@@ -126,8 +128,11 @@ public final class QuestionPanel extends JPanel {
         myButtons.get(2).setEnabled(false);
         myButtons.get(3).setEnabled(false);
 
-        for (JLabel myLabel : myLabels) {
-            myLabel.setText("");
+//        for (JLabel myLabel : myLabels) {
+//            myLabel.setText("");
+//        }
+        for (JTextArea myTextArea : myTextAreas) {
+            myTextArea.setText("");
         }
     }
 
@@ -145,22 +150,22 @@ public final class QuestionPanel extends JPanel {
         setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY,2, true));
 
         instantiateButtons();
-        instantiateLabels();
+        instantiateTextAreas();
         buildAButton();
         buildBButton();
         buildCButton();
         buildDButton();
-        addButtonsAndLabels();
+        addButtonsAndTextAreas();
     }
 
 
     /**
-     * Instantiates the labels used to display myQuestion information.
+     * Instantiates the TextAreas used to display myQuestion information.
      */
-    private void instantiateLabels() {
-        myLabels = new JLabel[5];
-        for(int i = 0; i < myLabels.length; i++) {
-            myLabels[i] = new JLabel();
+    private void instantiateTextAreas() {
+        myTextAreas = new JTextArea[5];
+        for(int i = 0; i < myTextAreas.length; i++) {
+            myTextAreas[i] = new JTextArea();
         }
     }
 
@@ -181,7 +186,7 @@ public final class QuestionPanel extends JPanel {
     private void buildAButton() {
         myButtons.get(0).setText("A");
         myButtons.get(0).addActionListener(new QuestionChoiceListener());
-        myButtons.get(0).setBounds(5, 30, PaneConst.QUESTION_BUTTON_WIDTH.value(), PaneConst.QUESTION_BUTTON_HEIGHT.value());
+        myButtons.get(0).setBounds(5, 35, PaneConst.QUESTION_BUTTON_WIDTH.value(), PaneConst.QUESTION_BUTTON_HEIGHT.value());
         myButtons.get(0).setEnabled(false);
 
     }
@@ -193,7 +198,7 @@ public final class QuestionPanel extends JPanel {
     private void buildBButton() {
         myButtons.get(1).setText("B");
         myButtons.get(1).addActionListener(new QuestionChoiceListener());
-        myButtons.get(1).setBounds(5, 65, PaneConst.QUESTION_BUTTON_WIDTH.value(), PaneConst.QUESTION_BUTTON_HEIGHT.value());
+        myButtons.get(1).setBounds(5, 68, PaneConst.QUESTION_BUTTON_WIDTH.value(), PaneConst.QUESTION_BUTTON_HEIGHT.value());
         myButtons.get(1).setEnabled(false);
     }
 
@@ -203,7 +208,7 @@ public final class QuestionPanel extends JPanel {
     private void buildCButton() {
         myButtons.get(2).setText("C");
         myButtons.get(2).addActionListener(new QuestionChoiceListener());
-        myButtons.get(2).setBounds(5, 100, PaneConst.QUESTION_BUTTON_WIDTH.value(), PaneConst.QUESTION_BUTTON_HEIGHT.value());
+        myButtons.get(2).setBounds(5, 101, PaneConst.QUESTION_BUTTON_WIDTH.value(), PaneConst.QUESTION_BUTTON_HEIGHT.value());
         myButtons.get(2).setEnabled(false);
     }
 
@@ -214,7 +219,7 @@ public final class QuestionPanel extends JPanel {
     private void buildDButton() {
         myButtons.get(3).setText("D");
         myButtons.get(3).addActionListener(new QuestionChoiceListener());
-        myButtons.get(3).setBounds(5, 135, PaneConst.QUESTION_BUTTON_WIDTH.value(), PaneConst.QUESTION_BUTTON_HEIGHT.value());
+        myButtons.get(3).setBounds(5, 134, PaneConst.QUESTION_BUTTON_WIDTH.value(), PaneConst.QUESTION_BUTTON_HEIGHT.value());
         myButtons.get(3).setEnabled(false);
     }
 
@@ -222,18 +227,16 @@ public final class QuestionPanel extends JPanel {
     /**
      * Adds buttons and labels to panel.
      */
-    private void addButtonsAndLabels() {
+    private void addButtonsAndTextAreas() {
         add(myButtons.get(0));
         add(myButtons.get(1));
         add(myButtons.get(2));
         add(myButtons.get(3));
-
-        // Labels TODO: add the rest of labels
-        add(myLabels[0]);
-        add(myLabels[1]);
-        add(myLabels[2]);
-        add(myLabels[3]);
-        add(myLabels[4]);
+        add(myTextAreas[0]);
+        add(myTextAreas[1]);
+        add(myTextAreas[2]);
+        add(myTextAreas[3]);
+        add(myTextAreas[4]);
     }
 
 }
