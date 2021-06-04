@@ -1,4 +1,6 @@
-package controller.listener;
+package controller.listener.menupanel;
+
+import controller.listener.GameListener;
 
 import javax.swing.JFrame;
 import javax.swing.JRadioButton;

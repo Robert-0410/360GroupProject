@@ -1,6 +1,7 @@
-package controller.listener;
+package controller.listener.menupanel;
 
 import controller.StatusManager;
+import controller.listener.GameListener;
 import view.ButtonPanel;
 import java.awt.event.ActionEvent;
 

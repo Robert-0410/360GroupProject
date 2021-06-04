@@ -1,21 +1,22 @@
-package controller.listener;
+package controller.listener.menupanel;
 
 
+import controller.listener.GameListener;
 import view.MenuPanel;
 import java.awt.event.ActionEvent;
 
 
 /**
- * Handles actions related to the Save Button.
+ * Handles actions related to the Load Button.
  * @author seanlogan, Robert
  * @version 1
  */
-public class SaveOptionListener extends GameListener {
+public class LoadOptionListener extends GameListener {
 
     /**
-     * For the SaveOptionListener.
+     * For the LoadOptionListener.
      */
-    public SaveOptionListener() {
+    public LoadOptionListener() {
         super();
     }
 
@@ -27,6 +28,6 @@ public class SaveOptionListener extends GameListener {
      */
     @Override
     public void actionPerformed(final ActionEvent e) {
-        MenuPanel.getInstance().displaySaveGameOptions();
+        MenuPanel.getInstance().displayLoadGameOptions();
     }
 }
