@@ -173,6 +173,7 @@ public final class MenuPanel extends JPanel {
      * Displays the help portion of the program.
      */
     public void displayHelp() {
+
         final var helpFrame = new JFrame("Help");
         helpFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         helpFrame.setLayout(new FlowLayout());
@@ -181,6 +182,7 @@ public final class MenuPanel extends JPanel {
         helpFrame.setResizable(false);
 
         final var textArea = new JTextArea();
+        textArea.setMargin(new Insets(5, 15, 15, 15));
         textArea.setSize(PaneConst.HELP_WIDTH.value(), PaneConst.HELP_HEIGHT.value());
         textArea.setBackground(Color.DARK_GRAY);
         textArea.setForeground(Color.WHITE);
