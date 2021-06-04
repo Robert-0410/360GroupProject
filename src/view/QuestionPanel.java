@@ -128,9 +128,6 @@ public final class QuestionPanel extends JPanel {
         myButtons.get(2).setEnabled(false);
         myButtons.get(3).setEnabled(false);
 
-//        for (JLabel myLabel : myLabels) {
-//            myLabel.setText("");
-//        }
         for (JTextArea myTextArea : myTextAreas) {
             myTextArea.setText("");
         }
