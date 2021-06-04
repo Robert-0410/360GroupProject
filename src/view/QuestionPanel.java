@@ -73,15 +73,7 @@ public final class QuestionPanel extends JPanel {
         final var answers = myQuestion.getMyAnswers();
 
         // Set up similar properties for all text areas
-        for (int i = 0; i < 5; i++){
-            myTextAreas[i].setBackground(Color.DARK_GRAY);
-            myTextAreas[i].setForeground(Color.WHITE);
-            myTextAreas[i].setFont(new Font(Font.SANS_SERIF, Font.ITALIC, 12));
-            myTextAreas[i].setLineWrap(true);
-            myTextAreas[i].setWrapStyleWord(true);
-            myTextAreas[i].setEditable(false);
-            myTextAreas[i].setText(myQuestion.getMyQuestion());
-        }
+        duplicate();
 
         myTextAreas[0].setText(myQuestion.getMyQuestion());
         myTextAreas[0].setBounds(10, 2, 375, 30);
@@ -254,6 +246,40 @@ public final class QuestionPanel extends JPanel {
         myTextAreas[2].setFont(new Font(Font.SANS_SERIF, Font.BOLD,24));
         myTextAreas[2].setBounds(85, 55, 350, 100);
         myTextAreas[2].setText("          Game Over!\n  Better Luck Next Time!");
+    }
+
+    /**
+     * Setter for current question.
+     */
+    public void resetMyQuestion() {
+        // Set up similar properties for all text areas
+        duplicate();
+
+        myTextAreas[0].setText("");
+        myTextAreas[0].setBounds(10, 2, 375, 30);
+
+        // Set up text for all possible answers
+        for (int i = 1; i < 5; i++) {
+            myTextAreas[i].setText("");
+        }
+
+        myTextAreas[1].setBounds(55, 40, 390, 20);
+        myTextAreas[2].setBounds(55, 73, 390, 20);
+        myTextAreas[3].setBounds(55, 106, 390, 20);
+        myTextAreas[4].setBounds(55, 139, 390, 20);
+
+    }
+
+    private void duplicate() {
+        for (int i = 0; i < 5; i++){
+            myTextAreas[i].setBackground(Color.DARK_GRAY);
+            myTextAreas[i].setForeground(Color.WHITE);
+            myTextAreas[i].setFont(new Font(Font.SANS_SERIF, Font.ITALIC, 12));
+            myTextAreas[i].setLineWrap(true);
+            myTextAreas[i].setWrapStyleWord(true);
+            myTextAreas[i].setEditable(false);
+            myTextAreas[i].setText(myQuestion.getMyQuestion());
+        }
     }
 
 }

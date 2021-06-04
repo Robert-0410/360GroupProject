@@ -3,6 +3,8 @@ package controller.listener.menupanel;
 import controller.StatusManager;
 import controller.listener.GameListener;
 import view.ButtonPanel;
+import view.QuestionPanel;
+
 import java.awt.event.ActionEvent;
 
 /**
@@ -28,7 +30,7 @@ public class NewGameButtonListener extends GameListener {
     @Override
     public void actionPerformed(final ActionEvent e) {
         StatusManager.enableGameButtons();
-
+        QuestionPanel.getInstance().resetMyQuestion();
         getEnvironmentManager().resetIsWinningCell();
         getEnvironmentManager().getMyMap().clear();
         getEnvironmentManager().resetPlayerLocation();
