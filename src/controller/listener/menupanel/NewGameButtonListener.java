@@ -30,7 +30,6 @@ public class NewGameButtonListener extends GameListener {
     @Override
     public void actionPerformed(final ActionEvent e) {
         StatusManager.enableGameButtons();
-        QuestionPanel.getInstance().resetMyQuestion();
         getEnvironmentManager().resetIsWinningCell();
         getEnvironmentManager().getMyMap().clear();
         getEnvironmentManager().resetPlayerLocation();
