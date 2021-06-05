@@ -80,6 +80,7 @@ public class QuestionManager {
             }
         } else {
             // User out of questions, looses game.
+            QuestionPanel.getInstance().gameLostQuestionText("Ran out of keys AKA questions");
             question = null;
             GameAudio.gameLost();
             ButtonPanel.getInstance().disableArrowButtons();
