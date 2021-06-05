@@ -29,6 +29,7 @@ public class NewGameButtonListener extends GameListener {
      */
     @Override
     public void actionPerformed(final ActionEvent e) {
+        QuestionPanel.getInstance().removeGameWonLostQuestionText();
         StatusManager.enableGameButtons();
         getEnvironmentManager().resetIsWinningCell();
         getEnvironmentManager().getMyMap().clear();
