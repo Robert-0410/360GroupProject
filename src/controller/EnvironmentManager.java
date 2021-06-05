@@ -164,7 +164,7 @@ public final class EnvironmentManager {
                 final Question currentQuestion = QUESTION_MANAGER.getRandomMultipleChoiceQuestion(isInChildMode);
                 questionPanel.setMyQuestion(currentQuestion);
             } catch (final NullPointerException exception) {
-                // TODO: fill question panel with loser text.
+                exception.printStackTrace(); // This line is not an ideal way to treat this.
             }
 
         } else if(nextCell.getMyID() == CellType.FLOOR.getID()) {
