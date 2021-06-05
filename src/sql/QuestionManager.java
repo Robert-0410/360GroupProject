@@ -5,8 +5,11 @@ import view.ButtonPanel;
 import view.Environment;
 import view.MenuPanel;
 import view.QuestionPanel;
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.sql.DriverManager;
 import java.util.ArrayList;
 import java.util.Collections;
 
