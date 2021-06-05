@@ -190,18 +190,18 @@ public final class MenuPanel extends JPanel {
         textArea.setWrapStyleWord(true);
         textArea.setLineWrap(true);
         textArea.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
-        textArea.setText("\t        Menu Bar Options\n- Selecting \"Menu\" will allow you to choose to play the game in either " +
-                "Adult Content Mode or Child Mode.\n- Selecting \"New Game\" will allow you to start the game over, erasing" +
-                "the contents of the current game.\n- Selecting \"Save\" once you are playing a game will save the current" +
-                "state of your game.\n- Selecting \"Load\" will allow you to load a previously saved game to play.\n" +
+        textArea.setText("\t        Menu Bar Options\n- Selecting \"Menu\" will allow you to choose between " +
+                "Adult or Child content.\n- Selecting \"New Game\" restarts the game, erasing " +
+                "the contents     of the current game.\n- Selecting \"Save\" will save the current" +
+                "state of your game.\n- Selecting \"Load\" will load a previously saved game to play.\n" +
                 "- Selecting \"Help\"....well you've discovered that already.\n\n\t        Playing the Game\n- The Game objective " +
                 "is to make it to the portal and escape!\n- To move Pickle Rick around you can use the arrow buttons on the bottom " +
-                "left panel, he will move the direction you wish as long as you are trying to move on the path.\n- The black walls on the maze are " +
-                "barriers you cannot pass.\n- The move-able path is teal-ish.\n- As you enter a door you will be prompted a question, " +
+                "left panel, he will move in the direction you wish as long as you are trying to move on the path.\n- The black walls on the maze are " +
+                "unpassable barriers.\n- The movable path is teal-ish.\n- As you enter a door you will be prompted a question, " +
                 "if you get this question wrong the door will be locked for good and you will lose a life.\n- If you get the question right the door will " +
                 "disappear and you can continue.\n- You have a total of 3 lives. Pickle Rick currently has one life displayed " +
-                "(him on the map), if you get a question wrong he will take a life from the lives displayed in the bottom left. " +
-                "Once you have lost all 3 lives you lose the game.\n- You can also lose the game by running out of questions, so be careful" +
+                "(him on the map), if you get a question wrong he will take a body from one of the vats. " +
+                "Once you have lost all 3 bodies you lose the game.\n- You can also lose the game by running out of questions, so be careful" +
                 "with how many times you select a new question\n- Questions will be displayed in the bottom right corner of the game." +
                 " Simply choose option \"A,B,C,D\" for the correct answer.\n\n\n\n\n");
 
