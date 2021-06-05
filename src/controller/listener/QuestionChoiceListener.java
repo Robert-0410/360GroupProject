@@ -59,13 +59,7 @@ public class QuestionChoiceListener extends GameListener {
                 ButtonPanel.getInstance().removeLifeCell(currentLives);
                 QuestionPanel.getInstance().disableButtons();
             } else {
-                GameAudio.gameLost();
-                ButtonPanel.getInstance().removeLifeCell(currentLives);
-                ButtonPanel.getInstance().disableArrowButtons();
-                QuestionPanel.getInstance().disableButtons();
-                Environment.getInstance().gameLostEnvironmentPanel();
-                MenuPanel.getInstance().getSaveButton().setEnabled(false);
-                QuestionPanel.getInstance().gameLostQuestionText();
+                lostGame(currentLives);
             }
             // Scenario for getting questions right at a door.
         } else if(userChoice == correctIndex) {
@@ -80,14 +74,18 @@ public class QuestionChoiceListener extends GameListener {
                 getEnvironmentManager().removeDoorAfterWrongAnswer();
                 // Scenario for losing all lives at an incorrect door.
             } else {
-                GameAudio.gameLost();
-                ButtonPanel.getInstance().removeLifeCell(currentLives);
-                ButtonPanel.getInstance().disableArrowButtons();
-                QuestionPanel.getInstance().disableButtons();
-                Environment.getInstance().gameLostEnvironmentPanel();
-                MenuPanel.getInstance().getSaveButton().setEnabled(false);
-                QuestionPanel.getInstance().gameLostQuestionText();
+                lostGame(currentLives);
             }
         }
+    }
+
+    private void lostGame(int currentLives) {
+        GameAudio.gameLost();
+        ButtonPanel.getInstance().removeLifeCell(currentLives);
+        ButtonPanel.getInstance().disableArrowButtons();
+        QuestionPanel.getInstance().disableButtons();
+        Environment.getInstance().gameLostEnvironmentPanel();
+        MenuPanel.getInstance().getSaveButton().setEnabled(false);
+        QuestionPanel.getInstance().gameLostQuestionText("           Oh no, you lost!\nPickle Rick is stuck for eternity!");
     }
 }

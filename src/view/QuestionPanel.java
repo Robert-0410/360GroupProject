@@ -2,9 +2,12 @@ package view;
 
 import controller.listener.QuestionChoiceListener;
 import sql.Question;
-
-import java.awt.*;
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JTextArea;
+import javax.swing.BorderFactory;
 import java.util.ArrayList;
 
 /**
@@ -261,13 +264,13 @@ public final class QuestionPanel extends JPanel {
      * Changes question panel to reflect that
      * the user lost the game.
      */
-    public void gameLostQuestionText() {
+    public void gameLostQuestionText(final String message) {
         setVisibilityQuestionPanel();
         winningLosingText.setBounds(25,40,400,250);
         winningLosingText.setBackground(Color.DARK_GRAY);
         winningLosingText.setForeground(Color.WHITE);
         winningLosingText.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 24));
-        winningLosingText.setText("           Oh no, you lost!\nPickle Rick is stuck for eternity!");
+        winningLosingText.setText(message);
         winningLosingText.setVisible(true);
         add(winningLosingText);
     }
@@ -287,6 +290,7 @@ public final class QuestionPanel extends JPanel {
         }
         winningLosingText.setVisible(false);
     }
+
 
     /**
      * Sets visibility to false for TextAreas and Buttons

@@ -5,8 +5,11 @@ import view.ButtonPanel;
 import view.Environment;
 import view.MenuPanel;
 import view.QuestionPanel;
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.sql.DriverManager;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -77,6 +80,7 @@ public class QuestionManager {
             }
         } else {
             // User out of questions, looses game.
+            QuestionPanel.getInstance().gameLostQuestionText("Ran out of keys AKA questions");
             question = null;
             GameAudio.gameLost();
             ButtonPanel.getInstance().disableArrowButtons();
