@@ -4,6 +4,7 @@ import controller.StatusManager;
 import controller.listener.GameListener;
 import model.SavedGame;
 import view.ButtonPanel;
+import view.QuestionPanel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -67,6 +68,7 @@ public class LoadButtonListener extends GameListener {
                 savedGame.getMyUserCol(), savedGame.getMyUserLives(), savedGame.isInChildMode(),
                 savedGame.getMyChildQuestions(), savedGame.getMyAdultQuestions());
         getEnvironmentManager().generateAfterMove();
+        QuestionPanel.getInstance().removeGameWonLostQuestionText();
 
         // close frame
         myFrame.dispose();

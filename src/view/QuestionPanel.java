@@ -45,6 +45,13 @@ public final class QuestionPanel extends JPanel {
     private JTextArea[] myTextAreas;
 
     /**
+     * TextArea that updates in question panel if the user
+     * has won or lost the game.
+     */
+    final private JTextArea winningLosingText = new JTextArea();
+
+
+    /**
      * Singleton style constructor.
      */
     private QuestionPanel() {
@@ -239,16 +246,61 @@ public final class QuestionPanel extends JPanel {
      * Changes question panel to reflect that
      * the user won the game.
      */
-    public void gameWonQuestionPanel() {
-        // TODO: figure out how to display and remove winning scenario
+    public void gameWonQuestionText() {
+        setVisibilityQuestionPanel();
+        winningLosingText.setBounds(25,40,400,250);
+        winningLosingText.setBackground(Color.DARK_GRAY);
+        winningLosingText.setForeground(Color.WHITE);
+        winningLosingText.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 24));
+        winningLosingText.setText("   Congratulations, you won!\nPickle Rick escaped the island!");
+        winningLosingText.setVisible(true);
+        add(winningLosingText);
     }
 
     /**
      * Changes question panel to reflect that
      * the user lost the game.
      */
-    public void gameLostQuestionPanel() {
-        // TODO: figure out how to display and remove losing scenario
+    public void gameLostQuestionText() {
+        setVisibilityQuestionPanel();
+        winningLosingText.setBounds(25,40,400,250);
+        winningLosingText.setBackground(Color.DARK_GRAY);
+        winningLosingText.setForeground(Color.WHITE);
+        winningLosingText.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 24));
+        winningLosingText.setText("           Oh no, you lost!\nPickle Rick is stuck for eternity!");
+        winningLosingText.setVisible(true);
+        add(winningLosingText);
     }
+
+    /**
+     * Sets visibility of winning/losing text to false and
+     * sets visibility of TextAreas and Buttons to true when
+     * load or new game button is pressed to allow questions and
+     * buttons to appear again.
+     */
+    public void removeGameWonLostQuestionText() {
+        for(int i = 0; i < 5; i++) {
+            myTextAreas[i].setVisible(true);
+        }
+        for (int i = 0; i < 4; i++) {
+            myButtons.get(i).setVisible(true);
+        }
+        winningLosingText.setVisible(false);
+    }
+
+    /**
+     * Sets visibility to false for TextAreas and Buttons
+     * in question panel to enable the winning/losing TextArea
+     * to appear.
+     */
+    public void setVisibilityQuestionPanel() {
+        for(int i = 0; i < 5; i++) {
+            myTextAreas[i].setVisible(false);
+        }
+        for (int i = 0; i < 4; i++) {
+            myButtons.get(i).setVisible(false);
+        }
+    }
+
 
 }
