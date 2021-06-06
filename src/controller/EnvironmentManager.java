@@ -154,7 +154,11 @@ public final class EnvironmentManager {
             isWinningCell = CellType.PORTAL;
             userIsMoving = Direction.NORTH;
             questionPanel.enableButtons();
-            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion(isInChildMode));
+
+            final var currentQuestion = QUESTION_MANAGER.getRandomMultipleChoiceQuestion(isInChildMode);
+            if (currentQuestion != null) {
+                questionPanel.setMyQuestion(currentQuestion);
+            }
 
         } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
 
