@@ -154,17 +154,20 @@ public final class EnvironmentManager {
             isWinningCell = CellType.PORTAL;
             userIsMoving = Direction.NORTH;
             questionPanel.enableButtons();
-            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion(isInChildMode));
+
+            final var currentQuestion = QUESTION_MANAGER.getRandomMultipleChoiceQuestion(isInChildMode);
+            if (currentQuestion != null) {
+                questionPanel.setMyQuestion(currentQuestion);
+            }
 
         } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
 
             userIsMoving = Direction.NORTH;
             questionPanel.enableButtons();
-            try {
-                final Question currentQuestion = QUESTION_MANAGER.getRandomMultipleChoiceQuestion(isInChildMode);
+
+            final Question currentQuestion = QUESTION_MANAGER.getRandomMultipleChoiceQuestion(isInChildMode);
+            if(currentQuestion != null) {
                 questionPanel.setMyQuestion(currentQuestion);
-            } catch (final NullPointerException exception) {
-                exception.printStackTrace(); // This line is not an ideal way to treat this.
             }
 
         } else if(nextCell.getMyID() == CellType.FLOOR.getID()) {
@@ -200,17 +203,18 @@ public final class EnvironmentManager {
             isWinningCell = CellType.PORTAL;
             userIsMoving = Direction.EAST;
             questionPanel.enableButtons();
-            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion(isInChildMode));
+            final var currentQuestion = QUESTION_MANAGER.getRandomMultipleChoiceQuestion(isInChildMode);
+            if (currentQuestion != null) {
+                questionPanel.setMyQuestion(currentQuestion);
+            }
 
         } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
 
             userIsMoving = Direction.EAST;
             questionPanel.enableButtons();
-            try {
-                final Question currentQuestion = QUESTION_MANAGER.getRandomMultipleChoiceQuestion(isInChildMode);
+            final var currentQuestion = QUESTION_MANAGER.getRandomMultipleChoiceQuestion(isInChildMode);
+            if (currentQuestion != null) {
                 questionPanel.setMyQuestion(currentQuestion);
-            } catch (final NullPointerException exception) {
-                // TODO: fill question panel with loser text.
             }
 
         } else if(nextCell.getMyID() == CellType.FLOOR.getID()) {
@@ -243,17 +247,18 @@ public final class EnvironmentManager {
             isWinningCell = CellType.PORTAL;
             userIsMoving = Direction.SOUTH;
             questionPanel.enableButtons();
-            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion(isInChildMode));
+            final var currentQuestion = QUESTION_MANAGER.getRandomMultipleChoiceQuestion(isInChildMode);
+            if (currentQuestion != null) {
+                questionPanel.setMyQuestion(currentQuestion);
+            }
 
         } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
 
             userIsMoving = Direction.SOUTH;
             questionPanel.enableButtons();
-            try {
-                final Question currentQuestion = QUESTION_MANAGER.getRandomMultipleChoiceQuestion(isInChildMode);
+            final var currentQuestion = QUESTION_MANAGER.getRandomMultipleChoiceQuestion(isInChildMode);
+            if (currentQuestion != null) {
                 questionPanel.setMyQuestion(currentQuestion);
-            } catch (final NullPointerException exception) {
-                // TODO: fill question panel with loser text.
             }
 
         } else if (nextCell.getMyID() == CellType.FLOOR.getID()) {
@@ -288,17 +293,18 @@ public final class EnvironmentManager {
             isWinningCell = CellType.PORTAL;
             userIsMoving = Direction.WEST;
             questionPanel.enableButtons();
-            questionPanel.setMyQuestion(QUESTION_MANAGER.getRandomMultipleChoiceQuestion(isInChildMode));
+            final var currentQuestion = QUESTION_MANAGER.getRandomMultipleChoiceQuestion(isInChildMode);
+            if (currentQuestion != null) {
+                questionPanel.setMyQuestion(currentQuestion);
+            }
 
         } else if(nextCell.getMyID() == CellType.DOOR.getID()) {
 
             userIsMoving = Direction.WEST;
             questionPanel.enableButtons();
-            try {
-                final Question currentQuestion = QUESTION_MANAGER.getRandomMultipleChoiceQuestion(isInChildMode);
+            final var currentQuestion = QUESTION_MANAGER.getRandomMultipleChoiceQuestion(isInChildMode);
+            if (currentQuestion != null) {
                 questionPanel.setMyQuestion(currentQuestion);
-            } catch (final NullPointerException exception) {
-                // TODO: fill question panel with loser text.
             }
 
         } else if(nextCell.getMyID() == CellType.FLOOR.getID()) {
