@@ -17,7 +17,7 @@ import java.util.Collections;
  *
  * @author sasha amador
  * @author Robert & Sean
- * @version 1.2.08
+ * @version 1
  *
  * The QuestionManager class connects our database, and is where our getMultipleChoice method is located.
  *

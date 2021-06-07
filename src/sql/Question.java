@@ -7,6 +7,7 @@ import java.io.Serializable;
  * Object representation of the questions being asked.
  * @author Robert
  * @author Sasha
+ * @version 1
  */
 public class Question implements Serializable {
 

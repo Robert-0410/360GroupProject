@@ -6,7 +6,7 @@ import view.ButtonPanel;
 import view.Environment;
 import view.MenuPanel;
 import view.QuestionPanel;
-import javax.swing.*;
+import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 
 /**

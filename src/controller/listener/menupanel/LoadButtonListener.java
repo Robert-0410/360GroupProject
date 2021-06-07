@@ -5,8 +5,8 @@ import controller.listener.GameListener;
 import model.SavedGame;
 import view.ButtonPanel;
 import view.QuestionPanel;
-
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -15,6 +15,7 @@ import java.io.ObjectInputStream;
 /**
  * Handles loading of game.
  * @author Robert & Sean
+ * @version 1
  */
 public class LoadButtonListener extends GameListener {
 

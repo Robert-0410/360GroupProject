@@ -2,7 +2,6 @@ package controller.listener.menupanel;
 
 import controller.listener.GameListener;
 import view.MenuPanel;
-
 import java.awt.event.ActionEvent;
 
 /**

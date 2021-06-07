@@ -27,7 +27,7 @@ public final class Main {
         game.display();
 
         // Play theme song.
-//        GameAudio.themeSong(); // TODO: this statement is needed for actual product.
+        GameAudio.themeSong();
 
     }
 }

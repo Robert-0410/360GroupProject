@@ -2,8 +2,8 @@ package controller.listener.menupanel;
 
 import controller.listener.GameListener;
 import model.SavedGame;
-
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -12,6 +12,7 @@ import java.io.ObjectOutputStream;
 /**
  * Listener for the save game button.
  * @author Robert & Sean
+ * @version 1
  */
 public class SaveGameButtonListener extends GameListener {
 

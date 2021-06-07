@@ -5,7 +5,7 @@ import controller.EnvironmentManager;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
-import java.awt.*;
+import java.awt.Color;
 
 /** Environment for where the background will initially
  * be displayed. After a game is selected, Environment

@@ -4,7 +4,6 @@ import controller.StatusManager;
 import controller.listener.GameListener;
 import view.ButtonPanel;
 import view.QuestionPanel;
-
 import java.awt.event.ActionEvent;
 
 /**
